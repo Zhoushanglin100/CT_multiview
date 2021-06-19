@@ -1,0 +1,9 @@
+*.png
+__pycache__/
+data/
+dsply*/
+ImageCHD_dataset/
+init_data/
+wandb/
+tmp/
+*/__pycache__/
