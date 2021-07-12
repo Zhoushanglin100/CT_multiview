@@ -1,6 +1,7 @@
 *.png
 *.pt
 *.log
+*.onnx
 
 __pycache__/
 */__pycache__/
