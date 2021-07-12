@@ -1,9 +1,12 @@
 *.png
+*.pt
+*.log
+
 __pycache__/
+*/__pycache__/
 data/
-dsply*/
-ImageCHD_dataset/
-init_data/
+inf_plot/
 wandb/
 tmp/
-*/__pycache__/
+ckpt/
+ckpt_pruned/

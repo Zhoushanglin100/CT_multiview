@@ -17,7 +17,7 @@ from varname import nameof
 
 pjoin = os.path.join
 
-data_home_folder = './ImageCHD_dataset'
+data_home_folder = '/data/medical/ImageCHD_dataset'
 
 nii_folder = pjoin(data_home_folder)
 img_folder = pjoin('data', 'images')
@@ -27,8 +27,11 @@ mask_folder = pjoin('data', 'masks')
 # os.makedirs(mask_folder, exist_ok=True)
 
 niis = glob(pjoin(nii_folder, '*.nii.gz'))
-nii_imgs = sorted([n for n in niis if 'image' in n])
-nii_masks = sorted([n for n in niis if 'label' in n])
+# nii_imgs = sorted([n for n in niis if 'image' in n])
+# nii_masks = sorted([n for n in niis if 'label' in n])
+
+nii_imgs = ["/data/medical/ImageCHD_dataset/ct_1178_image.nii.gz"]
+nii_masks = ["/data/medical/ImageCHD_dataset/ct_1178_label.nii.gz"]
 
 ##################################################
 
@@ -41,11 +44,12 @@ def reverse_transform(inp):
 def do_img(im, i, idx, name, folder):
 
     im = np.fliplr(np.rot90(im, 1))                                         # [640, 480] -> [480, 640]
-    im_1 = im.astype(np.int8)
+    # im_1 = im.astype(np.int8)
     im = np.reshape(im, (1, im.shape[0], im.shape[1])).astype(np.float32)   # [480, 640] -> [1, 480, 640]
     im = im.repeat(3, axis=0)# .astype(np.uint8)                              # [1, 480, 640] -> [3, 480, 640]
     
-    np.savez("data/3d/"+folder+"/img_"+str(i)+"_"+str(idx)+'.npz', im_1)
+    # np.savez("data/3d/"+folder+"/img_"+str(i)+"_"+str(idx)+'.npz', im)
+    np.savez("data/test_3/"+folder+"/"+str(idx)+'.npz', im)
 
     # plt.imshow(im.transpose([1,2,0]).squeeze())
     # plt.savefig("img.png")
@@ -63,7 +67,8 @@ def do_msk(msk, i, idx, name, folder):
     msk = np.reshape(msk, (1, msk.shape[0], msk.shape[1])).astype(np.float32)
     # msk = np.concatenate([msk_1==i for i in range(1,8)], axis=0).astype(np.uint8)    # not include background
 
-    np.savez("data/3d/"+folder+"/msk_"+str(i)+"_"+str(idx)+'.npz', msk_1)
+    # np.savez("data/3d/"+folder+"/msk_"+str(i)+"_"+str(idx)+'.npz', msk_1)
+    np.savez("data/test_3/"+folder+"/"+str(idx)+'.npz', msk_1)
 
     # a = msk.transpose([1,2,0]).squeeze(axis=2)
     # plt.imshow(a)
@@ -104,29 +109,38 @@ for nii_idx, img_path in enumerate(nii_imgs):
     mask_name_list = ["mask_updown", "mask_leftright", "mask_frontback"]
     img_name_list = ["img_updown", "img_leftright", "img_frontback"]
 
-    # mask_type = [mask_updown, mask_leftright, mask_frontback]
-
     mask_type = [mask_updown, mask_leftright, mask_frontback]
     img_type = [img_updown, img_leftright, img_frontback]
 
 
     # for num in range(3):
-    for num in [0]:
+    for num in [1]:
 
-        # print("Generating ", mask_name_list[num])
-        # os.makedirs("dsply/"+mask_name_list[num], exist_ok=True)
-        # os.makedirs("dsply/"+img_name_list[num], exist_ok=True)
-        os.makedirs("data/3d/"+mask_name_list[num], exist_ok=True)
-        os.makedirs("data/3d/"+img_name_list[num], exist_ok=True)
+        # os.makedirs("data/3d/"+mask_name_list[num], exist_ok=True)
+        # os.makedirs("data/3d/"+img_name_list[num], exist_ok=True)
+
+        os.makedirs("data/test_3/"+mask_name_list[num], exist_ok=True)
+        os.makedirs("data/test_3/"+img_name_list[num], exist_ok=True)
 
         for idx, msk in enumerate(mask_type[num]):
             # if (idx > 100) and (idx < 110):
             img = img_type[num]
+
+            # # ---------------------------------
+            # if (img.shape[1] != 512) or (img.shape[2] != 512) or (msk.shape[0] != 512) or (msk.shape[1] != 512):
+            #     print(nii_idx, name, mask_name_list[num])
+            #     print(img.shape, msk.shape)
+            # # -------------------------------
+
             a = sum(sum(msk))
             if a != 0:
+
                 print(nii_idx, idx, name, mask_name_list[num])
+                # print(img[idx].shape, msk.shape)
+                
                 do_msk(msk, nii_idx, idx, name, mask_name_list[num])
                 do_img(img[idx], nii_idx, idx, name, img_name_list[num])
-            # print("Done ", str(idx))
+                
+            print("Done ", str(idx))
         print("Done one type")
 print('Done all!')

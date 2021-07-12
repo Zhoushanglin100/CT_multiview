@@ -1,0 +1,111 @@
+# define prune ratios for your network
+# 46.10 / 1.86x (filter sparsity / weight sparsity)
+prune_ratios:
+  #  base_model.conv1.weight:
+  #   0.5
+  #  base_model.bn1.weight:
+  #   0.5
+   base_model.layer1.0.conv1.weight:
+    0.95
+  #  base_model.layer1.0.bn1.weight:
+  #   0.5
+   base_model.layer1.0.conv2.weight:
+    0.95
+  #  base_model.layer1.0.bn2.weight:
+  #   0.5
+   base_model.layer1.1.conv1.weight:
+    0.95
+  #  base_model.layer1.1.bn1.weight:
+  #   0.5
+   base_model.layer1.1.conv2.weight:
+    0.95
+  #  base_model.layer1.1.bn2.weight:
+  #   0.5
+   base_model.layer2.0.conv1.weight:
+    0.95
+  #  base_model.layer2.0.bn1.weight:
+  #   0.5
+   base_model.layer2.0.conv2.weight:
+    0.95
+  #  base_model.layer2.0.bn2.weight:
+  #   0.5
+   base_model.layer2.0.downsample.0.weight:
+    0.95
+   base_model.layer2.0.downsample.1.weight:
+    0.95
+   base_model.layer2.1.conv1.weight:
+    0.95
+  #  base_model.layer2.1.bn1.weight:
+  #   0.5
+   base_model.layer2.1.conv2.weight:
+    0.95
+  #  base_model.layer2.1.bn2.weight:
+  #   0.5
+   base_model.layer3.0.conv1.weight:
+    0.95
+  #  base_model.layer3.0.bn1.weight:
+  #   0.5
+   base_model.layer3.0.conv2.weight:
+    0.95
+  #  base_model.layer3.0.bn2.weight:
+  #   0.5
+   base_model.layer3.0.downsample.0.weight:
+    0.95
+   base_model.layer3.0.downsample.1.weight:
+    0.95
+   base_model.layer3.1.conv1.weight:
+    0.95
+  #  base_model.layer3.1.bn1.weight:
+  #   0.5
+   base_model.layer3.1.conv2.weight:
+    0.95
+  #  base_model.layer3.1.bn2.weight:
+  #   0.5
+   base_model.layer4.0.conv1.weight:
+    0.95
+  #  base_model.layer4.0.bn1.weight:
+  #   0.5
+   base_model.layer4.0.conv2.weight:
+    0.95
+  #  base_model.layer4.0.bn2.weight:
+  #   0.5
+   base_model.layer4.0.downsample.0.weight:
+    0.95
+   base_model.layer4.0.downsample.1.weight:
+    0.95
+   base_model.layer4.1.conv1.weight:
+    0.95
+  #  base_model.layer4.1.bn1.weight:
+  #   0.5
+   base_model.layer4.1.conv2.weight:
+    0.95
+  #  base_model.layer4.1.bn2.weight:
+  #   0.5
+  #  base_model.fc.weight:
+  #   0.95
+   layer0_1x1.0.weight:
+    0.95
+   layer1_1x1.0.weight:
+    0.95
+   layer2_1x1.0.weight:
+    0.95
+   layer3_1x1.0.weight:
+    0.95
+   layer4_1x1.0.weight:
+    0.95
+   conv_up3.0.weight:
+    0.95
+   conv_up2.0.weight:
+    0.95
+   conv_up1.0.weight:
+    0.95
+   conv_up0.0.weight:
+    0.95
+   conv_original_size0.0.weight:
+    0.95
+   conv_original_size1.0.weight:
+    0.95
+   conv_original_size2.0.weight:
+    0.95
+  #  conv_last.weight:
+  #   0.95
