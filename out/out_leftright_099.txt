@@ -1,0 +1,846 @@
+
+Namespace(data_view='leftright', dims=256, ext='_tmp5_0.99', model='ResNetUNet', num_classes=1, prun_config_file='config_ResNetUNet_0.99', sparsity_type='irregular', test_batch_size=1)
+----------------------------------------------------------------
+        Layer (type)               Output Shape         Param #
+================================================================
+            Conv2d-1         [-1, 64, 256, 256]           1,792
+              ReLU-2         [-1, 64, 256, 256]               0
+            Conv2d-3         [-1, 64, 256, 256]          36,928
+              ReLU-4         [-1, 64, 256, 256]               0
+            Conv2d-5         [-1, 64, 128, 128]           9,408
+            Conv2d-6         [-1, 64, 128, 128]           9,408
+       BatchNorm2d-7         [-1, 64, 128, 128]             128
+       BatchNorm2d-8         [-1, 64, 128, 128]             128
+              ReLU-9         [-1, 64, 128, 128]               0
+             ReLU-10         [-1, 64, 128, 128]               0
+        MaxPool2d-11           [-1, 64, 64, 64]               0
+        MaxPool2d-12           [-1, 64, 64, 64]               0
+           Conv2d-13           [-1, 64, 64, 64]          36,864
+           Conv2d-14           [-1, 64, 64, 64]          36,864
+      BatchNorm2d-15           [-1, 64, 64, 64]             128
+      BatchNorm2d-16           [-1, 64, 64, 64]             128
+             ReLU-17           [-1, 64, 64, 64]               0
+             ReLU-18           [-1, 64, 64, 64]               0
+           Conv2d-19           [-1, 64, 64, 64]          36,864
+           Conv2d-20           [-1, 64, 64, 64]          36,864
+      BatchNorm2d-21           [-1, 64, 64, 64]             128
+      BatchNorm2d-22           [-1, 64, 64, 64]             128
+             ReLU-23           [-1, 64, 64, 64]               0
+             ReLU-24           [-1, 64, 64, 64]               0
+       BasicBlock-25           [-1, 64, 64, 64]               0
+       BasicBlock-26           [-1, 64, 64, 64]               0
+           Conv2d-27           [-1, 64, 64, 64]          36,864
+           Conv2d-28           [-1, 64, 64, 64]          36,864
+      BatchNorm2d-29           [-1, 64, 64, 64]             128
+      BatchNorm2d-30           [-1, 64, 64, 64]             128
+             ReLU-31           [-1, 64, 64, 64]               0
+             ReLU-32           [-1, 64, 64, 64]               0
+           Conv2d-33           [-1, 64, 64, 64]          36,864
+           Conv2d-34           [-1, 64, 64, 64]          36,864
+      BatchNorm2d-35           [-1, 64, 64, 64]             128
+      BatchNorm2d-36           [-1, 64, 64, 64]             128
+             ReLU-37           [-1, 64, 64, 64]               0
+             ReLU-38           [-1, 64, 64, 64]               0
+       BasicBlock-39           [-1, 64, 64, 64]               0
+       BasicBlock-40           [-1, 64, 64, 64]               0
+           Conv2d-41          [-1, 128, 32, 32]          73,728
+           Conv2d-42          [-1, 128, 32, 32]          73,728
+      BatchNorm2d-43          [-1, 128, 32, 32]             256
+      BatchNorm2d-44          [-1, 128, 32, 32]             256
+             ReLU-45          [-1, 128, 32, 32]               0
+             ReLU-46          [-1, 128, 32, 32]               0
+           Conv2d-47          [-1, 128, 32, 32]         147,456
+           Conv2d-48          [-1, 128, 32, 32]         147,456
+      BatchNorm2d-49          [-1, 128, 32, 32]             256
+      BatchNorm2d-50          [-1, 128, 32, 32]             256
+           Conv2d-51          [-1, 128, 32, 32]           8,192
+           Conv2d-52          [-1, 128, 32, 32]           8,192
+      BatchNorm2d-53          [-1, 128, 32, 32]             256
+      BatchNorm2d-54          [-1, 128, 32, 32]             256
+             ReLU-55          [-1, 128, 32, 32]               0
+             ReLU-56          [-1, 128, 32, 32]               0
+       BasicBlock-57          [-1, 128, 32, 32]               0
+       BasicBlock-58          [-1, 128, 32, 32]               0
+           Conv2d-59          [-1, 128, 32, 32]         147,456
+           Conv2d-60          [-1, 128, 32, 32]         147,456
+      BatchNorm2d-61          [-1, 128, 32, 32]             256
+      BatchNorm2d-62          [-1, 128, 32, 32]             256
+             ReLU-63          [-1, 128, 32, 32]               0
+             ReLU-64          [-1, 128, 32, 32]               0
+           Conv2d-65          [-1, 128, 32, 32]         147,456
+           Conv2d-66          [-1, 128, 32, 32]         147,456
+      BatchNorm2d-67          [-1, 128, 32, 32]             256
+      BatchNorm2d-68          [-1, 128, 32, 32]             256
+             ReLU-69          [-1, 128, 32, 32]               0
+             ReLU-70          [-1, 128, 32, 32]               0
+       BasicBlock-71          [-1, 128, 32, 32]               0
+       BasicBlock-72          [-1, 128, 32, 32]               0
+           Conv2d-73          [-1, 256, 16, 16]         294,912
+           Conv2d-74          [-1, 256, 16, 16]         294,912
+      BatchNorm2d-75          [-1, 256, 16, 16]             512
+      BatchNorm2d-76          [-1, 256, 16, 16]             512
+             ReLU-77          [-1, 256, 16, 16]               0
+             ReLU-78          [-1, 256, 16, 16]               0
+           Conv2d-79          [-1, 256, 16, 16]         589,824
+           Conv2d-80          [-1, 256, 16, 16]         589,824
+      BatchNorm2d-81          [-1, 256, 16, 16]             512
+      BatchNorm2d-82          [-1, 256, 16, 16]             512
+           Conv2d-83          [-1, 256, 16, 16]          32,768
+           Conv2d-84          [-1, 256, 16, 16]          32,768
+      BatchNorm2d-85          [-1, 256, 16, 16]             512
+      BatchNorm2d-86          [-1, 256, 16, 16]             512
+             ReLU-87          [-1, 256, 16, 16]               0
+             ReLU-88          [-1, 256, 16, 16]               0
+       BasicBlock-89          [-1, 256, 16, 16]               0
+       BasicBlock-90          [-1, 256, 16, 16]               0
+           Conv2d-91          [-1, 256, 16, 16]         589,824
+           Conv2d-92          [-1, 256, 16, 16]         589,824
+      BatchNorm2d-93          [-1, 256, 16, 16]             512
+      BatchNorm2d-94          [-1, 256, 16, 16]             512
+             ReLU-95          [-1, 256, 16, 16]               0
+             ReLU-96          [-1, 256, 16, 16]               0
+           Conv2d-97          [-1, 256, 16, 16]         589,824
+           Conv2d-98          [-1, 256, 16, 16]         589,824
+      BatchNorm2d-99          [-1, 256, 16, 16]             512
+     BatchNorm2d-100          [-1, 256, 16, 16]             512
+            ReLU-101          [-1, 256, 16, 16]               0
+            ReLU-102          [-1, 256, 16, 16]               0
+      BasicBlock-103          [-1, 256, 16, 16]               0
+      BasicBlock-104          [-1, 256, 16, 16]               0
+          Conv2d-105            [-1, 512, 8, 8]       1,179,648
+          Conv2d-106            [-1, 512, 8, 8]       1,179,648
+     BatchNorm2d-107            [-1, 512, 8, 8]           1,024
+     BatchNorm2d-108            [-1, 512, 8, 8]           1,024
+            ReLU-109            [-1, 512, 8, 8]               0
+            ReLU-110            [-1, 512, 8, 8]               0
+          Conv2d-111            [-1, 512, 8, 8]       2,359,296
+          Conv2d-112            [-1, 512, 8, 8]       2,359,296
+     BatchNorm2d-113            [-1, 512, 8, 8]           1,024
+     BatchNorm2d-114            [-1, 512, 8, 8]           1,024
+          Conv2d-115            [-1, 512, 8, 8]         131,072
+          Conv2d-116            [-1, 512, 8, 8]         131,072
+     BatchNorm2d-117            [-1, 512, 8, 8]           1,024
+     BatchNorm2d-118            [-1, 512, 8, 8]           1,024
+            ReLU-119            [-1, 512, 8, 8]               0
+            ReLU-120            [-1, 512, 8, 8]               0
+      BasicBlock-121            [-1, 512, 8, 8]               0
+      BasicBlock-122            [-1, 512, 8, 8]               0
+          Conv2d-123            [-1, 512, 8, 8]       2,359,296
+          Conv2d-124            [-1, 512, 8, 8]       2,359,296
+     BatchNorm2d-125            [-1, 512, 8, 8]           1,024
+     BatchNorm2d-126            [-1, 512, 8, 8]           1,024
+            ReLU-127            [-1, 512, 8, 8]               0
+            ReLU-128            [-1, 512, 8, 8]               0
+          Conv2d-129            [-1, 512, 8, 8]       2,359,296
+          Conv2d-130            [-1, 512, 8, 8]       2,359,296
+     BatchNorm2d-131            [-1, 512, 8, 8]           1,024
+     BatchNorm2d-132            [-1, 512, 8, 8]           1,024
+            ReLU-133            [-1, 512, 8, 8]               0
+            ReLU-134            [-1, 512, 8, 8]               0
+      BasicBlock-135            [-1, 512, 8, 8]               0
+      BasicBlock-136            [-1, 512, 8, 8]               0
+          Conv2d-137            [-1, 512, 8, 8]         262,656
+            ReLU-138            [-1, 512, 8, 8]               0
+        Upsample-139          [-1, 512, 16, 16]               0
+          Conv2d-140          [-1, 256, 16, 16]          65,792
+            ReLU-141          [-1, 256, 16, 16]               0
+          Conv2d-142          [-1, 512, 16, 16]       3,539,456
+            ReLU-143          [-1, 512, 16, 16]               0
+        Upsample-144          [-1, 512, 32, 32]               0
+          Conv2d-145          [-1, 128, 32, 32]          16,512
+            ReLU-146          [-1, 128, 32, 32]               0
+          Conv2d-147          [-1, 256, 32, 32]       1,474,816
+            ReLU-148          [-1, 256, 32, 32]               0
+        Upsample-149          [-1, 256, 64, 64]               0
+          Conv2d-150           [-1, 64, 64, 64]           4,160
+            ReLU-151           [-1, 64, 64, 64]               0
+          Conv2d-152          [-1, 256, 64, 64]         737,536
+            ReLU-153          [-1, 256, 64, 64]               0
+        Upsample-154        [-1, 256, 128, 128]               0
+          Conv2d-155         [-1, 64, 128, 128]           4,160
+            ReLU-156         [-1, 64, 128, 128]               0
+          Conv2d-157        [-1, 128, 128, 128]         368,768
+            ReLU-158        [-1, 128, 128, 128]               0
+        Upsample-159        [-1, 128, 256, 256]               0
+          Conv2d-160         [-1, 64, 256, 256]         110,656
+            ReLU-161         [-1, 64, 256, 256]               0
+          Conv2d-162          [-1, 1, 256, 256]              65
+================================================================
+Total params: 28,976,321
+Trainable params: 28,976,321
+Non-trainable params: 0
+----------------------------------------------------------------
+Input size (MB): 0.75
+Forward/backward pass size (MB): 543.00
+Params size (MB): 110.54
+Estimated Total Size (MB): 654.29
+----------------------------------------------------------------
++-----------------------------------------+------------+
+|                 Modules                 | Parameters |
++-----------------------------------------+------------+
+|         base_model.conv1.weight         |    9408    |
+|          base_model.bn1.weight          |     64     |
+|           base_model.bn1.bias           |     64     |
+|     base_model.layer1.0.conv1.weight    |   36864    |
+|      base_model.layer1.0.bn1.weight     |     64     |
+|       base_model.layer1.0.bn1.bias      |     64     |
+|     base_model.layer1.0.conv2.weight    |   36864    |
+|      base_model.layer1.0.bn2.weight     |     64     |
+|       base_model.layer1.0.bn2.bias      |     64     |
+|     base_model.layer1.1.conv1.weight    |   36864    |
+|      base_model.layer1.1.bn1.weight     |     64     |
+|       base_model.layer1.1.bn1.bias      |     64     |
+|     base_model.layer1.1.conv2.weight    |   36864    |
+|      base_model.layer1.1.bn2.weight     |     64     |
+|       base_model.layer1.1.bn2.bias      |     64     |
+|     base_model.layer2.0.conv1.weight    |   73728    |
+|      base_model.layer2.0.bn1.weight     |    128     |
+|       base_model.layer2.0.bn1.bias      |    128     |
+|     base_model.layer2.0.conv2.weight    |   147456   |
+|      base_model.layer2.0.bn2.weight     |    128     |
+|       base_model.layer2.0.bn2.bias      |    128     |
+| base_model.layer2.0.downsample.0.weight |    8192    |
+| base_model.layer2.0.downsample.1.weight |    128     |
+|  base_model.layer2.0.downsample.1.bias  |    128     |
+|     base_model.layer2.1.conv1.weight    |   147456   |
+|      base_model.layer2.1.bn1.weight     |    128     |
+|       base_model.layer2.1.bn1.bias      |    128     |
+|     base_model.layer2.1.conv2.weight    |   147456   |
+|      base_model.layer2.1.bn2.weight     |    128     |
+|       base_model.layer2.1.bn2.bias      |    128     |
+|     base_model.layer3.0.conv1.weight    |   294912   |
+|      base_model.layer3.0.bn1.weight     |    256     |
+|       base_model.layer3.0.bn1.bias      |    256     |
+|     base_model.layer3.0.conv2.weight    |   589824   |
+|      base_model.layer3.0.bn2.weight     |    256     |
+|       base_model.layer3.0.bn2.bias      |    256     |
+| base_model.layer3.0.downsample.0.weight |   32768    |
+| base_model.layer3.0.downsample.1.weight |    256     |
+|  base_model.layer3.0.downsample.1.bias  |    256     |
+|     base_model.layer3.1.conv1.weight    |   589824   |
+|      base_model.layer3.1.bn1.weight     |    256     |
+|       base_model.layer3.1.bn1.bias      |    256     |
+|     base_model.layer3.1.conv2.weight    |   589824   |
+|      base_model.layer3.1.bn2.weight     |    256     |
+|       base_model.layer3.1.bn2.bias      |    256     |
+|     base_model.layer4.0.conv1.weight    |  1179648   |
+|      base_model.layer4.0.bn1.weight     |    512     |
+|       base_model.layer4.0.bn1.bias      |    512     |
+|     base_model.layer4.0.conv2.weight    |  2359296   |
+|      base_model.layer4.0.bn2.weight     |    512     |
+|       base_model.layer4.0.bn2.bias      |    512     |
+| base_model.layer4.0.downsample.0.weight |   131072   |
+| base_model.layer4.0.downsample.1.weight |    512     |
+|  base_model.layer4.0.downsample.1.bias  |    512     |
+|     base_model.layer4.1.conv1.weight    |  2359296   |
+|      base_model.layer4.1.bn1.weight     |    512     |
+|       base_model.layer4.1.bn1.bias      |    512     |
+|     base_model.layer4.1.conv2.weight    |  2359296   |
+|      base_model.layer4.1.bn2.weight     |    512     |
+|       base_model.layer4.1.bn2.bias      |    512     |
+|           base_model.fc.weight          |   512000   |
+|            base_model.fc.bias           |    1000    |
+|           layer0_1x1.0.weight           |    4096    |
+|            layer0_1x1.0.bias            |     64     |
+|           layer1_1x1.0.weight           |    4096    |
+|            layer1_1x1.0.bias            |     64     |
+|           layer2_1x1.0.weight           |   16384    |
+|            layer2_1x1.0.bias            |    128     |
+|           layer3_1x1.0.weight           |   65536    |
+|            layer3_1x1.0.bias            |    256     |
+|           layer4_1x1.0.weight           |   262144   |
+|            layer4_1x1.0.bias            |    512     |
+|            conv_up3.0.weight            |  3538944   |
+|             conv_up3.0.bias             |    512     |
+|            conv_up2.0.weight            |  1474560   |
+|             conv_up2.0.bias             |    256     |
+|            conv_up1.0.weight            |   737280   |
+|             conv_up1.0.bias             |    256     |
+|            conv_up0.0.weight            |   368640   |
+|             conv_up0.0.bias             |    128     |
+|       conv_original_size0.0.weight      |    1728    |
+|        conv_original_size0.0.bias       |     64     |
+|       conv_original_size1.0.weight      |   36864    |
+|        conv_original_size1.0.bias       |     64     |
+|       conv_original_size2.0.weight      |   110592   |
+|        conv_original_size2.0.bias       |     64     |
+|             conv_last.weight            |     64     |
+|              conv_last.bias             |     1      |
++-----------------------------------------+------------+
+Total Trainable Params: 18312809
+================= process img 1: 6.512642 ms
+>>>>>>> Total 1: 7.072449 ms <<<<<<
+================= process img 2: 5.237818 ms
+>>>>>>> Total 2: 5.625963 ms <<<<<<
+================= process img 3: 2.707481 ms
+>>>>>>> Total 3: 3.176451 ms <<<<<<
+================= process img 4: 2.703428 ms
+>>>>>>> Total 4: 3.180265 ms <<<<<<
+================= process img 5: 2.705574 ms
+>>>>>>> Total 5: 3.180504 ms <<<<<<
+================= process img 6: 2.682924 ms
+>>>>>>> Total 6: 3.154516 ms <<<<<<
+================= process img 7: 2.662897 ms
+>>>>>>> Total 7: 3.139257 ms <<<<<<
+================= process img 8: 2.692223 ms
+>>>>>>> Total 8: 3.168583 ms <<<<<<
+================= process img 9: 2.668381 ms
+>>>>>>> Total 9: 3.150940 ms <<<<<<
+================= process img 10: 2.655745 ms
+>>>>>>> Total 10: 3.144503 ms <<<<<<
+================= process img 11: 2.671242 ms
+>>>>>>> Total 11: 3.139257 ms <<<<<<
+================= process img 12: 2.660513 ms
+>>>>>>> Total 12: 3.134966 ms <<<<<<
+================= process img 13: 2.671480 ms
+>>>>>>> Total 13: 3.162622 ms <<<<<<
+================= process img 14: 2.664089 ms
+>>>>>>> Total 14: 3.144979 ms <<<<<<
+================= process img 15: 2.688169 ms
+>>>>>>> Total 15: 3.160715 ms <<<<<<
+================= process img 16: 5.076885 ms
+>>>>>>> Total 16: 5.612850 ms <<<<<<
+================= process img 17: 2.764940 ms
+>>>>>>> Total 17: 3.239393 ms <<<<<<
+================= process img 18: 2.775669 ms
+>>>>>>> Total 18: 3.247499 ms <<<<<<
+================= process img 19: 2.738714 ms
+>>>>>>> Total 19: 3.213644 ms <<<<<<
+================= process img 20: 4.966021 ms
+>>>>>>> Total 20: 5.497217 ms <<<<<<
+================= process img 21: 2.677202 ms
+>>>>>>> Total 21: 3.161430 ms <<<<<<
+================= process img 22: 2.668381 ms
+>>>>>>> Total 22: 3.145218 ms <<<<<<
+================= process img 23: 2.686024 ms
+>>>>>>> Total 23: 3.159046 ms <<<<<<
+================= process img 24: 2.661943 ms
+>>>>>>> Total 24: 3.138542 ms <<<<<<
+================= process img 25: 2.657890 ms
+>>>>>>> Total 25: 3.133059 ms <<<<<<
+================= process img 26: 2.684593 ms
+>>>>>>> Total 26: 3.157616 ms <<<<<<
+================= process img 27: 2.672911 ms
+>>>>>>> Total 27: 3.143549 ms <<<<<<
+================= process img 28: 2.704620 ms
+>>>>>>> Total 28: 3.185987 ms <<<<<<
+================= process img 29: 2.701044 ms
+>>>>>>> Total 29: 3.175735 ms <<<<<<
+================= process img 30: 2.644062 ms
+>>>>>>> Total 30: 3.117323 ms <<<<<<
+================= process img 31: 5.099297 ms
+>>>>>>> Total 31: 5.622864 ms <<<<<<
+================= process img 32: 2.655506 ms
+>>>>>>> Total 32: 3.133535 ms <<<<<<
+================= process img 33: 2.660513 ms
+>>>>>>> Total 33: 3.139019 ms <<<<<<
+================= process img 34: 2.683878 ms
+>>>>>>> Total 34: 3.159046 ms <<<<<<
+================= process img 35: 2.717972 ms
+>>>>>>> Total 35: 3.182650 ms <<<<<<
+================= process img 36: 2.656221 ms
+>>>>>>> Total 36: 3.134727 ms <<<<<<
+================= process img 37: 2.659798 ms
+>>>>>>> Total 37: 3.136396 ms <<<<<<
+================= process img 38: 2.665997 ms
+>>>>>>> Total 38: 3.142834 ms <<<<<<
+================= process img 39: 2.704144 ms
+>>>>>>> Total 39: 3.181458 ms <<<<<<
+================= process img 40: 2.671957 ms
+>>>>>>> Total 40: 3.133535 ms <<<<<<
+================= process img 41: 2.692699 ms
+>>>>>>> Total 41: 3.169537 ms <<<<<<
+================= process img 42: 2.679110 ms
+>>>>>>> Total 42: 3.149986 ms <<<<<<
+================= process img 43: 2.673864 ms
+>>>>>>> Total 43: 3.153086 ms <<<<<<
+================= process img 44: 2.668619 ms
+>>>>>>> Total 44: 3.158331 ms <<<<<<
+================= process img 45: 2.660275 ms
+>>>>>>> Total 45: 3.137827 ms <<<<<<
+================= process img 46: 2.666950 ms
+>>>>>>> Total 46: 3.139019 ms <<<<<<
+================= process img 47: 4.433155 ms
+>>>>>>> Total 47: 4.954576 ms <<<<<<
+================= process img 48: 2.651453 ms
+>>>>>>> Total 48: 3.137827 ms <<<<<<
+================= process img 49: 2.664566 ms
+>>>>>>> Total 49: 3.156185 ms <<<<<<
+================= process img 50: 2.814770 ms
+>>>>>>> Total 50: 3.291607 ms <<<<<<
+================= process img 51: 2.802372 ms
+>>>>>>> Total 51: 3.273249 ms <<<<<<
+================= process img 52: 2.801180 ms
+>>>>>>> Total 52: 3.290415 ms <<<<<<
+================= process img 53: 2.789974 ms
+>>>>>>> Total 53: 3.285408 ms <<<<<<
+================= process img 54: 2.780437 ms
+>>>>>>> Total 54: 3.250837 ms <<<<<<
+================= process img 55: 2.797127 ms
+>>>>>>> Total 55: 3.270149 ms <<<<<<
+================= process img 56: 2.812624 ms
+>>>>>>> Total 56: 3.289461 ms <<<<<<
+================= process img 57: 2.669811 ms
+>>>>>>> Total 57: 3.155231 ms <<<<<<
+================= process img 58: 2.640724 ms
+>>>>>>> Total 58: 3.145218 ms <<<<<<
+================= process img 59: 2.672911 ms
+>>>>>>> Total 59: 3.153801 ms <<<<<<
+================= process img 60: 2.649069 ms
+>>>>>>> Total 60: 3.116846 ms <<<<<<
+================= process img 61: 2.667189 ms
+>>>>>>> Total 61: 3.165960 ms <<<<<<
+================= process img 62: 2.661943 ms
+>>>>>>> Total 62: 3.143072 ms <<<<<<
+================= process img 63: 2.699614 ms
+>>>>>>> Total 63: 3.189325 ms <<<<<<
+================= process img 64: 2.655983 ms
+>>>>>>> Total 64: 3.136635 ms <<<<<<
+================= process img 65: 2.653360 ms
+>>>>>>> Total 65: 3.145695 ms <<<<<<
+================= process img 66: 2.657652 ms
+>>>>>>> Total 66: 3.130436 ms <<<<<<
+================= process img 67: 2.780914 ms
+>>>>>>> Total 67: 3.261805 ms <<<<<<
+================= process img 68: 5.052090 ms
+>>>>>>> Total 68: 5.577087 ms <<<<<<
+================= process img 69: 2.650738 ms
+>>>>>>> Total 69: 3.135920 ms <<<<<<
+================= process img 70: 2.734900 ms
+>>>>>>> Total 70: 3.202677 ms <<<<<<
+================= process img 71: 2.736092 ms
+>>>>>>> Total 71: 3.204107 ms <<<<<<
+================= process img 72: 2.666235 ms
+>>>>>>> Total 72: 3.130436 ms <<<<<<
+================= process img 73: 2.660036 ms
+>>>>>>> Total 73: 3.043175 ms <<<<<<
+================= process img 74: 2.660751 ms
+>>>>>>> Total 74: 3.130436 ms <<<<<<
+================= process img 75: 2.660513 ms
+>>>>>>> Total 75: 3.137589 ms <<<<<<
+================= process img 76: 4.906178 ms
+>>>>>>> Total 76: 5.300522 ms <<<<<<
+================= process img 77: 2.642632 ms
+>>>>>>> Total 77: 3.124237 ms <<<<<<
+================= process img 78: 2.662182 ms
+>>>>>>> Total 78: 3.140688 ms <<<<<<
+================= process img 79: 2.666950 ms
+>>>>>>> Total 79: 3.136873 ms <<<<<<
+================= process img 80: 2.671242 ms
+>>>>>>> Total 80: 3.150463 ms <<<<<<
+================= process img 81: 2.638817 ms
+>>>>>>> Total 81: 3.103971 ms <<<<<<
+================= process img 82: 2.668619 ms
+>>>>>>> Total 82: 3.156662 ms <<<<<<
+================= process img 83: 4.909992 ms
+>>>>>>> Total 83: 5.432367 ms <<<<<<
+================= process img 84: 2.640724 ms
+>>>>>>> Total 84: 3.117085 ms <<<<<<
+================= process img 85: 2.807617 ms
+>>>>>>> Total 85: 3.283978 ms <<<<<<
+================= process img 86: 2.644777 ms
+>>>>>>> Total 86: 3.124714 ms <<<<<<
+================= process img 87: 2.679348 ms
+>>>>>>> Total 87: 3.163099 ms <<<<<<
+================= process img 88: 2.661705 ms
+>>>>>>> Total 88: 3.167629 ms <<<<<<
+================= process img 89: 5.106449 ms
+>>>>>>> Total 89: 5.662441 ms <<<<<<
+================= process img 90: 5.528450 ms
+>>>>>>> Total 90: 6.190538 ms <<<<<<
+================= process img 91: 2.690792 ms
+>>>>>>> Total 91: 3.203392 ms <<<<<<
+================= process img 92: 2.719402 ms
+>>>>>>> Total 92: 3.211021 ms <<<<<<
+================= process img 93: 2.685785 ms
+>>>>>>> Total 93: 3.172159 ms <<<<<<
+================= process img 94: 2.664089 ms
+>>>>>>> Total 94: 3.151894 ms <<<<<<
+================= process img 95: 2.691746 ms
+>>>>>>> Total 95: 3.184319 ms <<<<<<
+================= process img 96: 2.923965 ms
+>>>>>>> Total 96: 3.414631 ms <<<<<<
+================= process img 97: 3.770828 ms
+>>>>>>> Total 97: 4.395485 ms <<<<<<
+================= process img 98: 2.807140 ms
+>>>>>>> Total 98: 3.272295 ms <<<<<<
+================= process img 99: 2.675295 ms
+>>>>>>> Total 99: 3.155470 ms <<<<<<
+================= process img 100: 3.655910 ms
+>>>>>>> Total 100: 4.233837 ms <<<<<<
+================= process img 101: 3.310204 ms
+>>>>>>> Total 101: 3.813267 ms <<<<<<
+================= process img 102: 2.701998 ms
+>>>>>>> Total 102: 3.182888 ms <<<<<<
+================= process img 103: 3.117561 ms
+>>>>>>> Total 103: 3.618240 ms <<<<<<
+================= process img 104: 3.082037 ms
+>>>>>>> Total 104: 3.593206 ms <<<<<<
+================= process img 105: 2.716541 ms
+>>>>>>> Total 105: 3.178596 ms <<<<<<
+================= process img 106: 2.690315 ms
+>>>>>>> Total 106: 3.169537 ms <<<<<<
+================= process img 107: 2.680302 ms
+>>>>>>> Total 107: 3.166199 ms <<<<<<
+================= process img 108: 2.684593 ms
+>>>>>>> Total 108: 3.158331 ms <<<<<<
+================= process img 109: 2.668858 ms
+>>>>>>> Total 109: 3.143072 ms <<<<<<
+================= process img 110: 2.690554 ms
+>>>>>>> Total 110: 3.161669 ms <<<<<<
+================= process img 111: 2.674580 ms
+>>>>>>> Total 111: 3.187656 ms <<<<<<
+================= process img 112: 2.687931 ms
+>>>>>>> Total 112: 3.156900 ms <<<<<<
+================= process img 113: 2.632856 ms
+>>>>>>> Total 113: 3.102541 ms <<<<<<
+================= process img 114: 2.618074 ms
+>>>>>>> Total 114: 3.112316 ms <<<<<<
+================= process img 115: 2.660751 ms
+>>>>>>> Total 115: 3.149986 ms <<<<<<
+================= process img 116: 2.624512 ms
+>>>>>>> Total 116: 3.135920 ms <<<<<<
+================= process img 117: 2.615690 ms
+>>>>>>> Total 117: 3.094912 ms <<<<<<
+================= process img 118: 2.627373 ms
+>>>>>>> Total 118: 3.110409 ms <<<<<<
+================= process img 119: 2.678633 ms
+>>>>>>> Total 119: 3.167152 ms <<<<<<
+================= process img 120: 2.710104 ms
+>>>>>>> Total 120: 3.221035 ms <<<<<<
+================= process img 121: 2.690792 ms
+>>>>>>> Total 121: 3.202677 ms <<<<<<
+================= process img 122: 2.680063 ms
+>>>>>>> Total 122: 3.165960 ms <<<<<<
+================= process img 123: 2.687693 ms
+>>>>>>> Total 123: 3.173590 ms <<<<<<
+================= process img 124: 2.680540 ms
+>>>>>>> Total 124: 3.186464 ms <<<<<<
+================= process img 125: 2.680063 ms
+>>>>>>> Total 125: 3.186464 ms <<<<<<
+================= process img 126: 2.697229 ms
+>>>>>>> Total 126: 3.192902 ms <<<<<<
+================= process img 127: 2.677441 ms
+>>>>>>> Total 127: 3.159523 ms <<<<<<
+================= process img 128: 2.695560 ms
+>>>>>>> Total 128: 3.186703 ms <<<<<<
+================= process img 129: 2.675772 ms
+>>>>>>> Total 129: 3.156424 ms <<<<<<
+================= process img 130: 2.674103 ms
+>>>>>>> Total 130: 3.203154 ms <<<<<<
+================= process img 131: 2.676725 ms
+>>>>>>> Total 131: 3.177166 ms <<<<<<
+================= process img 132: 2.678156 ms
+>>>>>>> Total 132: 3.163338 ms <<<<<<
+================= process img 133: 2.673149 ms
+>>>>>>> Total 133: 3.157139 ms <<<<<<
+================= process img 134: 2.695560 ms
+>>>>>>> Total 134: 3.174067 ms <<<<<<
+================= process img 135: 2.692461 ms
+>>>>>>> Total 135: 3.175974 ms <<<<<<
+================= process img 136: 2.678871 ms
+>>>>>>> Total 136: 3.160238 ms <<<<<<
+================= process img 137: 2.698421 ms
+>>>>>>> Total 137: 3.186464 ms <<<<<<
+================= process img 138: 2.673626 ms
+>>>>>>> Total 138: 3.147602 ms <<<<<<
+================= process img 139: 2.689600 ms
+>>>>>>> Total 139: 3.184557 ms <<<<<<
+================= process img 140: 2.685308 ms
+>>>>>>> Total 140: 3.161669 ms <<<<<<
+================= process img 141: 2.656221 ms
+>>>>>>> Total 141: 3.139973 ms <<<<<<
+================= process img 142: 2.656937 ms
+>>>>>>> Total 142: 3.130436 ms <<<<<<
+================= process img 143: 2.688408 ms
+>>>>>>> Total 143: 3.163099 ms <<<<<<
+================= process img 144: 2.685308 ms
+>>>>>>> Total 144: 3.170729 ms <<<<<<
+================= process img 145: 2.706051 ms
+>>>>>>> Total 145: 3.187895 ms <<<<<<
+================= process img 146: 2.712250 ms
+>>>>>>> Total 146: 3.187180 ms <<<<<<
+================= process img 147: 2.686501 ms
+>>>>>>> Total 147: 3.168583 ms <<<<<<
+================= process img 148: 2.688408 ms
+>>>>>>> Total 148: 3.169298 ms <<<<<<
+================= process img 149: 2.665997 ms
+>>>>>>> Total 149: 3.121853 ms <<<<<<
+================= process img 150: 2.685070 ms
+>>>>>>> Total 150: 3.148317 ms <<<<<<
+================= process img 151: 2.707005 ms
+>>>>>>> Total 151: 3.155231 ms <<<<<<
+================= process img 152: 2.701759 ms
+>>>>>>> Total 152: 3.177404 ms <<<<<<
+================= process img 153: 2.671480 ms
+>>>>>>> Total 153: 3.153086 ms <<<<<<
+================= process img 154: 2.690792 ms
+>>>>>>> Total 154: 3.161430 ms <<<<<<
+================= process img 155: 2.684116 ms
+>>>>>>> Total 155: 3.177881 ms <<<<<<
+================= process img 156: 2.659321 ms
+>>>>>>> Total 156: 3.132343 ms <<<<<<
+================= process img 157: 2.673388 ms
+>>>>>>> Total 157: 3.151417 ms <<<<<<
+================= process img 158: 2.683878 ms
+>>>>>>> Total 158: 3.157854 ms <<<<<<
+================= process img 159: 2.699852 ms
+>>>>>>> Total 159: 3.175497 ms <<<<<<
+================= process img 160: 2.665043 ms
+>>>>>>> Total 160: 3.188133 ms <<<<<<
+================= process img 161: 2.686262 ms
+>>>>>>> Total 161: 3.193378 ms <<<<<<
+================= process img 162: 2.661943 ms
+>>>>>>> Total 162: 3.172636 ms <<<<<<
+================= process img 163: 2.679825 ms
+>>>>>>> Total 163: 3.188372 ms <<<<<<
+================= process img 164: 2.660036 ms
+>>>>>>> Total 164: 3.161907 ms <<<<<<
+================= process img 165: 3.146648 ms
+>>>>>>> Total 165: 3.750086 ms <<<<<<
+================= process img 166: 2.673149 ms
+>>>>>>> Total 166: 3.182650 ms <<<<<<
+================= process img 167: 2.695560 ms
+>>>>>>> Total 167: 3.191948 ms <<<<<<
+================= process img 168: 2.672672 ms
+>>>>>>> Total 168: 3.170967 ms <<<<<<
+================= process img 169: 3.163099 ms
+>>>>>>> Total 169: 3.661394 ms <<<<<<
+================= process img 170: 3.547907 ms
+>>>>>>> Total 170: 4.101753 ms <<<<<<
+================= process img 171: 5.076885 ms
+>>>>>>> Total 171: 5.582809 ms <<<<<<
+================= process img 172: 2.674103 ms
+>>>>>>> Total 172: 3.137350 ms <<<<<<
+================= process img 173: 2.857447 ms
+>>>>>>> Total 173: 3.381729 ms <<<<<<
+================= process img 174: 2.939701 ms
+>>>>>>> Total 174: 3.434658 ms <<<<<<
+================= process img 175: 2.677679 ms
+>>>>>>> Total 175: 3.156185 ms <<<<<<
+================= process img 176: 2.721786 ms
+>>>>>>> Total 176: 3.216505 ms <<<<<<
+================= process img 177: 3.060579 ms
+>>>>>>> Total 177: 3.548861 ms <<<<<<
+================= process img 178: 2.727985 ms
+>>>>>>> Total 178: 3.197432 ms <<<<<<
+================= process img 179: 2.675295 ms
+>>>>>>> Total 179: 3.174305 ms <<<<<<
+================= process img 180: 2.682447 ms
+>>>>>>> Total 180: 3.158569 ms <<<<<<
+================= process img 181: 2.658606 ms
+>>>>>>> Total 181: 2.978325 ms <<<<<<
+================= process img 182: 2.681732 ms
+>>>>>>> Total 182: 3.154516 ms <<<<<<
+================= process img 183: 2.666473 ms
+>>>>>>> Total 183: 3.160238 ms <<<<<<
+================= process img 184: 2.664566 ms
+>>>>>>> Total 184: 3.138304 ms <<<<<<
+================= process img 185: 2.659798 ms
+>>>>>>> Total 185: 3.133297 ms <<<<<<
+================= process img 186: 2.666473 ms
+>>>>>>> Total 186: 3.139019 ms <<<<<<
+================= process img 187: 2.611399 ms
+>>>>>>> Total 187: 3.075361 ms <<<<<<
+================= process img 188: 2.613306 ms
+>>>>>>> Total 188: 3.128052 ms <<<<<<
+================= process img 189: 2.622366 ms
+>>>>>>> Total 189: 3.146172 ms <<<<<<
+================= process img 190: 2.601862 ms
+>>>>>>> Total 190: 3.083706 ms <<<<<<
+================= process img 191: 2.621412 ms
+>>>>>>> Total 191: 3.102303 ms <<<<<<
+================= process img 192: 2.619505 ms
+>>>>>>> Total 192: 3.097534 ms <<<<<<
+================= process img 193: 2.687216 ms
+>>>>>>> Total 193: 3.164053 ms <<<<<<
+================= process img 194: 2.653599 ms
+>>>>>>> Total 194: 3.166437 ms <<<<<<
+================= process img 195: 2.687931 ms
+>>>>>>> Total 195: 3.181934 ms <<<<<<
+================= process img 196: 2.650023 ms
+>>>>>>> Total 196: 3.150940 ms <<<<<<
+================= process img 197: 2.704620 ms
+>>>>>>> Total 197: 3.207207 ms <<<<<<
+================= process img 198: 2.656460 ms
+>>>>>>> Total 198: 3.155470 ms <<<<<<
+================= process img 199: 2.650499 ms
+>>>>>>> Total 199: 3.152132 ms <<<<<<
+================= process img 200: 2.693653 ms
+>>>>>>> Total 200: 3.196955 ms <<<<<<
+================= process img 201: 2.655745 ms
+>>>>>>> Total 201: 3.143072 ms <<<<<<
+================= process img 202: 2.667665 ms
+>>>>>>> Total 202: 3.174782 ms <<<<<<
+================= process img 203: 2.659321 ms
+>>>>>>> Total 203: 3.151178 ms <<<<<<
+================= process img 204: 2.666235 ms
+>>>>>>> Total 204: 3.156424 ms <<<<<<
+================= process img 205: 2.671719 ms
+>>>>>>> Total 205: 3.165722 ms <<<<<<
+================= process img 206: 2.647161 ms
+>>>>>>> Total 206: 3.138065 ms <<<<<<
+================= process img 207: 2.666235 ms
+>>>>>>> Total 207: 3.156185 ms <<<<<<
+================= process img 208: 2.653122 ms
+>>>>>>> Total 208: 3.142834 ms <<<<<<
+================= process img 209: 3.086805 ms
+>>>>>>> Total 209: 3.587723 ms <<<<<<
+================= process img 210: 3.152132 ms
+>>>>>>> Total 210: 3.646612 ms <<<<<<
+================= process img 211: 2.976894 ms
+>>>>>>> Total 211: 3.460884 ms <<<<<<
+================= process img 212: 3.124237 ms
+>>>>>>> Total 212: 3.614426 ms <<<<<<
+================= process img 213: 3.022909 ms
+>>>>>>> Total 213: 3.502369 ms <<<<<<
+================= process img 214: 3.129244 ms
+>>>>>>> Total 214: 3.615618 ms <<<<<<
+================= process img 215: 3.068447 ms
+>>>>>>> Total 215: 3.551245 ms <<<<<<
+================= process img 216: 3.142118 ms
+>>>>>>> Total 216: 3.639698 ms <<<<<<
+================= process img 217: 3.064156 ms
+>>>>>>> Total 217: 3.546238 ms <<<<<<
+================= process img 218: 2.979994 ms
+>>>>>>> Total 218: 3.468275 ms <<<<<<
+================= process img 219: 3.142118 ms
+>>>>>>> Total 219: 3.635645 ms <<<<<<
+================= process img 220: 3.001213 ms
+>>>>>>> Total 220: 3.486395 ms <<<<<<
+================= process img 221: 3.129721 ms
+>>>>>>> Total 221: 3.627300 ms <<<<<<
+================= process img 222: 2.946615 ms
+>>>>>>> Total 222: 3.430128 ms <<<<<<
+================= process img 223: 3.156424 ms
+>>>>>>> Total 223: 3.643513 ms <<<<<<
+================= process img 224: 3.104210 ms
+>>>>>>> Total 224: 3.589630 ms <<<<<<
+================= process img 225: 2.902746 ms
+>>>>>>> Total 225: 3.375769 ms <<<<<<
+================= process img 226: 3.089190 ms
+>>>>>>> Total 226: 3.602266 ms <<<<<<
+================= process img 227: 3.035307 ms
+>>>>>>> Total 227: 3.522635 ms <<<<<<
+================= process img 228: 2.748251 ms
+>>>>>>> Total 228: 3.201962 ms <<<<<<
+================= process img 229: 4.140615 ms
+>>>>>>> Total 229: 4.674435 ms <<<<<<
+================= process img 230: 4.097462 ms
+>>>>>>> Total 230: 4.608631 ms <<<<<<
+================= process img 231: 4.038572 ms
+>>>>>>> Total 231: 4.545212 ms <<<<<<
+================= process img 232: 4.015207 ms
+>>>>>>> Total 232: 4.520416 ms <<<<<<
+================= process img 233: 3.678322 ms
+>>>>>>> Total 233: 4.184246 ms <<<<<<
+================= process img 234: 3.109932 ms
+>>>>>>> Total 234: 3.599167 ms <<<<<<
+================= process img 235: 3.212929 ms
+>>>>>>> Total 235: 3.690720 ms <<<<<<
+================= process img 236: 2.999067 ms
+>>>>>>> Total 236: 3.478527 ms <<<<<<
+================= process img 237: 2.935886 ms
+>>>>>>> Total 237: 3.405809 ms <<<<<<
+================= process img 238: 3.103971 ms
+>>>>>>> Total 238: 3.621578 ms <<<<<<
+================= process img 239: 2.941370 ms
+>>>>>>> Total 239: 3.265619 ms <<<<<<
+================= process img 240: 3.106833 ms
+>>>>>>> Total 240: 3.598690 ms <<<<<<
+================= process img 241: 2.921581 ms
+>>>>>>> Total 241: 3.391743 ms <<<<<<
+================= process img 242: 3.004551 ms
+>>>>>>> Total 242: 3.479958 ms <<<<<<
+================= process img 243: 2.922773 ms
+>>>>>>> Total 243: 3.393650 ms <<<<<<
+================= process img 244: 3.792763 ms
+>>>>>>> Total 244: 4.282951 ms <<<<<<
+================= process img 245: 3.060579 ms
+>>>>>>> Total 245: 3.570795 ms <<<<<<
+================= process img 246: 2.871037 ms
+>>>>>>> Total 246: 3.343582 ms <<<<<<
+================= process img 247: 3.064871 ms
+>>>>>>> Total 247: 3.571272 ms <<<<<<
+================= process img 248: 2.940655 ms
+>>>>>>> Total 248: 3.417730 ms <<<<<<
+================= process img 249: 2.990484 ms
+>>>>>>> Total 249: 3.467321 ms <<<<<<
+================= process img 250: 2.699375 ms
+>>>>>>> Total 250: 3.142118 ms <<<<<<
+================= process img 251: 3.092527 ms
+>>>>>>> Total 251: 3.601074 ms <<<<<<
+================= process img 252: 2.876759 ms
+>>>>>>> Total 252: 3.352880 ms <<<<<<
+================= process img 253: 3.044367 ms
+>>>>>>> Total 253: 3.511429 ms <<<<<<
+================= process img 254: 2.941132 ms
+>>>>>>> Total 254: 3.412008 ms <<<<<<
+================= process img 255: 3.093958 ms
+>>>>>>> Total 255: 3.573656 ms <<<<<<
+================= process img 256: 2.880812 ms
+>>>>>>> Total 256: 3.342390 ms <<<<<<
+================= process img 257: 3.077030 ms
+>>>>>>> Total 257: 3.558636 ms <<<<<<
+================= process img 258: 2.910852 ms
+>>>>>>> Total 258: 3.391504 ms <<<<<<
+================= process img 259: 2.945423 ms
+>>>>>>> Total 259: 3.411293 ms <<<<<<
+================= process img 260: 2.654314 ms
+>>>>>>> Total 260: 3.111124 ms <<<<<<
+================= Total 260 imgs process: 4427.497864 ms
++++++++++++++++++++++++++++++
+Warning: variables __flops__ or __params__ are already defined for the moduleConv2d ptflops can affect your code!
+Warning: variables __flops__ or __params__ are already defined for the moduleBatchNorm2d ptflops can affect your code!
+Warning: variables __flops__ or __params__ are already defined for the moduleReLU ptflops can affect your code!
+Warning: variables __flops__ or __params__ are already defined for the moduleMaxPool2d ptflops can affect your code!
+Warning: variables __flops__ or __params__ are already defined for the moduleConv2d ptflops can affect your code!
+Warning: variables __flops__ or __params__ are already defined for the moduleBatchNorm2d ptflops can affect your code!
+Warning: variables __flops__ or __params__ are already defined for the moduleReLU ptflops can affect your code!
+Warning: variables __flops__ or __params__ are already defined for the moduleConv2d ptflops can affect your code!
+Warning: variables __flops__ or __params__ are already defined for the moduleBatchNorm2d ptflops can affect your code!
+Warning: variables __flops__ or __params__ are already defined for the moduleConv2d ptflops can affect your code!
+Warning: variables __flops__ or __params__ are already defined for the moduleBatchNorm2d ptflops can affect your code!
+Warning: variables __flops__ or __params__ are already defined for the moduleReLU ptflops can affect your code!
+Warning: variables __flops__ or __params__ are already defined for the moduleConv2d ptflops can affect your code!
+Warning: variables __flops__ or __params__ are already defined for the moduleBatchNorm2d ptflops can affect your code!
+Warning: variables __flops__ or __params__ are already defined for the moduleConv2d ptflops can affect your code!
+Warning: variables __flops__ or __params__ are already defined for the moduleBatchNorm2d ptflops can affect your code!
+Warning: variables __flops__ or __params__ are already defined for the moduleReLU ptflops can affect your code!
+Warning: variables __flops__ or __params__ are already defined for the moduleConv2d ptflops can affect your code!
+Warning: variables __flops__ or __params__ are already defined for the moduleBatchNorm2d ptflops can affect your code!
+Warning: variables __flops__ or __params__ are already defined for the moduleConv2d ptflops can affect your code!
+Warning: variables __flops__ or __params__ are already defined for the moduleBatchNorm2d ptflops can affect your code!
+Warning: variables __flops__ or __params__ are already defined for the moduleConv2d ptflops can affect your code!
+Warning: variables __flops__ or __params__ are already defined for the moduleBatchNorm2d ptflops can affect your code!
+Warning: variables __flops__ or __params__ are already defined for the moduleReLU ptflops can affect your code!
+Warning: variables __flops__ or __params__ are already defined for the moduleConv2d ptflops can affect your code!
+Warning: variables __flops__ or __params__ are already defined for the moduleBatchNorm2d ptflops can affect your code!
+Warning: variables __flops__ or __params__ are already defined for the moduleConv2d ptflops can affect your code!
+Warning: variables __flops__ or __params__ are already defined for the moduleBatchNorm2d ptflops can affect your code!
+Warning: variables __flops__ or __params__ are already defined for the moduleReLU ptflops can affect your code!
+Warning: variables __flops__ or __params__ are already defined for the moduleConv2d ptflops can affect your code!
+Warning: variables __flops__ or __params__ are already defined for the moduleBatchNorm2d ptflops can affect your code!
+Warning: variables __flops__ or __params__ are already defined for the moduleConv2d ptflops can affect your code!
+Warning: variables __flops__ or __params__ are already defined for the moduleBatchNorm2d ptflops can affect your code!
+Warning: variables __flops__ or __params__ are already defined for the moduleConv2d ptflops can affect your code!
+Warning: variables __flops__ or __params__ are already defined for the moduleBatchNorm2d ptflops can affect your code!
+Warning: variables __flops__ or __params__ are already defined for the moduleReLU ptflops can affect your code!
+Warning: variables __flops__ or __params__ are already defined for the moduleConv2d ptflops can affect your code!
+Warning: variables __flops__ or __params__ are already defined for the moduleBatchNorm2d ptflops can affect your code!
+Warning: variables __flops__ or __params__ are already defined for the moduleConv2d ptflops can affect your code!
+Warning: variables __flops__ or __params__ are already defined for the moduleBatchNorm2d ptflops can affect your code!
+Warning: variables __flops__ or __params__ are already defined for the moduleReLU ptflops can affect your code!
+Warning: variables __flops__ or __params__ are already defined for the moduleConv2d ptflops can affect your code!
+Warning: variables __flops__ or __params__ are already defined for the moduleBatchNorm2d ptflops can affect your code!
+Warning: variables __flops__ or __params__ are already defined for the moduleConv2d ptflops can affect your code!
+Warning: variables __flops__ or __params__ are already defined for the moduleBatchNorm2d ptflops can affect your code!
+Warning: variables __flops__ or __params__ are already defined for the moduleConv2d ptflops can affect your code!
+Warning: variables __flops__ or __params__ are already defined for the moduleBatchNorm2d ptflops can affect your code!
+Warning: variables __flops__ or __params__ are already defined for the moduleReLU ptflops can affect your code!
+Warning: variables __flops__ or __params__ are already defined for the moduleConv2d ptflops can affect your code!
+Warning: variables __flops__ or __params__ are already defined for the moduleBatchNorm2d ptflops can affect your code!
+Computational complexity:       19.41 GMac
+Number of parameters:           18.31 M 
++++++++++++++++++++++++++++++
+

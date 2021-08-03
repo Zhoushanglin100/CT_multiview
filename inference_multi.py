@@ -28,6 +28,7 @@ from collections import defaultdict
 from loss import dice_loss
 
 import matplotlib.pyplot as plt
+from statistics import mean
 
 import wandb
 wandb.init(project='Medical-CT', entity='zhoushanglin100')
@@ -97,6 +98,8 @@ def validation(args, model, device, val_loader, val_trans_bk):
 
     model.eval()
     
+    one_time = []
+
     with torch.no_grad():
         
         val_img_d, val_img_lst = {}, []
@@ -107,7 +110,7 @@ def validation(args, model, device, val_loader, val_trans_bk):
 
             s_val_load1 = time.time()
             val_images_name = val_data["img_meta_dict"]['filename_or_obj'][0].split("/")[-1].split(".")[0]
-            print("------------>", val_images_name)
+            # print("------------>", val_images_name)
 
             val_images = val_data['img'].to(device)
             s_val_load2 = time.time()
@@ -120,8 +123,10 @@ def validation(args, model, device, val_loader, val_trans_bk):
             s1_val = time.time()
             val_outputs = model(val_images)
             s2_val = time.time()
-            # print("================= process img %i: %f ms" % (batch_idx+1, (s2_val-s1_val)*1000))
-            # print(">>>>>>> Total %i: %f ms <<<<<<" % (batch_idx+1, (s2_val-s_val_load1)*1000))
+            print("================= process img %i: %f ms" % (batch_idx+1, (s2_val-s1_val)*1000))
+            print(">>>>>>> Total %i: %f ms <<<<<<" % (batch_idx+1, (s2_val-s_val_load1)*1000))
+            one_time.append((s2_val-s1_val)*1000)
+
 
             calc_loss(val_outputs, val_labels, metrics)
             epoch_samples += val_images.size(0)
@@ -174,6 +179,9 @@ def validation(args, model, device, val_loader, val_trans_bk):
 
             # ---------------------------------
 
+        print("!!!!!! Minimum time: ", min(one_time))
+        print("!!!!!! Average time: ", (sum(one_time[1:])-max(one_time))/(len(one_time)-2))
+
         # print_metrics(metrics, epoch_samples, 'val')
 
         val_img_mat = np.dstack(val_img_lst)
@@ -186,8 +194,8 @@ def validation(args, model, device, val_loader, val_trans_bk):
 
         val_msk_d["data"] = val_msk_mat_bk
         val_tru_d["data"] = val_tru_mat_bk
-        np.save("inf_plot/a_npz/"+args.data_view+"_pred_mat_d.npy", val_msk_d) 
-        np.save("inf_plot/a_npz/"+args.data_view+"_true_mat_d.npy", val_tru_d) 
+        np.save("inf_plot/a_npz/"+args.data_view+"_"+args.prun_config_file+"_pred_mat_d.npy", val_msk_d) 
+        # np.save("inf_plot/a_npz/"+args.data_view+"_true_mat_d.npy", val_tru_d) 
 
         # print(val_img_mat_bk.shape)
         # print(val_msk_mat_bk.shape)
@@ -274,23 +282,23 @@ def main(args):
     model = model.to(device) 
 
     # # ----------------------------
-    # from torchsummary import summary
-    # from prettytable import PrettyTable
+    from torchsummary import summary
+    from prettytable import PrettyTable
 
-    # summary(model, input_size=(3, 480, 640))
+    summary(model, input_size=(3, 256, 256))
 
-    # def count_parameters(model):
-    #     table = PrettyTable(["Modules", "Parameters"])
-    #     total_params = 0
-    #     for name, parameter in model.named_parameters():
-    #         param = parameter.numel()
-    #         table.add_row([name, param])
-    #         total_params+=param
-    #     print(table)
-    #     print(f"Total Trainable Params: {total_params}")
-    #     return total_params
+    def count_parameters(model):
+        table = PrettyTable(["Modules", "Parameters"])
+        total_params = 0
+        for name, parameter in model.named_parameters():
+            param = parameter.numel()
+            table.add_row([name, param])
+            total_params+=param
+        print(table)
+        print(f"Total Trainable Params: {total_params}")
+        return total_params
         
-    # count_parameters(model)
+    count_parameters(model)
     # # --------------------------------
 
     model_name = "ckpt_pruned/retrain/{}_retrain_{}_{}{}.pt".format(args.data_view, args.prun_config_file, args.sparsity_type, args.ext)
@@ -307,16 +315,16 @@ def main(args):
     s2 = time.time()
     print("================= Total "+str(len(val_loader))+" imgs process: %f ms" % ((s2-s1)*1000))
 
-    # print("+++++++++++++++++++++++++++++")
-    # from ptflops import get_model_complexity_info
-    # ### modified flops_counter.py for zero weight [conv_flops_counter_hook() & linear_flops_counter_hook()]
-    # ### https://stackoverflow.com/questions/64551002/how-can-i-calculate-flops-and-params-without-0-weights-neurons-affected
-    # with torch.cuda.device(0):
-    #     macs, params = get_model_complexity_info(model, (3, 480, 640), as_strings=True,
-    #                                        print_per_layer_stat=False, verbose=False)
-    #     print('{:<30}  {:<8}'.format('Computational complexity: ', macs))
-    #     print('{:<30}  {:<8}'.format('Number of parameters: ', params))
-    # print("+++++++++++++++++++++++++++++")
+    print("+++++++++++++++++++++++++++++")
+    from ptflops import get_model_complexity_info
+    ### modified flops_counter.py for zero weight [conv_flops_counter_hook() & linear_flops_counter_hook()]
+    ### https://stackoverflow.com/questions/64551002/how-can-i-calculate-flops-and-params-without-0-weights-neurons-affected
+    with torch.cuda.device(0):
+        macs, params = get_model_complexity_info(model, (3, 256, 256), as_strings=True,
+                                           print_per_layer_stat=False, verbose=False)
+        print('{:<30}  {:<8}'.format('Computational complexity: ', macs))
+        print('{:<30}  {:<8}'.format('Number of parameters: ', params))
+    print("+++++++++++++++++++++++++++++")
 
 
 
