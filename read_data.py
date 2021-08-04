@@ -1,6 +1,7 @@
 import numpy as np
 import matplotlib.pyplot as plt
 from shapely.geometry import LineString
+import sys
 
 from os import listdir
 from os.path import isfile, join
@@ -54,8 +55,8 @@ import nibabel as nib
 ##############################################################
 
 
-nii_imgs = ["data/ImageCHD_dataset/ct_1178_image.nii.gz"]
-nii_masks = ["data/ImageCHD_dataset/ct_1178_label.nii.gz"]
+nii_imgs = ["/data/medical/ImageCHD_dataset/ct_1178_image.nii.gz"]
+nii_masks = ["/data/medical/ImageCHD_dataset/ct_1178_label.nii.gz"]
 
 img = nib.load(nii_imgs[0]).get_fdata()
 msk = nib.load(nii_masks[0]).get_fdata()
@@ -77,11 +78,11 @@ file_name = ['updown', 'leftright', 'frontback']
 
 for view in file_name:
 
-    pred_name = "inf_plot/a_npz/"+view+"_pred_mat_d.npy"
-    true_name = "inf_plot/a_npz/"+view+"_true_mat_d.npy"
+    pred_name = "inf_plot/a_npz/"+view+"_config_ResNetUNet_"+sys.argv[1]+"_pred_mat_d.npy"
+    # true_name = "inf_plot/a_npz/"+view+"_true_mat_d.npy"
 
     read_pred = np.load(pred_name, allow_pickle='TRUE').item()
-    read_true = np.load(true_name, allow_pickle='TRUE').item()
+    # read_true = np.load(true_name, allow_pickle='TRUE').item()
 
     pred = read_pred["data"]
     pred_first = int(read_pred["first"])
@@ -115,25 +116,25 @@ for view in file_name:
         pred_full = np.concatenate((pred_app_1, pred_bk, pred_app_2), axis=1)
         pred_fb = pred_full
 
-    print(view+" save to nii!")
+    print(view, float(sys.argv[1]), " save to nii!")
     pred_full_nii = nib.Nifti1Image(pred_full, np.eye(4)) 
-    nib.save(pred_full_nii, "inf_plot/a_nii_1/"+view+"_pred_full.nii.gz")
+    nib.save(pred_full_nii, "inf_plot/a_nii/"+view+"_config_ResNetUNet_"+sys.argv[1]+"_pred_full.nii.gz")
 
 pred_all = np.round((pred_ud+pred_lf+pred_fb)/3)
-pred_max = np.maximum.reduce([pred_ud,pred_lf,pred_fb])
-pred_min = np.minimum.reduce([pred_ud,pred_lf,pred_fb])
+# pred_max = np.maximum.reduce([pred_ud,pred_lf,pred_fb])
+# pred_min = np.minimum.reduce([pred_ud,pred_lf,pred_fb])
 
 print(pred_all.shape)
-print(pred_max.shape)
-print(pred_min.shape)
+# print(pred_max.shape)
+# print(pred_min.shape)
 
 pred_all_nii = nib.Nifti1Image(pred_all, np.eye(4))
-nib.save(pred_all_nii, "inf_plot/a_nii_1/pred_all.nii.gz")
+nib.save(pred_all_nii, "inf_plot/a_nii/"+sys.argv[1]+"_pred_all.nii.gz")
 
-pred_max_nii = nib.Nifti1Image(pred_max, np.eye(4))
-nib.save(pred_max_nii, "inf_plot/a_nii_1/pred_max.nii.gz")
+# pred_max_nii = nib.Nifti1Image(pred_max, np.eye(4))
+# nib.save(pred_max_nii, "inf_plot/a_nii_1/pred_max.nii.gz")
 
-pred_min_nii = nib.Nifti1Image(pred_min, np.eye(4))
-nib.save(pred_min_nii, "inf_plot/a_nii_1/pred_min.nii.gz")
+# pred_min_nii = nib.Nifti1Image(pred_min, np.eye(4))
+# nib.save(pred_min_nii, "inf_plot/a_nii_1/pred_min.nii.gz")
 
 print("Done!!")
