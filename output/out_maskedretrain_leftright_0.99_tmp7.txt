@@ -1,0 +1,2530 @@
+
+Namespace(M=300, admm_epoch=1, admm_train=False, admm_train_epochs=80, batch_size=32, data_view='leftright', dims=256, ext='0.99_tmp7', initial_s=0.01, load_model_name='ResNetUNet_best.pt', log_interval=10, lr=0.001, lr_scheduler='cosine', masked_retrain=True, model='ResNetUNet', num_classes=1, optimization='savlr', optimizer='adam', prun_config_file='config_ResNetUNet_0.99', r=0.1, retrain_epochs=10, rho=0.1, rho_num=1, save_dir='./ckpt/best_1', sparsity_type='irregular', test_batch_size=64, val_inter=1, verbose=False)
+
+Arch name is ResNetUNet
+
+>>>>>>>>>>>>>> Loading ADMM trained file...
+
+==================> Before retrain starts (accuracy of admm trained model):
+Validation: [0/3836 (0%)]	Loss: 0.085661, iou: 0.860437
+Validation: [640/3836 (17%)]	Loss: 0.091370, iou: 0.845339
+Validation: [1280/3836 (33%)]	Loss: 0.085080, iou: 0.857588
+Validation: [1920/3836 (50%)]	Loss: 0.083312, iou: 0.863747
+Validation: [2560/3836 (67%)]	Loss: 0.080987, iou: 0.872041
+Validation: [3200/3836 (83%)]	Loss: 0.083974, iou: 0.867665
+val: iou: 0.861060, bce: 0.032855, dice: 0.138940, loss: 0.085897
+
+>>>> Sparsity after Hard Prune >>>> 
+
+!!!!!!!!!!!!!!!!!!!!! savlr
+hard pruning
+sparsity at layer base_model.conv1.weight is 0.0
+sparsity at layer base_model.bn1.weight is 0.0
+sparsity at layer base_model.layer1.0.conv1.weight is 0.989990234375
+sparsity at layer base_model.layer1.0.bn1.weight is 0.0
+sparsity at layer base_model.layer1.0.conv2.weight is 0.989990234375
+sparsity at layer base_model.layer1.0.bn2.weight is 0.0
+sparsity at layer base_model.layer1.1.conv1.weight is 0.989990234375
+sparsity at layer base_model.layer1.1.bn1.weight is 0.0
+sparsity at layer base_model.layer1.1.conv2.weight is 0.989990234375
+sparsity at layer base_model.layer1.1.bn2.weight is 0.0
+sparsity at layer base_model.layer2.0.conv1.weight is 0.989990234375
+sparsity at layer base_model.layer2.0.bn1.weight is 0.0
+sparsity at layer base_model.layer2.0.conv2.weight is 0.9899970160590278
+sparsity at layer base_model.layer2.0.bn2.weight is 0.0
+sparsity at layer base_model.layer2.0.downsample.0.weight is 0.0
+sparsity at layer base_model.layer2.0.downsample.1.weight is 0.0
+sparsity at layer base_model.layer2.1.conv1.weight is 0.9899970160590278
+sparsity at layer base_model.layer2.1.bn1.weight is 0.0
+sparsity at layer base_model.layer2.1.conv2.weight is 0.9899970160590278
+sparsity at layer base_model.layer2.1.bn2.weight is 0.0
+sparsity at layer base_model.layer3.0.conv1.weight is 0.9899970160590278
+sparsity at layer base_model.layer3.0.bn1.weight is 0.0
+sparsity at layer base_model.layer3.0.conv2.weight is 0.9899987114800347
+sparsity at layer base_model.layer3.0.bn2.weight is 0.0
+sparsity at layer base_model.layer3.0.downsample.0.weight is 0.0
+sparsity at layer base_model.layer3.0.downsample.1.weight is 0.0
+sparsity at layer base_model.layer3.1.conv1.weight is 0.9899987114800347
+sparsity at layer base_model.layer3.1.bn1.weight is 0.0
+sparsity at layer base_model.layer3.1.conv2.weight is 0.9899987114800347
+sparsity at layer base_model.layer3.1.bn2.weight is 0.0
+sparsity at layer base_model.layer4.0.conv1.weight is 0.9899995591905382
+sparsity at layer base_model.layer4.0.bn1.weight is 0.0
+sparsity at layer base_model.layer4.0.conv2.weight is 0.98999998304579
+sparsity at layer base_model.layer4.0.bn2.weight is 0.0
+sparsity at layer base_model.layer4.0.downsample.0.weight is 0.0
+sparsity at layer base_model.layer4.0.downsample.1.weight is 0.0
+sparsity at layer base_model.layer4.1.conv1.weight is 0.98999998304579
+sparsity at layer base_model.layer4.1.bn1.weight is 0.0
+sparsity at layer base_model.layer4.1.conv2.weight is 0.98999998304579
+sparsity at layer base_model.layer4.1.bn2.weight is 0.0
+sparsity at layer base_model.fc.weight is 0.0
+sparsity at layer layer0_1x1.0.weight is 0.989990234375
+sparsity at layer layer1_1x1.0.weight is 0.989990234375
+sparsity at layer layer2_1x1.0.weight is 0.989990234375
+sparsity at layer layer3_1x1.0.weight is 0.989990234375
+sparsity at layer layer4_1x1.0.weight is 0.9899978637695312
+sparsity at layer conv_up3.0.weight is 0.989999841760706
+sparsity at layer conv_up2.0.weight is 0.9899997287326389
+sparsity at layer conv_up1.0.weight is 0.9899997287326389
+sparsity at layer conv_up0.0.weight is 0.9899983723958333
+sparsity at layer conv_original_size0.0.weight is 0.9895833333333334
+sparsity at layer conv_original_size1.0.weight is 0.989990234375
+sparsity at layer conv_original_size2.0.weight is 0.9899992766203703
+sparsity at layer conv_last.weight is 0.0
+overal compression rate is 20.934446046851537
+
+===================> Accuracy after hard_prune:
+Validation: [0/3836 (0%)]	Loss: 0.095899, iou: 0.844380
+Validation: [640/3836 (17%)]	Loss: 0.102699, iou: 0.826457
+Validation: [1280/3836 (33%)]	Loss: 0.092965, iou: 0.844355
+Validation: [1920/3836 (50%)]	Loss: 0.092523, iou: 0.849222
+Validation: [2560/3836 (67%)]	Loss: 0.087221, iou: 0.863853
+Validation: [3200/3836 (83%)]	Loss: 0.092793, iou: 0.854391
+val: iou: 0.848005, bce: 0.036636, dice: 0.151995, loss: 0.094315
+
+epoch:  1
+Retrain Epoch: 1 [0/34528 (0%)] [0.001]	Loss: 0.103881, iou: 0.828063
+(irregular) cross_entropy loss: 0.1038813591003418
+Retrain Epoch: 1 [320/34528 (1%)] [0.001]	Loss: 0.079836, iou: 0.877163
+(irregular) cross_entropy loss: 0.07983621954917908
+Retrain Epoch: 1 [640/34528 (2%)] [0.001]	Loss: 0.072296, iou: 0.899263
+(irregular) cross_entropy loss: 0.07229624688625336
+Retrain Epoch: 1 [960/34528 (3%)] [0.001]	Loss: 0.108718, iou: 0.816848
+(irregular) cross_entropy loss: 0.10871843993663788
+Retrain Epoch: 1 [1280/34528 (4%)] [0.001]	Loss: 0.095815, iou: 0.838985
+(irregular) cross_entropy loss: 0.09581471979618073
+Retrain Epoch: 1 [1600/34528 (5%)] [0.001]	Loss: 0.099450, iou: 0.831044
+(irregular) cross_entropy loss: 0.09944996237754822
+Retrain Epoch: 1 [1920/34528 (6%)] [0.001]	Loss: 0.100651, iou: 0.829203
+(irregular) cross_entropy loss: 0.10065140575170517
+Retrain Epoch: 1 [2240/34528 (6%)] [0.001]	Loss: 0.088044, iou: 0.849982
+(irregular) cross_entropy loss: 0.08804436773061752
+Retrain Epoch: 1 [2560/34528 (7%)] [0.001]	Loss: 0.113563, iou: 0.804393
+(irregular) cross_entropy loss: 0.11356256902217865
+Retrain Epoch: 1 [2880/34528 (8%)] [0.001]	Loss: 0.084075, iou: 0.868563
+(irregular) cross_entropy loss: 0.08407491445541382
+Retrain Epoch: 1 [3200/34528 (9%)] [0.001]	Loss: 0.090504, iou: 0.852723
+(irregular) cross_entropy loss: 0.09050397574901581
+Retrain Epoch: 1 [3520/34528 (10%)] [0.001]	Loss: 0.110587, iou: 0.827856
+(irregular) cross_entropy loss: 0.11058740317821503
+Retrain Epoch: 1 [3840/34528 (11%)] [0.001]	Loss: 0.083251, iou: 0.867929
+(irregular) cross_entropy loss: 0.08325134217739105
+Retrain Epoch: 1 [4160/34528 (12%)] [0.001]	Loss: 0.122512, iou: 0.788876
+(irregular) cross_entropy loss: 0.12251238524913788
+Retrain Epoch: 1 [4480/34528 (13%)] [0.001]	Loss: 0.077257, iou: 0.882452
+(irregular) cross_entropy loss: 0.07725715637207031
+Retrain Epoch: 1 [4800/34528 (14%)] [0.001]	Loss: 0.099895, iou: 0.835207
+(irregular) cross_entropy loss: 0.09989503026008606
+Retrain Epoch: 1 [5120/34528 (15%)] [0.001]	Loss: 0.074041, iou: 0.890397
+(irregular) cross_entropy loss: 0.07404137402772903
+Retrain Epoch: 1 [5440/34528 (16%)] [0.001]	Loss: 0.085616, iou: 0.860706
+(irregular) cross_entropy loss: 0.08561572432518005
+Retrain Epoch: 1 [5760/34528 (17%)] [0.001]	Loss: 0.089246, iou: 0.862797
+(irregular) cross_entropy loss: 0.08924616128206253
+Retrain Epoch: 1 [6080/34528 (18%)] [0.001]	Loss: 0.063921, iou: 0.905189
+(irregular) cross_entropy loss: 0.06392106413841248
+Retrain Epoch: 1 [6400/34528 (19%)] [0.001]	Loss: 0.075084, iou: 0.877030
+(irregular) cross_entropy loss: 0.0750841423869133
+Retrain Epoch: 1 [6720/34528 (19%)] [0.001]	Loss: 0.080015, iou: 0.877927
+(irregular) cross_entropy loss: 0.08001500368118286
+Retrain Epoch: 1 [7040/34528 (20%)] [0.001]	Loss: 0.089412, iou: 0.848084
+(irregular) cross_entropy loss: 0.0894118994474411
+Retrain Epoch: 1 [7360/34528 (21%)] [0.001]	Loss: 0.097611, iou: 0.835755
+(irregular) cross_entropy loss: 0.09761134535074234
+Retrain Epoch: 1 [7680/34528 (22%)] [0.001]	Loss: 0.092959, iou: 0.853471
+(irregular) cross_entropy loss: 0.09295924007892609
+Retrain Epoch: 1 [8000/34528 (23%)] [0.001]	Loss: 0.093561, iou: 0.849195
+(irregular) cross_entropy loss: 0.09356077015399933
+Retrain Epoch: 1 [8320/34528 (24%)] [0.001]	Loss: 0.091237, iou: 0.853688
+(irregular) cross_entropy loss: 0.09123705327510834
+Retrain Epoch: 1 [8640/34528 (25%)] [0.001]	Loss: 0.070302, iou: 0.892874
+(irregular) cross_entropy loss: 0.0703020691871643
+Retrain Epoch: 1 [8960/34528 (26%)] [0.001]	Loss: 0.103842, iou: 0.832981
+(irregular) cross_entropy loss: 0.10384216159582138
+Retrain Epoch: 1 [9280/34528 (27%)] [0.001]	Loss: 0.120140, iou: 0.800569
+(irregular) cross_entropy loss: 0.12014004588127136
+Retrain Epoch: 1 [9600/34528 (28%)] [0.001]	Loss: 0.093856, iou: 0.856500
+(irregular) cross_entropy loss: 0.0938556045293808
+Retrain Epoch: 1 [9920/34528 (29%)] [0.001]	Loss: 0.081573, iou: 0.864900
+(irregular) cross_entropy loss: 0.08157270401716232
+Retrain Epoch: 1 [10240/34528 (30%)] [0.001]	Loss: 0.075102, iou: 0.896113
+(irregular) cross_entropy loss: 0.07510170340538025
+Retrain Epoch: 1 [10560/34528 (31%)] [0.001]	Loss: 0.091466, iou: 0.851851
+(irregular) cross_entropy loss: 0.0914657711982727
+Retrain Epoch: 1 [10880/34528 (32%)] [0.001]	Loss: 0.082624, iou: 0.863067
+(irregular) cross_entropy loss: 0.08262445777654648
+Retrain Epoch: 1 [11200/34528 (32%)] [0.001]	Loss: 0.093944, iou: 0.848185
+(irregular) cross_entropy loss: 0.09394446760416031
+Retrain Epoch: 1 [11520/34528 (33%)] [0.001]	Loss: 0.079226, iou: 0.876130
+(irregular) cross_entropy loss: 0.0792258009314537
+Retrain Epoch: 1 [11840/34528 (34%)] [0.001]	Loss: 0.096896, iou: 0.836186
+(irregular) cross_entropy loss: 0.09689609706401825
+Retrain Epoch: 1 [12160/34528 (35%)] [0.001]	Loss: 0.106674, iou: 0.821939
+(irregular) cross_entropy loss: 0.10667391866445541
+Retrain Epoch: 1 [12480/34528 (36%)] [0.001]	Loss: 0.083924, iou: 0.864165
+(irregular) cross_entropy loss: 0.08392377197742462
+Retrain Epoch: 1 [12800/34528 (37%)] [0.001]	Loss: 0.079455, iou: 0.879391
+(irregular) cross_entropy loss: 0.07945521175861359
+Retrain Epoch: 1 [13120/34528 (38%)] [0.001]	Loss: 0.103901, iou: 0.821913
+(irregular) cross_entropy loss: 0.10390131175518036
+Retrain Epoch: 1 [13440/34528 (39%)] [0.001]	Loss: 0.085046, iou: 0.854053
+(irregular) cross_entropy loss: 0.08504585921764374
+Retrain Epoch: 1 [13760/34528 (40%)] [0.001]	Loss: 0.086393, iou: 0.860491
+(irregular) cross_entropy loss: 0.08639302849769592
+Retrain Epoch: 1 [14080/34528 (41%)] [0.001]	Loss: 0.095662, iou: 0.847457
+(irregular) cross_entropy loss: 0.09566238522529602
+Retrain Epoch: 1 [14400/34528 (42%)] [0.001]	Loss: 0.082985, iou: 0.867137
+(irregular) cross_entropy loss: 0.08298461139202118
+Retrain Epoch: 1 [14720/34528 (43%)] [0.001]	Loss: 0.091498, iou: 0.861433
+(irregular) cross_entropy loss: 0.09149806946516037
+Retrain Epoch: 1 [15040/34528 (44%)] [0.001]	Loss: 0.083798, iou: 0.865926
+(irregular) cross_entropy loss: 0.08379784226417542
+Retrain Epoch: 1 [15360/34528 (44%)] [0.001]	Loss: 0.071049, iou: 0.897025
+(irregular) cross_entropy loss: 0.0710492730140686
+Retrain Epoch: 1 [15680/34528 (45%)] [0.001]	Loss: 0.087659, iou: 0.858032
+(irregular) cross_entropy loss: 0.08765909820795059
+Retrain Epoch: 1 [16000/34528 (46%)] [0.001]	Loss: 0.088383, iou: 0.853286
+(irregular) cross_entropy loss: 0.08838258683681488
+Retrain Epoch: 1 [16320/34528 (47%)] [0.001]	Loss: 0.089271, iou: 0.854044
+(irregular) cross_entropy loss: 0.08927114307880402
+Retrain Epoch: 1 [16640/34528 (48%)] [0.001]	Loss: 0.084140, iou: 0.863071
+(irregular) cross_entropy loss: 0.08413972705602646
+Retrain Epoch: 1 [16960/34528 (49%)] [0.001]	Loss: 0.106801, iou: 0.813237
+(irregular) cross_entropy loss: 0.10680099576711655
+Retrain Epoch: 1 [17280/34528 (50%)] [0.001]	Loss: 0.081118, iou: 0.866968
+(irregular) cross_entropy loss: 0.08111760765314102
+Retrain Epoch: 1 [17600/34528 (51%)] [0.001]	Loss: 0.075410, iou: 0.883861
+(irregular) cross_entropy loss: 0.07541041821241379
+Retrain Epoch: 1 [17920/34528 (52%)] [0.001]	Loss: 0.093980, iou: 0.848709
+(irregular) cross_entropy loss: 0.0939803496003151
+Retrain Epoch: 1 [18240/34528 (53%)] [0.001]	Loss: 0.105586, iou: 0.815351
+(irregular) cross_entropy loss: 0.10558648407459259
+Retrain Epoch: 1 [18560/34528 (54%)] [0.001]	Loss: 0.092198, iou: 0.863295
+(irregular) cross_entropy loss: 0.09219805896282196
+Retrain Epoch: 1 [18880/34528 (55%)] [0.001]	Loss: 0.111628, iou: 0.808446
+(irregular) cross_entropy loss: 0.11162829399108887
+Retrain Epoch: 1 [19200/34528 (56%)] [0.001]	Loss: 0.092249, iou: 0.842843
+(irregular) cross_entropy loss: 0.09224856644868851
+Retrain Epoch: 1 [19520/34528 (57%)] [0.001]	Loss: 0.106199, iou: 0.815744
+(irregular) cross_entropy loss: 0.10619928687810898
+Retrain Epoch: 1 [19840/34528 (57%)] [0.001]	Loss: 0.083733, iou: 0.858020
+(irregular) cross_entropy loss: 0.08373261243104935
+Retrain Epoch: 1 [20160/34528 (58%)] [0.001]	Loss: 0.095428, iou: 0.836753
+(irregular) cross_entropy loss: 0.09542793780565262
+Retrain Epoch: 1 [20480/34528 (59%)] [0.001]	Loss: 0.108515, iou: 0.813582
+(irregular) cross_entropy loss: 0.10851497948169708
+Retrain Epoch: 1 [20800/34528 (60%)] [0.001]	Loss: 0.114402, iou: 0.813123
+(irregular) cross_entropy loss: 0.11440175771713257
+Retrain Epoch: 1 [21120/34528 (61%)] [0.001]	Loss: 0.091528, iou: 0.844123
+(irregular) cross_entropy loss: 0.09152824431657791
+Retrain Epoch: 1 [21440/34528 (62%)] [0.001]	Loss: 0.101293, iou: 0.826707
+(irregular) cross_entropy loss: 0.10129256546497345
+Retrain Epoch: 1 [21760/34528 (63%)] [0.001]	Loss: 0.082868, iou: 0.869526
+(irregular) cross_entropy loss: 0.08286841958761215
+Retrain Epoch: 1 [22080/34528 (64%)] [0.001]	Loss: 0.077924, iou: 0.886993
+(irregular) cross_entropy loss: 0.0779244601726532
+Retrain Epoch: 1 [22400/34528 (65%)] [0.001]	Loss: 0.090459, iou: 0.851315
+(irregular) cross_entropy loss: 0.09045874327421188
+Retrain Epoch: 1 [22720/34528 (66%)] [0.001]	Loss: 0.084857, iou: 0.862879
+(irregular) cross_entropy loss: 0.08485700935125351
+Retrain Epoch: 1 [23040/34528 (67%)] [0.001]	Loss: 0.116469, iou: 0.803419
+(irregular) cross_entropy loss: 0.11646850407123566
+Retrain Epoch: 1 [23360/34528 (68%)] [0.001]	Loss: 0.075517, iou: 0.882255
+(irregular) cross_entropy loss: 0.07551660388708115
+Retrain Epoch: 1 [23680/34528 (69%)] [0.001]	Loss: 0.080379, iou: 0.875417
+(irregular) cross_entropy loss: 0.08037909865379333
+Retrain Epoch: 1 [24000/34528 (70%)] [0.001]	Loss: 0.090375, iou: 0.852832
+(irregular) cross_entropy loss: 0.09037505090236664
+Retrain Epoch: 1 [24320/34528 (70%)] [0.001]	Loss: 0.088686, iou: 0.858288
+(irregular) cross_entropy loss: 0.08868579566478729
+Retrain Epoch: 1 [24640/34528 (71%)] [0.001]	Loss: 0.092812, iou: 0.851047
+(irregular) cross_entropy loss: 0.09281209111213684
+Retrain Epoch: 1 [24960/34528 (72%)] [0.001]	Loss: 0.092367, iou: 0.852322
+(irregular) cross_entropy loss: 0.09236665815114975
+Retrain Epoch: 1 [25280/34528 (73%)] [0.001]	Loss: 0.077070, iou: 0.884403
+(irregular) cross_entropy loss: 0.07707026600837708
+Retrain Epoch: 1 [25600/34528 (74%)] [0.001]	Loss: 0.084270, iou: 0.856504
+(irregular) cross_entropy loss: 0.08427028357982635
+Retrain Epoch: 1 [25920/34528 (75%)] [0.001]	Loss: 0.093210, iou: 0.851551
+(irregular) cross_entropy loss: 0.09321031719446182
+Retrain Epoch: 1 [26240/34528 (76%)] [0.001]	Loss: 0.065179, iou: 0.903847
+(irregular) cross_entropy loss: 0.06517863273620605
+Retrain Epoch: 1 [26560/34528 (77%)] [0.001]	Loss: 0.077955, iou: 0.877645
+(irregular) cross_entropy loss: 0.07795450091362
+Retrain Epoch: 1 [26880/34528 (78%)] [0.001]	Loss: 0.100735, iou: 0.841598
+(irregular) cross_entropy loss: 0.10073456913232803
+Retrain Epoch: 1 [27200/34528 (79%)] [0.001]	Loss: 0.092879, iou: 0.846659
+(irregular) cross_entropy loss: 0.09287852048873901
+Retrain Epoch: 1 [27520/34528 (80%)] [0.001]	Loss: 0.086829, iou: 0.865035
+(irregular) cross_entropy loss: 0.08682931214570999
+Retrain Epoch: 1 [27840/34528 (81%)] [0.001]	Loss: 0.078664, iou: 0.879955
+(irregular) cross_entropy loss: 0.07866372168064117
+Retrain Epoch: 1 [28160/34528 (82%)] [0.001]	Loss: 0.106163, iou: 0.820112
+(irregular) cross_entropy loss: 0.10616268962621689
+Retrain Epoch: 1 [28480/34528 (82%)] [0.001]	Loss: 0.100782, iou: 0.842306
+(irregular) cross_entropy loss: 0.10078225284814835
+Retrain Epoch: 1 [28800/34528 (83%)] [0.001]	Loss: 0.077656, iou: 0.869974
+(irregular) cross_entropy loss: 0.07765603810548782
+Retrain Epoch: 1 [29120/34528 (84%)] [0.001]	Loss: 0.090102, iou: 0.857750
+(irregular) cross_entropy loss: 0.09010230004787445
+Retrain Epoch: 1 [29440/34528 (85%)] [0.001]	Loss: 0.093044, iou: 0.863734
+(irregular) cross_entropy loss: 0.09304410964250565
+Retrain Epoch: 1 [29760/34528 (86%)] [0.001]	Loss: 0.091709, iou: 0.856067
+(irregular) cross_entropy loss: 0.09170929342508316
+Retrain Epoch: 1 [30080/34528 (87%)] [0.001]	Loss: 0.086623, iou: 0.868772
+(irregular) cross_entropy loss: 0.08662296831607819
+Retrain Epoch: 1 [30400/34528 (88%)] [0.001]	Loss: 0.096863, iou: 0.836944
+(irregular) cross_entropy loss: 0.09686347097158432
+Retrain Epoch: 1 [30720/34528 (89%)] [0.001]	Loss: 0.097712, iou: 0.832056
+(irregular) cross_entropy loss: 0.09771150350570679
+Retrain Epoch: 1 [31040/34528 (90%)] [0.001]	Loss: 0.106009, iou: 0.806787
+(irregular) cross_entropy loss: 0.10600867867469788
+Retrain Epoch: 1 [31360/34528 (91%)] [0.001]	Loss: 0.089954, iou: 0.845735
+(irregular) cross_entropy loss: 0.08995433896780014
+Retrain Epoch: 1 [31680/34528 (92%)] [0.001]	Loss: 0.086455, iou: 0.868671
+(irregular) cross_entropy loss: 0.08645454049110413
+Retrain Epoch: 1 [32000/34528 (93%)] [0.001]	Loss: 0.072729, iou: 0.883683
+(irregular) cross_entropy loss: 0.07272908091545105
+Retrain Epoch: 1 [32320/34528 (94%)] [0.001]	Loss: 0.075210, iou: 0.876411
+(irregular) cross_entropy loss: 0.07521000504493713
+Retrain Epoch: 1 [32640/34528 (95%)] [0.001]	Loss: 0.083748, iou: 0.861732
+(irregular) cross_entropy loss: 0.08374834060668945
+Retrain Epoch: 1 [32960/34528 (95%)] [0.001]	Loss: 0.130819, iou: 0.796299
+(irregular) cross_entropy loss: 0.1308194100856781
+Retrain Epoch: 1 [33280/34528 (96%)] [0.001]	Loss: 0.110711, iou: 0.830993
+(irregular) cross_entropy loss: 0.11071071028709412
+Retrain Epoch: 1 [33600/34528 (97%)] [0.001]	Loss: 0.109888, iou: 0.816153
+(irregular) cross_entropy loss: 0.10988771915435791
+Retrain Epoch: 1 [33920/34528 (98%)] [0.001]	Loss: 0.075819, iou: 0.882263
+(irregular) cross_entropy loss: 0.07581881433725357
+Retrain Epoch: 1 [34240/34528 (99%)] [0.001]	Loss: 0.097183, iou: 0.834205
+(irregular) cross_entropy loss: 0.09718342870473862
+retrain: iou: 0.852978, bce: 0.035746, dice: 0.147022, loss: 0.091384
+Validation: [0/3836 (0%)]	Loss: 0.096516, iou: 0.844491
+Validation: [640/3836 (17%)]	Loss: 0.102291, iou: 0.826861
+Validation: [1280/3836 (33%)]	Loss: 0.093134, iou: 0.843585
+Validation: [1920/3836 (50%)]	Loss: 0.095050, iou: 0.843336
+Validation: [2560/3836 (67%)]	Loss: 0.091130, iou: 0.857599
+Validation: [3200/3836 (83%)]	Loss: 0.095628, iou: 0.850399
+val: iou: 0.845530, bce: 0.036700, dice: 0.154470, loss: 0.095585
+Get a new best test IOU:0.85
+Saving model...
+
+==============================> Accuracy after Masked Retrain of epoch 1: 
+Validation: [0/3836 (0%)]	Loss: 0.096516, iou: 0.844491
+Validation: [640/3836 (17%)]	Loss: 0.102291, iou: 0.826861
+Validation: [1280/3836 (33%)]	Loss: 0.093134, iou: 0.843585
+Validation: [1920/3836 (50%)]	Loss: 0.095050, iou: 0.843336
+Validation: [2560/3836 (67%)]	Loss: 0.091130, iou: 0.857599
+Validation: [3200/3836 (83%)]	Loss: 0.095628, iou: 0.850399
+val: iou: 0.845530, bce: 0.036700, dice: 0.154470, loss: 0.095585
+Current epoch: 2; current test iou: 0.8455; best test iou: 0.8455 at epoch 2
+
+
+epoch:  2
+Retrain Epoch: 2 [0/34528 (0%)] [0.001]	Loss: 0.107359, iou: 0.832199
+(irregular) cross_entropy loss: 0.10735893249511719
+Retrain Epoch: 2 [320/34528 (1%)] [0.001]	Loss: 0.100517, iou: 0.844257
+(irregular) cross_entropy loss: 0.10051743686199188
+Retrain Epoch: 2 [640/34528 (2%)] [0.001]	Loss: 0.089333, iou: 0.854029
+(irregular) cross_entropy loss: 0.08933308720588684
+Retrain Epoch: 2 [960/34528 (3%)] [0.001]	Loss: 0.110804, iou: 0.810856
+(irregular) cross_entropy loss: 0.11080361157655716
+Retrain Epoch: 2 [1280/34528 (4%)] [0.001]	Loss: 0.108229, iou: 0.833132
+(irregular) cross_entropy loss: 0.10822852700948715
+Retrain Epoch: 2 [1600/34528 (5%)] [0.001]	Loss: 0.093444, iou: 0.843247
+(irregular) cross_entropy loss: 0.09344446659088135
+Retrain Epoch: 2 [1920/34528 (6%)] [0.001]	Loss: 0.088570, iou: 0.857698
+(irregular) cross_entropy loss: 0.0885697454214096
+Retrain Epoch: 2 [2240/34528 (6%)] [0.001]	Loss: 0.076083, iou: 0.895830
+(irregular) cross_entropy loss: 0.07608330249786377
+Retrain Epoch: 2 [2560/34528 (7%)] [0.001]	Loss: 0.109613, iou: 0.819906
+(irregular) cross_entropy loss: 0.1096126064658165
+Retrain Epoch: 2 [2880/34528 (8%)] [0.001]	Loss: 0.088660, iou: 0.862910
+(irregular) cross_entropy loss: 0.08866012096405029
+Retrain Epoch: 2 [3200/34528 (9%)] [0.001]	Loss: 0.099347, iou: 0.843735
+(irregular) cross_entropy loss: 0.09934723377227783
+Retrain Epoch: 2 [3520/34528 (10%)] [0.001]	Loss: 0.085682, iou: 0.856052
+(irregular) cross_entropy loss: 0.08568202704191208
+Retrain Epoch: 2 [3840/34528 (11%)] [0.001]	Loss: 0.079158, iou: 0.872620
+(irregular) cross_entropy loss: 0.07915820181369781
+Retrain Epoch: 2 [4160/34528 (12%)] [0.001]	Loss: 0.094464, iou: 0.844472
+(irregular) cross_entropy loss: 0.09446404874324799
+Retrain Epoch: 2 [4480/34528 (13%)] [0.001]	Loss: 0.080294, iou: 0.871962
+(irregular) cross_entropy loss: 0.08029447495937347
+Retrain Epoch: 2 [4800/34528 (14%)] [0.001]	Loss: 0.084164, iou: 0.882950
+(irregular) cross_entropy loss: 0.084164097905159
+Retrain Epoch: 2 [5120/34528 (15%)] [0.001]	Loss: 0.086766, iou: 0.863100
+(irregular) cross_entropy loss: 0.08676564693450928
+Retrain Epoch: 2 [5440/34528 (16%)] [0.001]	Loss: 0.095581, iou: 0.850584
+(irregular) cross_entropy loss: 0.09558051824569702
+Retrain Epoch: 2 [5760/34528 (17%)] [0.001]	Loss: 0.075248, iou: 0.886031
+(irregular) cross_entropy loss: 0.07524821162223816
+Retrain Epoch: 2 [6080/34528 (18%)] [0.001]	Loss: 0.081259, iou: 0.870876
+(irregular) cross_entropy loss: 0.08125863969326019
+Retrain Epoch: 2 [6400/34528 (19%)] [0.001]	Loss: 0.088256, iou: 0.860063
+(irregular) cross_entropy loss: 0.08825556933879852
+Retrain Epoch: 2 [6720/34528 (19%)] [0.001]	Loss: 0.087593, iou: 0.856597
+(irregular) cross_entropy loss: 0.08759281039237976
+Retrain Epoch: 2 [7040/34528 (20%)] [0.001]	Loss: 0.078718, iou: 0.879547
+(irregular) cross_entropy loss: 0.07871836423873901
+Retrain Epoch: 2 [7360/34528 (21%)] [0.001]	Loss: 0.063733, iou: 0.904807
+(irregular) cross_entropy loss: 0.06373262405395508
+Retrain Epoch: 2 [7680/34528 (22%)] [0.001]	Loss: 0.078511, iou: 0.889868
+(irregular) cross_entropy loss: 0.07851053774356842
+Retrain Epoch: 2 [8000/34528 (23%)] [0.001]	Loss: 0.076719, iou: 0.882369
+(irregular) cross_entropy loss: 0.07671929895877838
+Retrain Epoch: 2 [8320/34528 (24%)] [0.001]	Loss: 0.078996, iou: 0.875243
+(irregular) cross_entropy loss: 0.0789964497089386
+Retrain Epoch: 2 [8640/34528 (25%)] [0.001]	Loss: 0.071185, iou: 0.892848
+(irregular) cross_entropy loss: 0.07118469476699829
+Retrain Epoch: 2 [8960/34528 (26%)] [0.001]	Loss: 0.090522, iou: 0.859548
+(irregular) cross_entropy loss: 0.09052249789237976
+Retrain Epoch: 2 [9280/34528 (27%)] [0.001]	Loss: 0.106916, iou: 0.820642
+(irregular) cross_entropy loss: 0.10691577941179276
+Retrain Epoch: 2 [9600/34528 (28%)] [0.001]	Loss: 0.077180, iou: 0.886896
+(irregular) cross_entropy loss: 0.0771803930401802
+Retrain Epoch: 2 [9920/34528 (29%)] [0.001]	Loss: 0.077223, iou: 0.874964
+(irregular) cross_entropy loss: 0.07722322642803192
+Retrain Epoch: 2 [10240/34528 (30%)] [0.001]	Loss: 0.073506, iou: 0.886346
+(irregular) cross_entropy loss: 0.07350625842809677
+Retrain Epoch: 2 [10560/34528 (31%)] [0.001]	Loss: 0.092654, iou: 0.860009
+(irregular) cross_entropy loss: 0.09265442937612534
+Retrain Epoch: 2 [10880/34528 (32%)] [0.001]	Loss: 0.091803, iou: 0.847517
+(irregular) cross_entropy loss: 0.0918029397726059
+Retrain Epoch: 2 [11200/34528 (32%)] [0.001]	Loss: 0.076012, iou: 0.876691
+(irregular) cross_entropy loss: 0.07601244747638702
+Retrain Epoch: 2 [11520/34528 (33%)] [0.001]	Loss: 0.080003, iou: 0.887651
+(irregular) cross_entropy loss: 0.0800030454993248
+Retrain Epoch: 2 [11840/34528 (34%)] [0.001]	Loss: 0.086564, iou: 0.857090
+(irregular) cross_entropy loss: 0.08656376600265503
+Retrain Epoch: 2 [12160/34528 (35%)] [0.001]	Loss: 0.082820, iou: 0.858544
+(irregular) cross_entropy loss: 0.08281990885734558
+Retrain Epoch: 2 [12480/34528 (36%)] [0.001]	Loss: 0.076842, iou: 0.868905
+(irregular) cross_entropy loss: 0.07684195041656494
+Retrain Epoch: 2 [12800/34528 (37%)] [0.001]	Loss: 0.090308, iou: 0.862800
+(irregular) cross_entropy loss: 0.09030784666538239
+Retrain Epoch: 2 [13120/34528 (38%)] [0.001]	Loss: 0.075595, iou: 0.869062
+(irregular) cross_entropy loss: 0.0755951926112175
+Retrain Epoch: 2 [13440/34528 (39%)] [0.001]	Loss: 0.083549, iou: 0.866047
+(irregular) cross_entropy loss: 0.08354862034320831
+Retrain Epoch: 2 [13760/34528 (40%)] [0.001]	Loss: 0.072137, iou: 0.879451
+(irregular) cross_entropy loss: 0.07213662564754486
+Retrain Epoch: 2 [14080/34528 (41%)] [0.001]	Loss: 0.090026, iou: 0.856918
+(irregular) cross_entropy loss: 0.09002570807933807
+Retrain Epoch: 2 [14400/34528 (42%)] [0.001]	Loss: 0.089953, iou: 0.858745
+(irregular) cross_entropy loss: 0.08995330333709717
+Retrain Epoch: 2 [14720/34528 (43%)] [0.001]	Loss: 0.072989, iou: 0.892265
+(irregular) cross_entropy loss: 0.07298901677131653
+Retrain Epoch: 2 [15040/34528 (44%)] [0.001]	Loss: 0.101670, iou: 0.836162
+(irregular) cross_entropy loss: 0.10167007893323898
+Retrain Epoch: 2 [15360/34528 (44%)] [0.001]	Loss: 0.108249, iou: 0.824576
+(irregular) cross_entropy loss: 0.10824941843748093
+Retrain Epoch: 2 [15680/34528 (45%)] [0.001]	Loss: 0.079734, iou: 0.879179
+(irregular) cross_entropy loss: 0.07973365485668182
+Retrain Epoch: 2 [16000/34528 (46%)] [0.001]	Loss: 0.102960, iou: 0.828035
+(irregular) cross_entropy loss: 0.10295955836772919
+Retrain Epoch: 2 [16320/34528 (47%)] [0.001]	Loss: 0.086586, iou: 0.860747
+(irregular) cross_entropy loss: 0.08658631145954132
+Retrain Epoch: 2 [16640/34528 (48%)] [0.001]	Loss: 0.069125, iou: 0.894658
+(irregular) cross_entropy loss: 0.06912487745285034
+Retrain Epoch: 2 [16960/34528 (49%)] [0.001]	Loss: 0.090041, iou: 0.855210
+(irregular) cross_entropy loss: 0.09004075825214386
+Retrain Epoch: 2 [17280/34528 (50%)] [0.001]	Loss: 0.092776, iou: 0.849689
+(irregular) cross_entropy loss: 0.09277583658695221
+Retrain Epoch: 2 [17600/34528 (51%)] [0.001]	Loss: 0.091170, iou: 0.846637
+(irregular) cross_entropy loss: 0.09116994589567184
+Retrain Epoch: 2 [17920/34528 (52%)] [0.001]	Loss: 0.071095, iou: 0.885341
+(irregular) cross_entropy loss: 0.071095310151577
+Retrain Epoch: 2 [18240/34528 (53%)] [0.001]	Loss: 0.091955, iou: 0.850271
+(irregular) cross_entropy loss: 0.0919552594423294
+Retrain Epoch: 2 [18560/34528 (54%)] [0.001]	Loss: 0.081221, iou: 0.872008
+(irregular) cross_entropy loss: 0.08122099936008453
+Retrain Epoch: 2 [18880/34528 (55%)] [0.001]	Loss: 0.075411, iou: 0.872029
+(irregular) cross_entropy loss: 0.07541107386350632
+Retrain Epoch: 2 [19200/34528 (56%)] [0.001]	Loss: 0.092812, iou: 0.850239
+(irregular) cross_entropy loss: 0.09281224012374878
+Retrain Epoch: 2 [19520/34528 (57%)] [0.001]	Loss: 0.080806, iou: 0.873906
+(irregular) cross_entropy loss: 0.08080635964870453
+Retrain Epoch: 2 [19840/34528 (57%)] [0.001]	Loss: 0.096088, iou: 0.845658
+(irregular) cross_entropy loss: 0.09608827531337738
+Retrain Epoch: 2 [20160/34528 (58%)] [0.001]	Loss: 0.076356, iou: 0.879860
+(irregular) cross_entropy loss: 0.07635567337274551
+Retrain Epoch: 2 [20480/34528 (59%)] [0.001]	Loss: 0.127949, iou: 0.773835
+(irregular) cross_entropy loss: 0.12794901430606842
+Retrain Epoch: 2 [20800/34528 (60%)] [0.001]	Loss: 0.107025, iou: 0.808396
+(irregular) cross_entropy loss: 0.10702543705701828
+Retrain Epoch: 2 [21120/34528 (61%)] [0.001]	Loss: 0.075516, iou: 0.877332
+(irregular) cross_entropy loss: 0.07551610469818115
+Retrain Epoch: 2 [21440/34528 (62%)] [0.001]	Loss: 0.084651, iou: 0.864602
+(irregular) cross_entropy loss: 0.08465132117271423
+Retrain Epoch: 2 [21760/34528 (63%)] [0.001]	Loss: 0.072679, iou: 0.882373
+(irregular) cross_entropy loss: 0.07267914712429047
+Retrain Epoch: 2 [22080/34528 (64%)] [0.001]	Loss: 0.103814, iou: 0.828230
+(irregular) cross_entropy loss: 0.10381367802619934
+Retrain Epoch: 2 [22400/34528 (65%)] [0.001]	Loss: 0.113487, iou: 0.806104
+(irregular) cross_entropy loss: 0.1134871393442154
+Retrain Epoch: 2 [22720/34528 (66%)] [0.001]	Loss: 0.075996, iou: 0.874105
+(irregular) cross_entropy loss: 0.0759960263967514
+Retrain Epoch: 2 [23040/34528 (67%)] [0.001]	Loss: 0.083326, iou: 0.874646
+(irregular) cross_entropy loss: 0.08332610130310059
+Retrain Epoch: 2 [23360/34528 (68%)] [0.001]	Loss: 0.089267, iou: 0.855389
+(irregular) cross_entropy loss: 0.0892673209309578
+Retrain Epoch: 2 [23680/34528 (69%)] [0.001]	Loss: 0.089485, iou: 0.861003
+(irregular) cross_entropy loss: 0.08948467671871185
+Retrain Epoch: 2 [24000/34528 (70%)] [0.001]	Loss: 0.074894, iou: 0.876548
+(irregular) cross_entropy loss: 0.07489429414272308
+Retrain Epoch: 2 [24320/34528 (70%)] [0.001]	Loss: 0.103212, iou: 0.823788
+(irregular) cross_entropy loss: 0.10321222990751266
+Retrain Epoch: 2 [24640/34528 (71%)] [0.001]	Loss: 0.077769, iou: 0.870298
+(irregular) cross_entropy loss: 0.07776926457881927
+Retrain Epoch: 2 [24960/34528 (72%)] [0.001]	Loss: 0.062226, iou: 0.907530
+(irregular) cross_entropy loss: 0.062226034700870514
+Retrain Epoch: 2 [25280/34528 (73%)] [0.001]	Loss: 0.082185, iou: 0.872023
+(irregular) cross_entropy loss: 0.0821848213672638
+Retrain Epoch: 2 [25600/34528 (74%)] [0.001]	Loss: 0.103612, iou: 0.827440
+(irregular) cross_entropy loss: 0.10361242294311523
+Retrain Epoch: 2 [25920/34528 (75%)] [0.001]	Loss: 0.090757, iou: 0.847883
+(irregular) cross_entropy loss: 0.0907573401927948
+Retrain Epoch: 2 [26240/34528 (76%)] [0.001]	Loss: 0.114953, iou: 0.799565
+(irregular) cross_entropy loss: 0.11495346575975418
+Retrain Epoch: 2 [26560/34528 (77%)] [0.001]	Loss: 0.101509, iou: 0.826520
+(irregular) cross_entropy loss: 0.10150933265686035
+Retrain Epoch: 2 [26880/34528 (78%)] [0.001]	Loss: 0.074879, iou: 0.881285
+(irregular) cross_entropy loss: 0.07487859576940536
+Retrain Epoch: 2 [27200/34528 (79%)] [0.001]	Loss: 0.093719, iou: 0.858930
+(irregular) cross_entropy loss: 0.09371902793645859
+Retrain Epoch: 2 [27520/34528 (80%)] [0.001]	Loss: 0.091403, iou: 0.840645
+(irregular) cross_entropy loss: 0.09140315651893616
+Retrain Epoch: 2 [27840/34528 (81%)] [0.001]	Loss: 0.081560, iou: 0.875977
+(irregular) cross_entropy loss: 0.08156019449234009
+Retrain Epoch: 2 [28160/34528 (82%)] [0.001]	Loss: 0.085109, iou: 0.871720
+(irregular) cross_entropy loss: 0.08510895073413849
+Retrain Epoch: 2 [28480/34528 (82%)] [0.001]	Loss: 0.097998, iou: 0.856176
+(irregular) cross_entropy loss: 0.0979980081319809
+Retrain Epoch: 2 [28800/34528 (83%)] [0.001]	Loss: 0.114660, iou: 0.808342
+(irregular) cross_entropy loss: 0.11466018855571747
+Retrain Epoch: 2 [29120/34528 (84%)] [0.001]	Loss: 0.075746, iou: 0.876333
+(irregular) cross_entropy loss: 0.07574599981307983
+Retrain Epoch: 2 [29440/34528 (85%)] [0.001]	Loss: 0.088554, iou: 0.857246
+(irregular) cross_entropy loss: 0.08855407685041428
+Retrain Epoch: 2 [29760/34528 (86%)] [0.001]	Loss: 0.091164, iou: 0.853471
+(irregular) cross_entropy loss: 0.0911639928817749
+Retrain Epoch: 2 [30080/34528 (87%)] [0.001]	Loss: 0.083506, iou: 0.857242
+(irregular) cross_entropy loss: 0.08350630104541779
+Retrain Epoch: 2 [30400/34528 (88%)] [0.001]	Loss: 0.080688, iou: 0.874881
+(irregular) cross_entropy loss: 0.08068794012069702
+Retrain Epoch: 2 [30720/34528 (89%)] [0.001]	Loss: 0.083065, iou: 0.863571
+(irregular) cross_entropy loss: 0.08306475728750229
+Retrain Epoch: 2 [31040/34528 (90%)] [0.001]	Loss: 0.115929, iou: 0.799043
+(irregular) cross_entropy loss: 0.11592936515808105
+Retrain Epoch: 2 [31360/34528 (91%)] [0.001]	Loss: 0.110216, iou: 0.822499
+(irregular) cross_entropy loss: 0.1102161556482315
+Retrain Epoch: 2 [31680/34528 (92%)] [0.001]	Loss: 0.068376, iou: 0.903123
+(irregular) cross_entropy loss: 0.06837572902441025
+Retrain Epoch: 2 [32000/34528 (93%)] [0.001]	Loss: 0.068626, iou: 0.894775
+(irregular) cross_entropy loss: 0.06862561404705048
+Retrain Epoch: 2 [32320/34528 (94%)] [0.001]	Loss: 0.075703, iou: 0.876642
+(irregular) cross_entropy loss: 0.07570284605026245
+Retrain Epoch: 2 [32640/34528 (95%)] [0.001]	Loss: 0.079403, iou: 0.872544
+(irregular) cross_entropy loss: 0.07940269261598587
+Retrain Epoch: 2 [32960/34528 (95%)] [0.001]	Loss: 0.075491, iou: 0.883240
+(irregular) cross_entropy loss: 0.07549065351486206
+Retrain Epoch: 2 [33280/34528 (96%)] [0.001]	Loss: 0.085941, iou: 0.874474
+(irregular) cross_entropy loss: 0.08594143390655518
+Retrain Epoch: 2 [33600/34528 (97%)] [0.001]	Loss: 0.092767, iou: 0.846937
+(irregular) cross_entropy loss: 0.09276719391345978
+Retrain Epoch: 2 [33920/34528 (98%)] [0.001]	Loss: 0.082966, iou: 0.859355
+(irregular) cross_entropy loss: 0.08296575397253036
+Retrain Epoch: 2 [34240/34528 (99%)] [0.001]	Loss: 0.099272, iou: 0.846504
+(irregular) cross_entropy loss: 0.09927248954772949
+retrain: iou: 0.857695, bce: 0.034140, dice: 0.142305, loss: 0.088223
+Validation: [0/3836 (0%)]	Loss: 0.083710, iou: 0.863750
+Validation: [640/3836 (17%)]	Loss: 0.094218, iou: 0.838611
+Validation: [1280/3836 (33%)]	Loss: 0.082191, iou: 0.862397
+Validation: [1920/3836 (50%)]	Loss: 0.084552, iou: 0.860818
+Validation: [2560/3836 (67%)]	Loss: 0.079828, iou: 0.872901
+Validation: [3200/3836 (83%)]	Loss: 0.082050, iou: 0.870696
+val: iou: 0.863592, bce: 0.031464, dice: 0.136408, loss: 0.083936
+Get a new best test IOU:0.86
+Saving model...
+
+==============================> Accuracy after Masked Retrain of epoch 2: 
+Validation: [0/3836 (0%)]	Loss: 0.083710, iou: 0.863750
+Validation: [640/3836 (17%)]	Loss: 0.094218, iou: 0.838611
+Validation: [1280/3836 (33%)]	Loss: 0.082191, iou: 0.862397
+Validation: [1920/3836 (50%)]	Loss: 0.084552, iou: 0.860818
+Validation: [2560/3836 (67%)]	Loss: 0.079828, iou: 0.872901
+Validation: [3200/3836 (83%)]	Loss: 0.082050, iou: 0.870696
+val: iou: 0.863592, bce: 0.031464, dice: 0.136408, loss: 0.083936
+Current epoch: 3; current test iou: 0.8636; best test iou: 0.8636 at epoch 3
+
+
+epoch:  3
+Retrain Epoch: 3 [0/34528 (0%)] [0.001]	Loss: 0.085517, iou: 0.859266
+(irregular) cross_entropy loss: 0.0855165421962738
+Retrain Epoch: 3 [320/34528 (1%)] [0.001]	Loss: 0.084146, iou: 0.857897
+(irregular) cross_entropy loss: 0.08414562046527863
+Retrain Epoch: 3 [640/34528 (2%)] [0.001]	Loss: 0.080326, iou: 0.873675
+(irregular) cross_entropy loss: 0.08032575249671936
+Retrain Epoch: 3 [960/34528 (3%)] [0.001]	Loss: 0.084610, iou: 0.868391
+(irregular) cross_entropy loss: 0.08460991829633713
+Retrain Epoch: 3 [1280/34528 (4%)] [0.001]	Loss: 0.078151, iou: 0.879645
+(irregular) cross_entropy loss: 0.07815073430538177
+Retrain Epoch: 3 [1600/34528 (5%)] [0.001]	Loss: 0.070044, iou: 0.887450
+(irregular) cross_entropy loss: 0.07004368305206299
+Retrain Epoch: 3 [1920/34528 (6%)] [0.001]	Loss: 0.091850, iou: 0.852886
+(irregular) cross_entropy loss: 0.09184952080249786
+Retrain Epoch: 3 [2240/34528 (6%)] [0.001]	Loss: 0.078557, iou: 0.865429
+(irregular) cross_entropy loss: 0.0785568431019783
+Retrain Epoch: 3 [2560/34528 (7%)] [0.001]	Loss: 0.118515, iou: 0.792174
+(irregular) cross_entropy loss: 0.11851516366004944
+Retrain Epoch: 3 [2880/34528 (8%)] [0.001]	Loss: 0.088457, iou: 0.855946
+(irregular) cross_entropy loss: 0.08845706284046173
+Retrain Epoch: 3 [3200/34528 (9%)] [0.001]	Loss: 0.085871, iou: 0.854766
+(irregular) cross_entropy loss: 0.0858713760972023
+Retrain Epoch: 3 [3520/34528 (10%)] [0.001]	Loss: 0.115454, iou: 0.796779
+(irregular) cross_entropy loss: 0.11545369774103165
+Retrain Epoch: 3 [3840/34528 (11%)] [0.001]	Loss: 0.114743, iou: 0.804235
+(irregular) cross_entropy loss: 0.11474250257015228
+Retrain Epoch: 3 [4160/34528 (12%)] [0.001]	Loss: 0.083931, iou: 0.860802
+(irregular) cross_entropy loss: 0.08393143862485886
+Retrain Epoch: 3 [4480/34528 (13%)] [0.001]	Loss: 0.085940, iou: 0.854174
+(irregular) cross_entropy loss: 0.08594013005495071
+Retrain Epoch: 3 [4800/34528 (14%)] [0.001]	Loss: 0.099265, iou: 0.827267
+(irregular) cross_entropy loss: 0.09926452487707138
+Retrain Epoch: 3 [5120/34528 (15%)] [0.001]	Loss: 0.075561, iou: 0.878340
+(irregular) cross_entropy loss: 0.0755612701177597
+Retrain Epoch: 3 [5440/34528 (16%)] [0.001]	Loss: 0.073928, iou: 0.885298
+(irregular) cross_entropy loss: 0.07392795383930206
+Retrain Epoch: 3 [5760/34528 (17%)] [0.001]	Loss: 0.079276, iou: 0.884378
+(irregular) cross_entropy loss: 0.07927639782428741
+Retrain Epoch: 3 [6080/34528 (18%)] [0.001]	Loss: 0.083726, iou: 0.870797
+(irregular) cross_entropy loss: 0.08372573554515839
+Retrain Epoch: 3 [6400/34528 (19%)] [0.001]	Loss: 0.097726, iou: 0.832741
+(irregular) cross_entropy loss: 0.09772641956806183
+Retrain Epoch: 3 [6720/34528 (19%)] [0.001]	Loss: 0.078581, iou: 0.875318
+(irregular) cross_entropy loss: 0.07858061790466309
+Retrain Epoch: 3 [7040/34528 (20%)] [0.001]	Loss: 0.074621, iou: 0.877918
+(irregular) cross_entropy loss: 0.07462125271558762
+Retrain Epoch: 3 [7360/34528 (21%)] [0.001]	Loss: 0.087479, iou: 0.859545
+(irregular) cross_entropy loss: 0.08747872710227966
+Retrain Epoch: 3 [7680/34528 (22%)] [0.001]	Loss: 0.079930, iou: 0.872218
+(irregular) cross_entropy loss: 0.07993047684431076
+Retrain Epoch: 3 [8000/34528 (23%)] [0.001]	Loss: 0.067154, iou: 0.901690
+(irregular) cross_entropy loss: 0.06715446710586548
+Retrain Epoch: 3 [8320/34528 (24%)] [0.001]	Loss: 0.082604, iou: 0.867143
+(irregular) cross_entropy loss: 0.08260397613048553
+Retrain Epoch: 3 [8640/34528 (25%)] [0.001]	Loss: 0.081545, iou: 0.869929
+(irregular) cross_entropy loss: 0.08154485374689102
+Retrain Epoch: 3 [8960/34528 (26%)] [0.001]	Loss: 0.086312, iou: 0.866621
+(irregular) cross_entropy loss: 0.08631201088428497
+Retrain Epoch: 3 [9280/34528 (27%)] [0.001]	Loss: 0.095730, iou: 0.839407
+(irregular) cross_entropy loss: 0.09572959691286087
+Retrain Epoch: 3 [9600/34528 (28%)] [0.001]	Loss: 0.074593, iou: 0.882420
+(irregular) cross_entropy loss: 0.07459339499473572
+Retrain Epoch: 3 [9920/34528 (29%)] [0.001]	Loss: 0.086126, iou: 0.860654
+(irregular) cross_entropy loss: 0.0861257016658783
+Retrain Epoch: 3 [10240/34528 (30%)] [0.001]	Loss: 0.082640, iou: 0.867691
+(irregular) cross_entropy loss: 0.08264035731554031
+Retrain Epoch: 3 [10560/34528 (31%)] [0.001]	Loss: 0.081788, iou: 0.879450
+(irregular) cross_entropy loss: 0.08178837597370148
+Retrain Epoch: 3 [10880/34528 (32%)] [0.001]	Loss: 0.067337, iou: 0.904547
+(irregular) cross_entropy loss: 0.06733661144971848
+Retrain Epoch: 3 [11200/34528 (32%)] [0.001]	Loss: 0.080638, iou: 0.869157
+(irregular) cross_entropy loss: 0.08063773810863495
+Retrain Epoch: 3 [11520/34528 (33%)] [0.001]	Loss: 0.102314, iou: 0.835370
+(irregular) cross_entropy loss: 0.1023143082857132
+Retrain Epoch: 3 [11840/34528 (34%)] [0.001]	Loss: 0.065677, iou: 0.906412
+(irregular) cross_entropy loss: 0.0656767189502716
+Retrain Epoch: 3 [12160/34528 (35%)] [0.001]	Loss: 0.076384, iou: 0.873353
+(irregular) cross_entropy loss: 0.07638383656740189
+Retrain Epoch: 3 [12480/34528 (36%)] [0.001]	Loss: 0.087940, iou: 0.856263
+(irregular) cross_entropy loss: 0.08793959021568298
+Retrain Epoch: 3 [12800/34528 (37%)] [0.001]	Loss: 0.093260, iou: 0.839468
+(irregular) cross_entropy loss: 0.09326012432575226
+Retrain Epoch: 3 [13120/34528 (38%)] [0.001]	Loss: 0.076760, iou: 0.870843
+(irregular) cross_entropy loss: 0.0767604187130928
+Retrain Epoch: 3 [13440/34528 (39%)] [0.001]	Loss: 0.073176, iou: 0.894104
+(irregular) cross_entropy loss: 0.0731758326292038
+Retrain Epoch: 3 [13760/34528 (40%)] [0.001]	Loss: 0.100571, iou: 0.825836
+(irregular) cross_entropy loss: 0.10057134926319122
+Retrain Epoch: 3 [14080/34528 (41%)] [0.001]	Loss: 0.092643, iou: 0.860342
+(irregular) cross_entropy loss: 0.09264278411865234
+Retrain Epoch: 3 [14400/34528 (42%)] [0.001]	Loss: 0.085045, iou: 0.853139
+(irregular) cross_entropy loss: 0.08504465222358704
+Retrain Epoch: 3 [14720/34528 (43%)] [0.001]	Loss: 0.086024, iou: 0.848838
+(irregular) cross_entropy loss: 0.08602438867092133
+Retrain Epoch: 3 [15040/34528 (44%)] [0.001]	Loss: 0.111471, iou: 0.807468
+(irregular) cross_entropy loss: 0.11147075146436691
+Retrain Epoch: 3 [15360/34528 (44%)] [0.001]	Loss: 0.089282, iou: 0.854754
+(irregular) cross_entropy loss: 0.08928227424621582
+Retrain Epoch: 3 [15680/34528 (45%)] [0.001]	Loss: 0.085380, iou: 0.863081
+(irregular) cross_entropy loss: 0.08537954092025757
+Retrain Epoch: 3 [16000/34528 (46%)] [0.001]	Loss: 0.082652, iou: 0.871477
+(irregular) cross_entropy loss: 0.08265236020088196
+Retrain Epoch: 3 [16320/34528 (47%)] [0.001]	Loss: 0.081272, iou: 0.869237
+(irregular) cross_entropy loss: 0.08127164095640182
+Retrain Epoch: 3 [16640/34528 (48%)] [0.001]	Loss: 0.081489, iou: 0.871697
+(irregular) cross_entropy loss: 0.08148923516273499
+Retrain Epoch: 3 [16960/34528 (49%)] [0.001]	Loss: 0.081173, iou: 0.860676
+(irregular) cross_entropy loss: 0.08117310702800751
+Retrain Epoch: 3 [17280/34528 (50%)] [0.001]	Loss: 0.078319, iou: 0.874251
+(irregular) cross_entropy loss: 0.07831862568855286
+Retrain Epoch: 3 [17600/34528 (51%)] [0.001]	Loss: 0.093596, iou: 0.845927
+(irregular) cross_entropy loss: 0.09359641373157501
+Retrain Epoch: 3 [17920/34528 (52%)] [0.001]	Loss: 0.098402, iou: 0.829519
+(irregular) cross_entropy loss: 0.09840165078639984
+Retrain Epoch: 3 [18240/34528 (53%)] [0.001]	Loss: 0.096836, iou: 0.847699
+(irregular) cross_entropy loss: 0.0968358963727951
+Retrain Epoch: 3 [18560/34528 (54%)] [0.001]	Loss: 0.087691, iou: 0.862061
+(irregular) cross_entropy loss: 0.0876908004283905
+Retrain Epoch: 3 [18880/34528 (55%)] [0.001]	Loss: 0.075078, iou: 0.884995
+(irregular) cross_entropy loss: 0.07507772743701935
+Retrain Epoch: 3 [19200/34528 (56%)] [0.001]	Loss: 0.101628, iou: 0.830563
+(irregular) cross_entropy loss: 0.10162849724292755
+Retrain Epoch: 3 [19520/34528 (57%)] [0.001]	Loss: 0.068762, iou: 0.891836
+(irregular) cross_entropy loss: 0.0687621533870697
+Retrain Epoch: 3 [19840/34528 (57%)] [0.001]	Loss: 0.090885, iou: 0.846576
+(irregular) cross_entropy loss: 0.090884730219841
+Retrain Epoch: 3 [20160/34528 (58%)] [0.001]	Loss: 0.118377, iou: 0.788891
+(irregular) cross_entropy loss: 0.11837669461965561
+Retrain Epoch: 3 [20480/34528 (59%)] [0.001]	Loss: 0.079560, iou: 0.870044
+(irregular) cross_entropy loss: 0.07955988496541977
+Retrain Epoch: 3 [20800/34528 (60%)] [0.001]	Loss: 0.088914, iou: 0.846869
+(irregular) cross_entropy loss: 0.08891375362873077
+Retrain Epoch: 3 [21120/34528 (61%)] [0.001]	Loss: 0.067419, iou: 0.901943
+(irregular) cross_entropy loss: 0.06741862744092941
+Retrain Epoch: 3 [21440/34528 (62%)] [0.001]	Loss: 0.111919, iou: 0.817176
+(irregular) cross_entropy loss: 0.11191937327384949
+Retrain Epoch: 3 [21760/34528 (63%)] [0.001]	Loss: 0.087870, iou: 0.863348
+(irregular) cross_entropy loss: 0.08786995708942413
+Retrain Epoch: 3 [22080/34528 (64%)] [0.001]	Loss: 0.092834, iou: 0.848101
+(irregular) cross_entropy loss: 0.09283365309238434
+Retrain Epoch: 3 [22400/34528 (65%)] [0.001]	Loss: 0.087153, iou: 0.868007
+(irregular) cross_entropy loss: 0.08715315908193588
+Retrain Epoch: 3 [22720/34528 (66%)] [0.001]	Loss: 0.069821, iou: 0.902293
+(irregular) cross_entropy loss: 0.0698210746049881
+Retrain Epoch: 3 [23040/34528 (67%)] [0.001]	Loss: 0.103193, iou: 0.824518
+(irregular) cross_entropy loss: 0.10319315642118454
+Retrain Epoch: 3 [23360/34528 (68%)] [0.001]	Loss: 0.069236, iou: 0.887674
+(irregular) cross_entropy loss: 0.0692356526851654
+Retrain Epoch: 3 [23680/34528 (69%)] [0.001]	Loss: 0.084113, iou: 0.862521
+(irregular) cross_entropy loss: 0.08411256223917007
+Retrain Epoch: 3 [24000/34528 (70%)] [0.001]	Loss: 0.094519, iou: 0.847860
+(irregular) cross_entropy loss: 0.09451853483915329
+Retrain Epoch: 3 [24320/34528 (70%)] [0.001]	Loss: 0.097462, iou: 0.829344
+(irregular) cross_entropy loss: 0.09746192395687103
+Retrain Epoch: 3 [24640/34528 (71%)] [0.001]	Loss: 0.088986, iou: 0.856728
+(irregular) cross_entropy loss: 0.08898574113845825
+Retrain Epoch: 3 [24960/34528 (72%)] [0.001]	Loss: 0.078912, iou: 0.876619
+(irregular) cross_entropy loss: 0.07891163229942322
+Retrain Epoch: 3 [25280/34528 (73%)] [0.001]	Loss: 0.091457, iou: 0.854572
+(irregular) cross_entropy loss: 0.09145741909742355
+Retrain Epoch: 3 [25600/34528 (74%)] [0.001]	Loss: 0.063478, iou: 0.908707
+(irregular) cross_entropy loss: 0.06347768753767014
+Retrain Epoch: 3 [25920/34528 (75%)] [0.001]	Loss: 0.075669, iou: 0.876516
+(irregular) cross_entropy loss: 0.07566913217306137
+Retrain Epoch: 3 [26240/34528 (76%)] [0.001]	Loss: 0.081135, iou: 0.869578
+(irregular) cross_entropy loss: 0.08113531768321991
+Retrain Epoch: 3 [26560/34528 (77%)] [0.001]	Loss: 0.062494, iou: 0.918069
+(irregular) cross_entropy loss: 0.06249420344829559
+Retrain Epoch: 3 [26880/34528 (78%)] [0.001]	Loss: 0.072461, iou: 0.889486
+(irregular) cross_entropy loss: 0.0724610835313797
+Retrain Epoch: 3 [27200/34528 (79%)] [0.001]	Loss: 0.090303, iou: 0.852125
+(irregular) cross_entropy loss: 0.09030315279960632
+Retrain Epoch: 3 [27520/34528 (80%)] [0.001]	Loss: 0.104786, iou: 0.830330
+(irregular) cross_entropy loss: 0.10478581488132477
+Retrain Epoch: 3 [27840/34528 (81%)] [0.001]	Loss: 0.099059, iou: 0.830977
+(irregular) cross_entropy loss: 0.09905882924795151
+Retrain Epoch: 3 [28160/34528 (82%)] [0.001]	Loss: 0.126560, iou: 0.789706
+(irregular) cross_entropy loss: 0.12655992805957794
+Retrain Epoch: 3 [28480/34528 (82%)] [0.001]	Loss: 0.092040, iou: 0.853752
+(irregular) cross_entropy loss: 0.0920395702123642
+Retrain Epoch: 3 [28800/34528 (83%)] [0.001]	Loss: 0.089324, iou: 0.861650
+(irregular) cross_entropy loss: 0.08932442963123322
+Retrain Epoch: 3 [29120/34528 (84%)] [0.001]	Loss: 0.082474, iou: 0.884005
+(irregular) cross_entropy loss: 0.08247366547584534
+Retrain Epoch: 3 [29440/34528 (85%)] [0.001]	Loss: 0.107490, iou: 0.822766
+(irregular) cross_entropy loss: 0.10748996585607529
+Retrain Epoch: 3 [29760/34528 (86%)] [0.001]	Loss: 0.082647, iou: 0.873529
+(irregular) cross_entropy loss: 0.08264722675085068
+Retrain Epoch: 3 [30080/34528 (87%)] [0.001]	Loss: 0.085456, iou: 0.863006
+(irregular) cross_entropy loss: 0.08545631170272827
+Retrain Epoch: 3 [30400/34528 (88%)] [0.001]	Loss: 0.078892, iou: 0.880094
+(irregular) cross_entropy loss: 0.07889188826084137
+Retrain Epoch: 3 [30720/34528 (89%)] [0.001]	Loss: 0.070600, iou: 0.891718
+(irregular) cross_entropy loss: 0.0706004872918129
+Retrain Epoch: 3 [31040/34528 (90%)] [0.001]	Loss: 0.107584, iou: 0.807017
+(irregular) cross_entropy loss: 0.10758421570062637
+Retrain Epoch: 3 [31360/34528 (91%)] [0.001]	Loss: 0.081393, iou: 0.875995
+(irregular) cross_entropy loss: 0.08139299601316452
+Retrain Epoch: 3 [31680/34528 (92%)] [0.001]	Loss: 0.072503, iou: 0.895021
+(irregular) cross_entropy loss: 0.07250291109085083
+Retrain Epoch: 3 [32000/34528 (93%)] [0.001]	Loss: 0.104657, iou: 0.833319
+(irregular) cross_entropy loss: 0.10465691983699799
+Retrain Epoch: 3 [32320/34528 (94%)] [0.001]	Loss: 0.089492, iou: 0.850699
+(irregular) cross_entropy loss: 0.08949165791273117
+Retrain Epoch: 3 [32640/34528 (95%)] [0.001]	Loss: 0.084924, iou: 0.876505
+(irregular) cross_entropy loss: 0.08492368459701538
+Retrain Epoch: 3 [32960/34528 (95%)] [0.001]	Loss: 0.084032, iou: 0.868713
+(irregular) cross_entropy loss: 0.0840323343873024
+Retrain Epoch: 3 [33280/34528 (96%)] [0.001]	Loss: 0.097854, iou: 0.836433
+(irregular) cross_entropy loss: 0.09785440564155579
+Retrain Epoch: 3 [33600/34528 (97%)] [0.001]	Loss: 0.078419, iou: 0.869985
+(irregular) cross_entropy loss: 0.0784192681312561
+Retrain Epoch: 3 [33920/34528 (98%)] [0.001]	Loss: 0.076939, iou: 0.890299
+(irregular) cross_entropy loss: 0.07693880051374435
+Retrain Epoch: 3 [34240/34528 (99%)] [0.001]	Loss: 0.070907, iou: 0.891230
+(irregular) cross_entropy loss: 0.07090707868337631
+retrain: iou: 0.859809, bce: 0.033649, dice: 0.140191, loss: 0.086920
+Validation: [0/3836 (0%)]	Loss: 0.087168, iou: 0.858724
+Validation: [640/3836 (17%)]	Loss: 0.093647, iou: 0.841933
+Validation: [1280/3836 (33%)]	Loss: 0.082790, iou: 0.861596
+Validation: [1920/3836 (50%)]	Loss: 0.086824, iou: 0.858928
+Validation: [2560/3836 (67%)]	Loss: 0.082973, iou: 0.869312
+Validation: [3200/3836 (83%)]	Loss: 0.085219, iou: 0.865506
+val: iou: 0.859751, bce: 0.033591, dice: 0.140249, loss: 0.086920
+
+==============================> Accuracy after Masked Retrain of epoch 3: 
+Validation: [0/3836 (0%)]	Loss: 0.087168, iou: 0.858724
+Validation: [640/3836 (17%)]	Loss: 0.093647, iou: 0.841933
+Validation: [1280/3836 (33%)]	Loss: 0.082790, iou: 0.861596
+Validation: [1920/3836 (50%)]	Loss: 0.086824, iou: 0.858928
+Validation: [2560/3836 (67%)]	Loss: 0.082973, iou: 0.869312
+Validation: [3200/3836 (83%)]	Loss: 0.085219, iou: 0.865506
+val: iou: 0.859751, bce: 0.033591, dice: 0.140249, loss: 0.086920
+Current epoch: 4; current test iou: 0.8598; best test iou: 0.8636 at epoch 3
+
+
+epoch:  4
+Retrain Epoch: 4 [0/34528 (0%)] [0.001]	Loss: 0.084861, iou: 0.862550
+(irregular) cross_entropy loss: 0.0848613828420639
+Retrain Epoch: 4 [320/34528 (1%)] [0.001]	Loss: 0.071538, iou: 0.893607
+(irregular) cross_entropy loss: 0.0715375691652298
+Retrain Epoch: 4 [640/34528 (2%)] [0.001]	Loss: 0.087574, iou: 0.863386
+(irregular) cross_entropy loss: 0.08757402002811432
+Retrain Epoch: 4 [960/34528 (3%)] [0.001]	Loss: 0.077273, iou: 0.867482
+(irregular) cross_entropy loss: 0.07727265357971191
+Retrain Epoch: 4 [1280/34528 (4%)] [0.001]	Loss: 0.098758, iou: 0.845012
+(irregular) cross_entropy loss: 0.09875807166099548
+Retrain Epoch: 4 [1600/34528 (5%)] [0.001]	Loss: 0.080264, iou: 0.869793
+(irregular) cross_entropy loss: 0.08026368916034698
+Retrain Epoch: 4 [1920/34528 (6%)] [0.001]	Loss: 0.094210, iou: 0.845733
+(irregular) cross_entropy loss: 0.09420983493328094
+Retrain Epoch: 4 [2240/34528 (6%)] [0.001]	Loss: 0.075478, iou: 0.872781
+(irregular) cross_entropy loss: 0.07547837495803833
+Retrain Epoch: 4 [2560/34528 (7%)] [0.001]	Loss: 0.085071, iou: 0.858456
+(irregular) cross_entropy loss: 0.08507116883993149
+Retrain Epoch: 4 [2880/34528 (8%)] [0.001]	Loss: 0.087977, iou: 0.857308
+(irregular) cross_entropy loss: 0.08797715604305267
+Retrain Epoch: 4 [3200/34528 (9%)] [0.001]	Loss: 0.096551, iou: 0.840945
+(irregular) cross_entropy loss: 0.09655134379863739
+Retrain Epoch: 4 [3520/34528 (10%)] [0.001]	Loss: 0.075417, iou: 0.879587
+(irregular) cross_entropy loss: 0.07541683316230774
+Retrain Epoch: 4 [3840/34528 (11%)] [0.001]	Loss: 0.089891, iou: 0.847078
+(irregular) cross_entropy loss: 0.0898912250995636
+Retrain Epoch: 4 [4160/34528 (12%)] [0.001]	Loss: 0.066618, iou: 0.902175
+(irregular) cross_entropy loss: 0.06661834567785263
+Retrain Epoch: 4 [4480/34528 (13%)] [0.001]	Loss: 0.090871, iou: 0.848597
+(irregular) cross_entropy loss: 0.09087097644805908
+Retrain Epoch: 4 [4800/34528 (14%)] [0.001]	Loss: 0.083931, iou: 0.863119
+(irregular) cross_entropy loss: 0.08393100649118423
+Retrain Epoch: 4 [5120/34528 (15%)] [0.001]	Loss: 0.078233, iou: 0.871529
+(irregular) cross_entropy loss: 0.0782330185174942
+Retrain Epoch: 4 [5440/34528 (16%)] [0.001]	Loss: 0.068063, iou: 0.895964
+(irregular) cross_entropy loss: 0.06806320697069168
+Retrain Epoch: 4 [5760/34528 (17%)] [0.001]	Loss: 0.078597, iou: 0.871503
+(irregular) cross_entropy loss: 0.07859725505113602
+Retrain Epoch: 4 [6080/34528 (18%)] [0.001]	Loss: 0.075647, iou: 0.886517
+(irregular) cross_entropy loss: 0.07564666867256165
+Retrain Epoch: 4 [6400/34528 (19%)] [0.001]	Loss: 0.076983, iou: 0.870978
+(irregular) cross_entropy loss: 0.07698342204093933
+Retrain Epoch: 4 [6720/34528 (19%)] [0.001]	Loss: 0.097077, iou: 0.839117
+(irregular) cross_entropy loss: 0.09707728773355484
+Retrain Epoch: 4 [7040/34528 (20%)] [0.001]	Loss: 0.072249, iou: 0.893273
+(irregular) cross_entropy loss: 0.07224863767623901
+Retrain Epoch: 4 [7360/34528 (21%)] [0.001]	Loss: 0.079390, iou: 0.870802
+(irregular) cross_entropy loss: 0.07939025014638901
+Retrain Epoch: 4 [7680/34528 (22%)] [0.001]	Loss: 0.087255, iou: 0.864711
+(irregular) cross_entropy loss: 0.0872550830245018
+Retrain Epoch: 4 [8000/34528 (23%)] [0.001]	Loss: 0.070582, iou: 0.889856
+(irregular) cross_entropy loss: 0.07058194279670715
+Retrain Epoch: 4 [8320/34528 (24%)] [0.001]	Loss: 0.093099, iou: 0.852817
+(irregular) cross_entropy loss: 0.09309931099414825
+Retrain Epoch: 4 [8640/34528 (25%)] [0.001]	Loss: 0.078194, iou: 0.871763
+(irregular) cross_entropy loss: 0.07819397747516632
+Retrain Epoch: 4 [8960/34528 (26%)] [0.001]	Loss: 0.071910, iou: 0.895779
+(irregular) cross_entropy loss: 0.07191045582294464
+Retrain Epoch: 4 [9280/34528 (27%)] [0.001]	Loss: 0.096297, iou: 0.845380
+(irregular) cross_entropy loss: 0.09629717469215393
+Retrain Epoch: 4 [9600/34528 (28%)] [0.001]	Loss: 0.108856, iou: 0.815858
+(irregular) cross_entropy loss: 0.10885630548000336
+Retrain Epoch: 4 [9920/34528 (29%)] [0.001]	Loss: 0.090926, iou: 0.853212
+(irregular) cross_entropy loss: 0.09092578291893005
+Retrain Epoch: 4 [10240/34528 (30%)] [0.001]	Loss: 0.080111, iou: 0.871806
+(irregular) cross_entropy loss: 0.08011101931333542
+Retrain Epoch: 4 [10560/34528 (31%)] [0.001]	Loss: 0.085755, iou: 0.849786
+(irregular) cross_entropy loss: 0.08575505018234253
+Retrain Epoch: 4 [10880/34528 (32%)] [0.001]	Loss: 0.079279, iou: 0.869189
+(irregular) cross_entropy loss: 0.07927878201007843
+Retrain Epoch: 4 [11200/34528 (32%)] [0.001]	Loss: 0.078227, iou: 0.880857
+(irregular) cross_entropy loss: 0.07822650671005249
+Retrain Epoch: 4 [11520/34528 (33%)] [0.001]	Loss: 0.109673, iou: 0.816915
+(irregular) cross_entropy loss: 0.10967317968606949
+Retrain Epoch: 4 [11840/34528 (34%)] [0.001]	Loss: 0.083240, iou: 0.861769
+(irregular) cross_entropy loss: 0.08324036002159119
+Retrain Epoch: 4 [12160/34528 (35%)] [0.001]	Loss: 0.088590, iou: 0.857230
+(irregular) cross_entropy loss: 0.08858953416347504
+Retrain Epoch: 4 [12480/34528 (36%)] [0.001]	Loss: 0.110115, iou: 0.808373
+(irregular) cross_entropy loss: 0.11011549085378647
+Retrain Epoch: 4 [12800/34528 (37%)] [0.001]	Loss: 0.069786, iou: 0.892206
+(irregular) cross_entropy loss: 0.06978566944599152
+Retrain Epoch: 4 [13120/34528 (38%)] [0.001]	Loss: 0.096024, iou: 0.833708
+(irregular) cross_entropy loss: 0.09602360427379608
+Retrain Epoch: 4 [13440/34528 (39%)] [0.001]	Loss: 0.069847, iou: 0.892233
+(irregular) cross_entropy loss: 0.06984704732894897
+Retrain Epoch: 4 [13760/34528 (40%)] [0.001]	Loss: 0.075943, iou: 0.870911
+(irregular) cross_entropy loss: 0.0759429782629013
+Retrain Epoch: 4 [14080/34528 (41%)] [0.001]	Loss: 0.078615, iou: 0.870782
+(irregular) cross_entropy loss: 0.07861495018005371
+Retrain Epoch: 4 [14400/34528 (42%)] [0.001]	Loss: 0.097353, iou: 0.848607
+(irregular) cross_entropy loss: 0.0973527580499649
+Retrain Epoch: 4 [14720/34528 (43%)] [0.001]	Loss: 0.073508, iou: 0.882596
+(irregular) cross_entropy loss: 0.07350757718086243
+Retrain Epoch: 4 [15040/34528 (44%)] [0.001]	Loss: 0.098911, iou: 0.845918
+(irregular) cross_entropy loss: 0.09891107678413391
+Retrain Epoch: 4 [15360/34528 (44%)] [0.001]	Loss: 0.074492, iou: 0.882150
+(irregular) cross_entropy loss: 0.07449236512184143
+Retrain Epoch: 4 [15680/34528 (45%)] [0.001]	Loss: 0.093942, iou: 0.845305
+(irregular) cross_entropy loss: 0.09394185245037079
+Retrain Epoch: 4 [16000/34528 (46%)] [0.001]	Loss: 0.081849, iou: 0.866285
+(irregular) cross_entropy loss: 0.0818491131067276
+Retrain Epoch: 4 [16320/34528 (47%)] [0.001]	Loss: 0.083923, iou: 0.869207
+(irregular) cross_entropy loss: 0.08392296731472015
+Retrain Epoch: 4 [16640/34528 (48%)] [0.001]	Loss: 0.087109, iou: 0.858526
+(irregular) cross_entropy loss: 0.08710891008377075
+Retrain Epoch: 4 [16960/34528 (49%)] [0.001]	Loss: 0.097988, iou: 0.839310
+(irregular) cross_entropy loss: 0.09798814356327057
+Retrain Epoch: 4 [17280/34528 (50%)] [0.001]	Loss: 0.098087, iou: 0.835908
+(irregular) cross_entropy loss: 0.09808669984340668
+Retrain Epoch: 4 [17600/34528 (51%)] [0.001]	Loss: 0.118422, iou: 0.805177
+(irregular) cross_entropy loss: 0.11842167377471924
+Retrain Epoch: 4 [17920/34528 (52%)] [0.001]	Loss: 0.100857, iou: 0.829652
+(irregular) cross_entropy loss: 0.1008571982383728
+Retrain Epoch: 4 [18240/34528 (53%)] [0.001]	Loss: 0.077009, iou: 0.885120
+(irregular) cross_entropy loss: 0.07700943946838379
+Retrain Epoch: 4 [18560/34528 (54%)] [0.001]	Loss: 0.099160, iou: 0.840527
+(irregular) cross_entropy loss: 0.09916006028652191
+Retrain Epoch: 4 [18880/34528 (55%)] [0.001]	Loss: 0.084130, iou: 0.864659
+(irregular) cross_entropy loss: 0.08412972837686539
+Retrain Epoch: 4 [19200/34528 (56%)] [0.001]	Loss: 0.081308, iou: 0.881036
+(irregular) cross_entropy loss: 0.08130830526351929
+Retrain Epoch: 4 [19520/34528 (57%)] [0.001]	Loss: 0.103110, iou: 0.844238
+(irregular) cross_entropy loss: 0.10311031341552734
+Retrain Epoch: 4 [19840/34528 (57%)] [0.001]	Loss: 0.076904, iou: 0.872563
+(irregular) cross_entropy loss: 0.07690408825874329
+Retrain Epoch: 4 [20160/34528 (58%)] [0.001]	Loss: 0.094988, iou: 0.839266
+(irregular) cross_entropy loss: 0.09498830884695053
+Retrain Epoch: 4 [20480/34528 (59%)] [0.001]	Loss: 0.126402, iou: 0.788421
+(irregular) cross_entropy loss: 0.12640194594860077
+Retrain Epoch: 4 [20800/34528 (60%)] [0.001]	Loss: 0.085821, iou: 0.860428
+(irregular) cross_entropy loss: 0.08582129329442978
+Retrain Epoch: 4 [21120/34528 (61%)] [0.001]	Loss: 0.098686, iou: 0.825848
+(irregular) cross_entropy loss: 0.0986863523721695
+Retrain Epoch: 4 [21440/34528 (62%)] [0.001]	Loss: 0.102643, iou: 0.826659
+(irregular) cross_entropy loss: 0.10264305770397186
+Retrain Epoch: 4 [21760/34528 (63%)] [0.001]	Loss: 0.087959, iou: 0.855833
+(irregular) cross_entropy loss: 0.08795905858278275
+Retrain Epoch: 4 [22080/34528 (64%)] [0.001]	Loss: 0.080942, iou: 0.874874
+(irregular) cross_entropy loss: 0.08094216138124466
+Retrain Epoch: 4 [22400/34528 (65%)] [0.001]	Loss: 0.068621, iou: 0.901651
+(irregular) cross_entropy loss: 0.06862135231494904
+Retrain Epoch: 4 [22720/34528 (66%)] [0.001]	Loss: 0.065475, iou: 0.900004
+(irregular) cross_entropy loss: 0.06547537446022034
+Retrain Epoch: 4 [23040/34528 (67%)] [0.001]	Loss: 0.079181, iou: 0.875811
+(irregular) cross_entropy loss: 0.07918097823858261
+Retrain Epoch: 4 [23360/34528 (68%)] [0.001]	Loss: 0.078139, iou: 0.876985
+(irregular) cross_entropy loss: 0.07813935726881027
+Retrain Epoch: 4 [23680/34528 (69%)] [0.001]	Loss: 0.108162, iou: 0.817570
+(irregular) cross_entropy loss: 0.10816165804862976
+Retrain Epoch: 4 [24000/34528 (70%)] [0.001]	Loss: 0.091132, iou: 0.849956
+(irregular) cross_entropy loss: 0.09113248437643051
+Retrain Epoch: 4 [24320/34528 (70%)] [0.001]	Loss: 0.078408, iou: 0.876667
+(irregular) cross_entropy loss: 0.07840844988822937
+Retrain Epoch: 4 [24640/34528 (71%)] [0.001]	Loss: 0.080534, iou: 0.876098
+(irregular) cross_entropy loss: 0.08053380995988846
+Retrain Epoch: 4 [24960/34528 (72%)] [0.001]	Loss: 0.075471, iou: 0.883897
+(irregular) cross_entropy loss: 0.07547098398208618
+Retrain Epoch: 4 [25280/34528 (73%)] [0.001]	Loss: 0.095329, iou: 0.846225
+(irregular) cross_entropy loss: 0.09532929956912994
+Retrain Epoch: 4 [25600/34528 (74%)] [0.001]	Loss: 0.085637, iou: 0.862589
+(irregular) cross_entropy loss: 0.08563731610774994
+Retrain Epoch: 4 [25920/34528 (75%)] [0.001]	Loss: 0.069899, iou: 0.887585
+(irregular) cross_entropy loss: 0.06989879906177521
+Retrain Epoch: 4 [26240/34528 (76%)] [0.001]	Loss: 0.094712, iou: 0.843090
+(irregular) cross_entropy loss: 0.0947120189666748
+Retrain Epoch: 4 [26560/34528 (77%)] [0.001]	Loss: 0.084310, iou: 0.863911
+(irregular) cross_entropy loss: 0.08430952578783035
+Retrain Epoch: 4 [26880/34528 (78%)] [0.001]	Loss: 0.086585, iou: 0.863919
+(irregular) cross_entropy loss: 0.08658509701490402
+Retrain Epoch: 4 [27200/34528 (79%)] [0.001]	Loss: 0.074177, iou: 0.886538
+(irregular) cross_entropy loss: 0.07417721301317215
+Retrain Epoch: 4 [27520/34528 (80%)] [0.001]	Loss: 0.079243, iou: 0.882833
+(irregular) cross_entropy loss: 0.07924344390630722
+Retrain Epoch: 4 [27840/34528 (81%)] [0.001]	Loss: 0.097071, iou: 0.848837
+(irregular) cross_entropy loss: 0.097071073949337
+Retrain Epoch: 4 [28160/34528 (82%)] [0.001]	Loss: 0.102974, iou: 0.822919
+(irregular) cross_entropy loss: 0.10297437012195587
+Retrain Epoch: 4 [28480/34528 (82%)] [0.001]	Loss: 0.081361, iou: 0.862694
+(irregular) cross_entropy loss: 0.08136051893234253
+Retrain Epoch: 4 [28800/34528 (83%)] [0.001]	Loss: 0.092898, iou: 0.844320
+(irregular) cross_entropy loss: 0.09289806336164474
+Retrain Epoch: 4 [29120/34528 (84%)] [0.001]	Loss: 0.082370, iou: 0.873721
+(irregular) cross_entropy loss: 0.08237019181251526
+Retrain Epoch: 4 [29440/34528 (85%)] [0.001]	Loss: 0.095713, iou: 0.851567
+(irregular) cross_entropy loss: 0.0957128033041954
+Retrain Epoch: 4 [29760/34528 (86%)] [0.001]	Loss: 0.065430, iou: 0.895890
+(irregular) cross_entropy loss: 0.06543008983135223
+Retrain Epoch: 4 [30080/34528 (87%)] [0.001]	Loss: 0.091839, iou: 0.842408
+(irregular) cross_entropy loss: 0.09183859080076218
+Retrain Epoch: 4 [30400/34528 (88%)] [0.001]	Loss: 0.075585, iou: 0.878831
+(irregular) cross_entropy loss: 0.07558514177799225
+Retrain Epoch: 4 [30720/34528 (89%)] [0.001]	Loss: 0.088889, iou: 0.858628
+(irregular) cross_entropy loss: 0.08888932317495346
+Retrain Epoch: 4 [31040/34528 (90%)] [0.001]	Loss: 0.096055, iou: 0.854555
+(irregular) cross_entropy loss: 0.09605453908443451
+Retrain Epoch: 4 [31360/34528 (91%)] [0.001]	Loss: 0.097235, iou: 0.844693
+(irregular) cross_entropy loss: 0.09723513573408127
+Retrain Epoch: 4 [31680/34528 (92%)] [0.001]	Loss: 0.063610, iou: 0.906914
+(irregular) cross_entropy loss: 0.06360965967178345
+Retrain Epoch: 4 [32000/34528 (93%)] [0.001]	Loss: 0.095165, iou: 0.854561
+(irregular) cross_entropy loss: 0.09516536444425583
+Retrain Epoch: 4 [32320/34528 (94%)] [0.001]	Loss: 0.085221, iou: 0.878093
+(irregular) cross_entropy loss: 0.08522053807973862
+Retrain Epoch: 4 [32640/34528 (95%)] [0.001]	Loss: 0.082944, iou: 0.859460
+(irregular) cross_entropy loss: 0.08294380456209183
+Retrain Epoch: 4 [32960/34528 (95%)] [0.001]	Loss: 0.077220, iou: 0.876840
+(irregular) cross_entropy loss: 0.07721982151269913
+Retrain Epoch: 4 [33280/34528 (96%)] [0.001]	Loss: 0.104307, iou: 0.856949
+(irregular) cross_entropy loss: 0.10430693626403809
+Retrain Epoch: 4 [33600/34528 (97%)] [0.001]	Loss: 0.076862, iou: 0.871505
+(irregular) cross_entropy loss: 0.07686157524585724
+Retrain Epoch: 4 [33920/34528 (98%)] [0.001]	Loss: 0.083273, iou: 0.860753
+(irregular) cross_entropy loss: 0.08327294141054153
+Retrain Epoch: 4 [34240/34528 (99%)] [0.001]	Loss: 0.102643, iou: 0.836266
+(irregular) cross_entropy loss: 0.10264267027378082
+retrain: iou: 0.861596, bce: 0.033005, dice: 0.138404, loss: 0.085705
+Validation: [0/3836 (0%)]	Loss: 0.084254, iou: 0.862436
+Validation: [640/3836 (17%)]	Loss: 0.087005, iou: 0.852355
+Validation: [1280/3836 (33%)]	Loss: 0.078964, iou: 0.867431
+Validation: [1920/3836 (50%)]	Loss: 0.080600, iou: 0.867350
+Validation: [2560/3836 (67%)]	Loss: 0.078020, iou: 0.875773
+Validation: [3200/3836 (83%)]	Loss: 0.081861, iou: 0.871216
+val: iou: 0.865992, bce: 0.030748, dice: 0.134008, loss: 0.082378
+Get a new best test IOU:0.87
+Saving model...
+
+==============================> Accuracy after Masked Retrain of epoch 4: 
+Validation: [0/3836 (0%)]	Loss: 0.084254, iou: 0.862436
+Validation: [640/3836 (17%)]	Loss: 0.087005, iou: 0.852355
+Validation: [1280/3836 (33%)]	Loss: 0.078964, iou: 0.867431
+Validation: [1920/3836 (50%)]	Loss: 0.080600, iou: 0.867350
+Validation: [2560/3836 (67%)]	Loss: 0.078020, iou: 0.875773
+Validation: [3200/3836 (83%)]	Loss: 0.081861, iou: 0.871216
+val: iou: 0.865992, bce: 0.030748, dice: 0.134008, loss: 0.082378
+Current epoch: 5; current test iou: 0.8660; best test iou: 0.8660 at epoch 5
+
+
+epoch:  5
+Retrain Epoch: 5 [0/34528 (0%)] [0.001]	Loss: 0.072181, iou: 0.895646
+(irregular) cross_entropy loss: 0.07218062877655029
+Retrain Epoch: 5 [320/34528 (1%)] [0.001]	Loss: 0.079401, iou: 0.870772
+(irregular) cross_entropy loss: 0.0794006958603859
+Retrain Epoch: 5 [640/34528 (2%)] [0.001]	Loss: 0.080112, iou: 0.868228
+(irregular) cross_entropy loss: 0.08011166006326675
+Retrain Epoch: 5 [960/34528 (3%)] [0.001]	Loss: 0.111529, iou: 0.797399
+(irregular) cross_entropy loss: 0.11152923107147217
+Retrain Epoch: 5 [1280/34528 (4%)] [0.001]	Loss: 0.084602, iou: 0.853379
+(irregular) cross_entropy loss: 0.08460219949483871
+Retrain Epoch: 5 [1600/34528 (5%)] [0.001]	Loss: 0.073974, iou: 0.883423
+(irregular) cross_entropy loss: 0.07397424429655075
+Retrain Epoch: 5 [1920/34528 (6%)] [0.001]	Loss: 0.077075, iou: 0.894162
+(irregular) cross_entropy loss: 0.07707513123750687
+Retrain Epoch: 5 [2240/34528 (6%)] [0.001]	Loss: 0.071145, iou: 0.882809
+(irregular) cross_entropy loss: 0.0711449608206749
+Retrain Epoch: 5 [2560/34528 (7%)] [0.001]	Loss: 0.101880, iou: 0.824400
+(irregular) cross_entropy loss: 0.10187961161136627
+Retrain Epoch: 5 [2880/34528 (8%)] [0.001]	Loss: 0.096414, iou: 0.861684
+(irregular) cross_entropy loss: 0.09641445428133011
+Retrain Epoch: 5 [3200/34528 (9%)] [0.001]	Loss: 0.084532, iou: 0.855376
+(irregular) cross_entropy loss: 0.08453242480754852
+Retrain Epoch: 5 [3520/34528 (10%)] [0.001]	Loss: 0.099385, iou: 0.821758
+(irregular) cross_entropy loss: 0.09938523918390274
+Retrain Epoch: 5 [3840/34528 (11%)] [0.001]	Loss: 0.109479, iou: 0.823099
+(irregular) cross_entropy loss: 0.1094793826341629
+Retrain Epoch: 5 [4160/34528 (12%)] [0.001]	Loss: 0.083017, iou: 0.882616
+(irregular) cross_entropy loss: 0.08301672339439392
+Retrain Epoch: 5 [4480/34528 (13%)] [0.001]	Loss: 0.086598, iou: 0.860965
+(irregular) cross_entropy loss: 0.08659803867340088
+Retrain Epoch: 5 [4800/34528 (14%)] [0.001]	Loss: 0.076577, iou: 0.869835
+(irregular) cross_entropy loss: 0.07657667249441147
+Retrain Epoch: 5 [5120/34528 (15%)] [0.001]	Loss: 0.064128, iou: 0.907367
+(irregular) cross_entropy loss: 0.06412813067436218
+Retrain Epoch: 5 [5440/34528 (16%)] [0.001]	Loss: 0.084952, iou: 0.870191
+(irregular) cross_entropy loss: 0.08495178073644638
+Retrain Epoch: 5 [5760/34528 (17%)] [0.001]	Loss: 0.084160, iou: 0.858179
+(irregular) cross_entropy loss: 0.08416013419628143
+Retrain Epoch: 5 [6080/34528 (18%)] [0.001]	Loss: 0.082020, iou: 0.872125
+(irregular) cross_entropy loss: 0.08202049136161804
+Retrain Epoch: 5 [6400/34528 (19%)] [0.001]	Loss: 0.082080, iou: 0.862806
+(irregular) cross_entropy loss: 0.08207964897155762
+Retrain Epoch: 5 [6720/34528 (19%)] [0.001]	Loss: 0.065608, iou: 0.896924
+(irregular) cross_entropy loss: 0.06560768187046051
+Retrain Epoch: 5 [7040/34528 (20%)] [0.001]	Loss: 0.082847, iou: 0.868561
+(irregular) cross_entropy loss: 0.08284655958414078
+Retrain Epoch: 5 [7360/34528 (21%)] [0.001]	Loss: 0.082476, iou: 0.863998
+(irregular) cross_entropy loss: 0.0824764147400856
+Retrain Epoch: 5 [7680/34528 (22%)] [0.001]	Loss: 0.090949, iou: 0.851917
+(irregular) cross_entropy loss: 0.09094905853271484
+Retrain Epoch: 5 [8000/34528 (23%)] [0.001]	Loss: 0.086228, iou: 0.856821
+(irregular) cross_entropy loss: 0.0862279087305069
+Retrain Epoch: 5 [8320/34528 (24%)] [0.001]	Loss: 0.073922, iou: 0.896283
+(irregular) cross_entropy loss: 0.07392209768295288
+Retrain Epoch: 5 [8640/34528 (25%)] [0.001]	Loss: 0.067553, iou: 0.901094
+(irregular) cross_entropy loss: 0.06755274534225464
+Retrain Epoch: 5 [8960/34528 (26%)] [0.001]	Loss: 0.108090, iou: 0.820854
+(irregular) cross_entropy loss: 0.10808978974819183
+Retrain Epoch: 5 [9280/34528 (27%)] [0.001]	Loss: 0.093178, iou: 0.860146
+(irregular) cross_entropy loss: 0.09317836910486221
+Retrain Epoch: 5 [9600/34528 (28%)] [0.001]	Loss: 0.091379, iou: 0.841251
+(irregular) cross_entropy loss: 0.09137873351573944
+Retrain Epoch: 5 [9920/34528 (29%)] [0.001]	Loss: 0.095517, iou: 0.846228
+(irregular) cross_entropy loss: 0.09551702439785004
+Retrain Epoch: 5 [10240/34528 (30%)] [0.001]	Loss: 0.079666, iou: 0.875829
+(irregular) cross_entropy loss: 0.07966593652963638
+Retrain Epoch: 5 [10560/34528 (31%)] [0.001]	Loss: 0.078460, iou: 0.883161
+(irregular) cross_entropy loss: 0.07846039533615112
+Retrain Epoch: 5 [10880/34528 (32%)] [0.001]	Loss: 0.073735, iou: 0.879616
+(irregular) cross_entropy loss: 0.07373476773500443
+Retrain Epoch: 5 [11200/34528 (32%)] [0.001]	Loss: 0.088309, iou: 0.861342
+(irregular) cross_entropy loss: 0.08830894529819489
+Retrain Epoch: 5 [11520/34528 (33%)] [0.001]	Loss: 0.076871, iou: 0.887172
+(irregular) cross_entropy loss: 0.07687100768089294
+Retrain Epoch: 5 [11840/34528 (34%)] [0.001]	Loss: 0.070751, iou: 0.893013
+(irregular) cross_entropy loss: 0.07075068354606628
+Retrain Epoch: 5 [12160/34528 (35%)] [0.001]	Loss: 0.067270, iou: 0.892946
+(irregular) cross_entropy loss: 0.06727012991905212
+Retrain Epoch: 5 [12480/34528 (36%)] [0.001]	Loss: 0.083848, iou: 0.859605
+(irregular) cross_entropy loss: 0.08384809643030167
+Retrain Epoch: 5 [12800/34528 (37%)] [0.001]	Loss: 0.084612, iou: 0.857894
+(irregular) cross_entropy loss: 0.08461198210716248
+Retrain Epoch: 5 [13120/34528 (38%)] [0.001]	Loss: 0.102034, iou: 0.831309
+(irregular) cross_entropy loss: 0.10203441977500916
+Retrain Epoch: 5 [13440/34528 (39%)] [0.001]	Loss: 0.076782, iou: 0.870659
+(irregular) cross_entropy loss: 0.07678228616714478
+Retrain Epoch: 5 [13760/34528 (40%)] [0.001]	Loss: 0.066800, iou: 0.891280
+(irregular) cross_entropy loss: 0.06679992377758026
+Retrain Epoch: 5 [14080/34528 (41%)] [0.001]	Loss: 0.076225, iou: 0.871441
+(irregular) cross_entropy loss: 0.07622519880533218
+Retrain Epoch: 5 [14400/34528 (42%)] [0.001]	Loss: 0.085921, iou: 0.863810
+(irregular) cross_entropy loss: 0.08592113852500916
+Retrain Epoch: 5 [14720/34528 (43%)] [0.001]	Loss: 0.089694, iou: 0.863038
+(irregular) cross_entropy loss: 0.08969402313232422
+Retrain Epoch: 5 [15040/34528 (44%)] [0.001]	Loss: 0.089447, iou: 0.853217
+(irregular) cross_entropy loss: 0.08944682031869888
+Retrain Epoch: 5 [15360/34528 (44%)] [0.001]	Loss: 0.092594, iou: 0.847736
+(irregular) cross_entropy loss: 0.09259366989135742
+Retrain Epoch: 5 [15680/34528 (45%)] [0.001]	Loss: 0.096768, iou: 0.855288
+(irregular) cross_entropy loss: 0.09676771610975266
+Retrain Epoch: 5 [16000/34528 (46%)] [0.001]	Loss: 0.083109, iou: 0.859726
+(irregular) cross_entropy loss: 0.08310940861701965
+Retrain Epoch: 5 [16320/34528 (47%)] [0.001]	Loss: 0.067867, iou: 0.905163
+(irregular) cross_entropy loss: 0.06786731630563736
+Retrain Epoch: 5 [16640/34528 (48%)] [0.001]	Loss: 0.075918, iou: 0.882850
+(irregular) cross_entropy loss: 0.07591759413480759
+Retrain Epoch: 5 [16960/34528 (49%)] [0.001]	Loss: 0.068181, iou: 0.899015
+(irregular) cross_entropy loss: 0.06818129122257233
+Retrain Epoch: 5 [17280/34528 (50%)] [0.001]	Loss: 0.072592, iou: 0.881667
+(irregular) cross_entropy loss: 0.07259229570627213
+Retrain Epoch: 5 [17600/34528 (51%)] [0.001]	Loss: 0.102193, iou: 0.833899
+(irregular) cross_entropy loss: 0.10219339281320572
+Retrain Epoch: 5 [17920/34528 (52%)] [0.001]	Loss: 0.109102, iou: 0.836211
+(irregular) cross_entropy loss: 0.10910192131996155
+Retrain Epoch: 5 [18240/34528 (53%)] [0.001]	Loss: 0.101992, iou: 0.843855
+(irregular) cross_entropy loss: 0.10199242830276489
+Retrain Epoch: 5 [18560/34528 (54%)] [0.001]	Loss: 0.096308, iou: 0.836411
+(irregular) cross_entropy loss: 0.09630773216485977
+Retrain Epoch: 5 [18880/34528 (55%)] [0.001]	Loss: 0.096571, iou: 0.836743
+(irregular) cross_entropy loss: 0.09657136350870132
+Retrain Epoch: 5 [19200/34528 (56%)] [0.001]	Loss: 0.072608, iou: 0.881399
+(irregular) cross_entropy loss: 0.07260845601558685
+Retrain Epoch: 5 [19520/34528 (57%)] [0.001]	Loss: 0.082263, iou: 0.861936
+(irregular) cross_entropy loss: 0.08226259052753448
+Retrain Epoch: 5 [19840/34528 (57%)] [0.001]	Loss: 0.078103, iou: 0.870129
+(irregular) cross_entropy loss: 0.07810324430465698
+Retrain Epoch: 5 [20160/34528 (58%)] [0.001]	Loss: 0.071003, iou: 0.885529
+(irregular) cross_entropy loss: 0.07100322842597961
+Retrain Epoch: 5 [20480/34528 (59%)] [0.001]	Loss: 0.108815, iou: 0.822207
+(irregular) cross_entropy loss: 0.10881470888853073
+Retrain Epoch: 5 [20800/34528 (60%)] [0.001]	Loss: 0.098978, iou: 0.833449
+(irregular) cross_entropy loss: 0.09897777438163757
+Retrain Epoch: 5 [21120/34528 (61%)] [0.001]	Loss: 0.097476, iou: 0.827922
+(irregular) cross_entropy loss: 0.09747633337974548
+Retrain Epoch: 5 [21440/34528 (62%)] [0.001]	Loss: 0.100273, iou: 0.825589
+(irregular) cross_entropy loss: 0.10027291625738144
+Retrain Epoch: 5 [21760/34528 (63%)] [0.001]	Loss: 0.074379, iou: 0.877709
+(irregular) cross_entropy loss: 0.07437901198863983
+Retrain Epoch: 5 [22080/34528 (64%)] [0.001]	Loss: 0.075690, iou: 0.888989
+(irregular) cross_entropy loss: 0.07568981498479843
+Retrain Epoch: 5 [22400/34528 (65%)] [0.001]	Loss: 0.103260, iou: 0.847151
+(irregular) cross_entropy loss: 0.10326014459133148
+Retrain Epoch: 5 [22720/34528 (66%)] [0.001]	Loss: 0.082590, iou: 0.864746
+(irregular) cross_entropy loss: 0.08258970826864243
+Retrain Epoch: 5 [23040/34528 (67%)] [0.001]	Loss: 0.099810, iou: 0.841800
+(irregular) cross_entropy loss: 0.09980958700180054
+Retrain Epoch: 5 [23360/34528 (68%)] [0.001]	Loss: 0.090361, iou: 0.843983
+(irregular) cross_entropy loss: 0.09036141633987427
+Retrain Epoch: 5 [23680/34528 (69%)] [0.001]	Loss: 0.079878, iou: 0.875672
+(irregular) cross_entropy loss: 0.0798783004283905
+Retrain Epoch: 5 [24000/34528 (70%)] [0.001]	Loss: 0.066170, iou: 0.893820
+(irregular) cross_entropy loss: 0.0661696344614029
+Retrain Epoch: 5 [24320/34528 (70%)] [0.001]	Loss: 0.075752, iou: 0.881602
+(irregular) cross_entropy loss: 0.07575203478336334
+Retrain Epoch: 5 [24640/34528 (71%)] [0.001]	Loss: 0.083632, iou: 0.863904
+(irregular) cross_entropy loss: 0.08363211899995804
+Retrain Epoch: 5 [24960/34528 (72%)] [0.001]	Loss: 0.076879, iou: 0.881979
+(irregular) cross_entropy loss: 0.07687907665967941
+Retrain Epoch: 5 [25280/34528 (73%)] [0.001]	Loss: 0.096322, iou: 0.844932
+(irregular) cross_entropy loss: 0.09632155299186707
+Retrain Epoch: 5 [25600/34528 (74%)] [0.001]	Loss: 0.097936, iou: 0.837347
+(irregular) cross_entropy loss: 0.09793558716773987
+Retrain Epoch: 5 [25920/34528 (75%)] [0.001]	Loss: 0.075715, iou: 0.876278
+(irregular) cross_entropy loss: 0.07571515440940857
+Retrain Epoch: 5 [26240/34528 (76%)] [0.001]	Loss: 0.080489, iou: 0.864393
+(irregular) cross_entropy loss: 0.08048932999372482
+Retrain Epoch: 5 [26560/34528 (77%)] [0.001]	Loss: 0.068890, iou: 0.903671
+(irregular) cross_entropy loss: 0.06888997554779053
+Retrain Epoch: 5 [26880/34528 (78%)] [0.001]	Loss: 0.084225, iou: 0.866581
+(irregular) cross_entropy loss: 0.08422496914863586
+Retrain Epoch: 5 [27200/34528 (79%)] [0.001]	Loss: 0.084759, iou: 0.865095
+(irregular) cross_entropy loss: 0.08475865423679352
+Retrain Epoch: 5 [27520/34528 (80%)] [0.001]	Loss: 0.084422, iou: 0.860961
+(irregular) cross_entropy loss: 0.08442243188619614
+Retrain Epoch: 5 [27840/34528 (81%)] [0.001]	Loss: 0.061824, iou: 0.910892
+(irregular) cross_entropy loss: 0.0618240088224411
+Retrain Epoch: 5 [28160/34528 (82%)] [0.001]	Loss: 0.109876, iou: 0.825801
+(irregular) cross_entropy loss: 0.10987550765275955
+Retrain Epoch: 5 [28480/34528 (82%)] [0.001]	Loss: 0.085284, iou: 0.864603
+(irregular) cross_entropy loss: 0.08528412133455276
+Retrain Epoch: 5 [28800/34528 (83%)] [0.001]	Loss: 0.080754, iou: 0.869780
+(irregular) cross_entropy loss: 0.08075366914272308
+Retrain Epoch: 5 [29120/34528 (84%)] [0.001]	Loss: 0.094831, iou: 0.846006
+(irregular) cross_entropy loss: 0.09483060240745544
+Retrain Epoch: 5 [29440/34528 (85%)] [0.001]	Loss: 0.096418, iou: 0.838374
+(irregular) cross_entropy loss: 0.09641801565885544
+Retrain Epoch: 5 [29760/34528 (86%)] [0.001]	Loss: 0.095289, iou: 0.837011
+(irregular) cross_entropy loss: 0.09528900682926178
+Retrain Epoch: 5 [30080/34528 (87%)] [0.001]	Loss: 0.074628, iou: 0.881712
+(irregular) cross_entropy loss: 0.07462794333696365
+Retrain Epoch: 5 [30400/34528 (88%)] [0.001]	Loss: 0.089070, iou: 0.842031
+(irregular) cross_entropy loss: 0.08906969428062439
+Retrain Epoch: 5 [30720/34528 (89%)] [0.001]	Loss: 0.067909, iou: 0.895101
+(irregular) cross_entropy loss: 0.06790889799594879
+Retrain Epoch: 5 [31040/34528 (90%)] [0.001]	Loss: 0.076139, iou: 0.879183
+(irregular) cross_entropy loss: 0.07613871246576309
+Retrain Epoch: 5 [31360/34528 (91%)] [0.001]	Loss: 0.084715, iou: 0.862018
+(irregular) cross_entropy loss: 0.08471536636352539
+Retrain Epoch: 5 [31680/34528 (92%)] [0.001]	Loss: 0.085988, iou: 0.849931
+(irregular) cross_entropy loss: 0.08598756790161133
+Retrain Epoch: 5 [32000/34528 (93%)] [0.001]	Loss: 0.077283, iou: 0.882170
+(irregular) cross_entropy loss: 0.07728308439254761
+Retrain Epoch: 5 [32320/34528 (94%)] [0.001]	Loss: 0.106610, iou: 0.824401
+(irregular) cross_entropy loss: 0.10661010444164276
+Retrain Epoch: 5 [32640/34528 (95%)] [0.001]	Loss: 0.123523, iou: 0.785484
+(irregular) cross_entropy loss: 0.12352307140827179
+Retrain Epoch: 5 [32960/34528 (95%)] [0.001]	Loss: 0.106723, iou: 0.819502
+(irregular) cross_entropy loss: 0.10672269016504288
+Retrain Epoch: 5 [33280/34528 (96%)] [0.001]	Loss: 0.073159, iou: 0.879115
+(irregular) cross_entropy loss: 0.07315945625305176
+Retrain Epoch: 5 [33600/34528 (97%)] [0.001]	Loss: 0.074734, iou: 0.878255
+(irregular) cross_entropy loss: 0.07473377138376236
+Retrain Epoch: 5 [33920/34528 (98%)] [0.001]	Loss: 0.073887, iou: 0.881918
+(irregular) cross_entropy loss: 0.07388713955879211
+Retrain Epoch: 5 [34240/34528 (99%)] [0.001]	Loss: 0.079669, iou: 0.866848
+(irregular) cross_entropy loss: 0.07966940104961395
+retrain: iou: 0.862796, bce: 0.032475, dice: 0.137204, loss: 0.084840
+Validation: [0/3836 (0%)]	Loss: 0.088220, iou: 0.856004
+Validation: [640/3836 (17%)]	Loss: 0.091034, iou: 0.844699
+Validation: [1280/3836 (33%)]	Loss: 0.082717, iou: 0.861076
+Validation: [1920/3836 (50%)]	Loss: 0.083600, iou: 0.861816
+Validation: [2560/3836 (67%)]	Loss: 0.079268, iou: 0.873474
+Validation: [3200/3836 (83%)]	Loss: 0.084106, iou: 0.866012
+val: iou: 0.862623, bce: 0.030950, dice: 0.137377, loss: 0.084164
+
+==============================> Accuracy after Masked Retrain of epoch 5: 
+Validation: [0/3836 (0%)]	Loss: 0.088220, iou: 0.856004
+Validation: [640/3836 (17%)]	Loss: 0.091034, iou: 0.844699
+Validation: [1280/3836 (33%)]	Loss: 0.082717, iou: 0.861076
+Validation: [1920/3836 (50%)]	Loss: 0.083600, iou: 0.861816
+Validation: [2560/3836 (67%)]	Loss: 0.079268, iou: 0.873474
+Validation: [3200/3836 (83%)]	Loss: 0.084106, iou: 0.866012
+val: iou: 0.862623, bce: 0.030950, dice: 0.137377, loss: 0.084164
+Current epoch: 6; current test iou: 0.8626; best test iou: 0.8660 at epoch 5
+
+
+epoch:  6
+Retrain Epoch: 6 [0/34528 (0%)] [0.001]	Loss: 0.078405, iou: 0.879300
+(irregular) cross_entropy loss: 0.07840535789728165
+Retrain Epoch: 6 [320/34528 (1%)] [0.001]	Loss: 0.080642, iou: 0.865585
+(irregular) cross_entropy loss: 0.08064186573028564
+Retrain Epoch: 6 [640/34528 (2%)] [0.001]	Loss: 0.064552, iou: 0.891843
+(irregular) cross_entropy loss: 0.06455244868993759
+Retrain Epoch: 6 [960/34528 (3%)] [0.001]	Loss: 0.097487, iou: 0.843204
+(irregular) cross_entropy loss: 0.09748703241348267
+Retrain Epoch: 6 [1280/34528 (4%)] [0.001]	Loss: 0.079203, iou: 0.875472
+(irregular) cross_entropy loss: 0.07920268923044205
+Retrain Epoch: 6 [1600/34528 (5%)] [0.001]	Loss: 0.078626, iou: 0.868087
+(irregular) cross_entropy loss: 0.07862567156553268
+Retrain Epoch: 6 [1920/34528 (6%)] [0.001]	Loss: 0.063424, iou: 0.904518
+(irregular) cross_entropy loss: 0.0634235218167305
+Retrain Epoch: 6 [2240/34528 (6%)] [0.001]	Loss: 0.066768, iou: 0.895802
+(irregular) cross_entropy loss: 0.06676844507455826
+Retrain Epoch: 6 [2560/34528 (7%)] [0.001]	Loss: 0.100648, iou: 0.833976
+(irregular) cross_entropy loss: 0.10064826160669327
+Retrain Epoch: 6 [2880/34528 (8%)] [0.001]	Loss: 0.077885, iou: 0.876997
+(irregular) cross_entropy loss: 0.07788524031639099
+Retrain Epoch: 6 [3200/34528 (9%)] [0.001]	Loss: 0.089672, iou: 0.864278
+(irregular) cross_entropy loss: 0.0896720141172409
+Retrain Epoch: 6 [3520/34528 (10%)] [0.001]	Loss: 0.090532, iou: 0.849079
+(irregular) cross_entropy loss: 0.09053198248147964
+Retrain Epoch: 6 [3840/34528 (11%)] [0.001]	Loss: 0.105629, iou: 0.818518
+(irregular) cross_entropy loss: 0.10562872886657715
+Retrain Epoch: 6 [4160/34528 (12%)] [0.001]	Loss: 0.092389, iou: 0.852672
+(irregular) cross_entropy loss: 0.09238865226507187
+Retrain Epoch: 6 [4480/34528 (13%)] [0.001]	Loss: 0.076373, iou: 0.879262
+(irregular) cross_entropy loss: 0.0763733834028244
+Retrain Epoch: 6 [4800/34528 (14%)] [0.001]	Loss: 0.095287, iou: 0.845607
+(irregular) cross_entropy loss: 0.09528667479753494
+Retrain Epoch: 6 [5120/34528 (15%)] [0.001]	Loss: 0.074582, iou: 0.880784
+(irregular) cross_entropy loss: 0.07458201050758362
+Retrain Epoch: 6 [5440/34528 (16%)] [0.001]	Loss: 0.061335, iou: 0.915146
+(irregular) cross_entropy loss: 0.06133482605218887
+Retrain Epoch: 6 [5760/34528 (17%)] [0.001]	Loss: 0.076775, iou: 0.875902
+(irregular) cross_entropy loss: 0.07677481323480606
+Retrain Epoch: 6 [6080/34528 (18%)] [0.001]	Loss: 0.067930, iou: 0.890135
+(irregular) cross_entropy loss: 0.06792974472045898
+Retrain Epoch: 6 [6400/34528 (19%)] [0.001]	Loss: 0.071959, iou: 0.895240
+(irregular) cross_entropy loss: 0.07195943593978882
+Retrain Epoch: 6 [6720/34528 (19%)] [0.001]	Loss: 0.072906, iou: 0.889780
+(irregular) cross_entropy loss: 0.07290606945753098
+Retrain Epoch: 6 [7040/34528 (20%)] [0.001]	Loss: 0.095899, iou: 0.837839
+(irregular) cross_entropy loss: 0.0958985760807991
+Retrain Epoch: 6 [7360/34528 (21%)] [0.001]	Loss: 0.080606, iou: 0.872932
+(irregular) cross_entropy loss: 0.08060592412948608
+Retrain Epoch: 6 [7680/34528 (22%)] [0.001]	Loss: 0.082299, iou: 0.862462
+(irregular) cross_entropy loss: 0.08229862153530121
+Retrain Epoch: 6 [8000/34528 (23%)] [0.001]	Loss: 0.099554, iou: 0.833071
+(irregular) cross_entropy loss: 0.0995541512966156
+Retrain Epoch: 6 [8320/34528 (24%)] [0.001]	Loss: 0.088022, iou: 0.858288
+(irregular) cross_entropy loss: 0.0880216583609581
+Retrain Epoch: 6 [8640/34528 (25%)] [0.001]	Loss: 0.083687, iou: 0.865432
+(irregular) cross_entropy loss: 0.0836869478225708
+Retrain Epoch: 6 [8960/34528 (26%)] [0.001]	Loss: 0.077297, iou: 0.891908
+(irregular) cross_entropy loss: 0.07729652523994446
+Retrain Epoch: 6 [9280/34528 (27%)] [0.001]	Loss: 0.113533, iou: 0.802598
+(irregular) cross_entropy loss: 0.11353293806314468
+Retrain Epoch: 6 [9600/34528 (28%)] [0.001]	Loss: 0.088952, iou: 0.855277
+(irregular) cross_entropy loss: 0.08895178139209747
+Retrain Epoch: 6 [9920/34528 (29%)] [0.001]	Loss: 0.087000, iou: 0.866701
+(irregular) cross_entropy loss: 0.08700049668550491
+Retrain Epoch: 6 [10240/34528 (30%)] [0.001]	Loss: 0.080173, iou: 0.863955
+(irregular) cross_entropy loss: 0.08017272502183914
+Retrain Epoch: 6 [10560/34528 (31%)] [0.001]	Loss: 0.077373, iou: 0.876459
+(irregular) cross_entropy loss: 0.0773729458451271
+Retrain Epoch: 6 [10880/34528 (32%)] [0.001]	Loss: 0.076085, iou: 0.877207
+(irregular) cross_entropy loss: 0.07608509808778763
+Retrain Epoch: 6 [11200/34528 (32%)] [0.001]	Loss: 0.086569, iou: 0.855012
+(irregular) cross_entropy loss: 0.08656886219978333
+Retrain Epoch: 6 [11520/34528 (33%)] [0.001]	Loss: 0.075571, iou: 0.868970
+(irregular) cross_entropy loss: 0.07557148486375809
+Retrain Epoch: 6 [11840/34528 (34%)] [0.001]	Loss: 0.086033, iou: 0.865899
+(irregular) cross_entropy loss: 0.08603279292583466
+Retrain Epoch: 6 [12160/34528 (35%)] [0.001]	Loss: 0.091257, iou: 0.850591
+(irregular) cross_entropy loss: 0.09125728160142899
+Retrain Epoch: 6 [12480/34528 (36%)] [0.001]	Loss: 0.103379, iou: 0.816789
+(irregular) cross_entropy loss: 0.10337904095649719
+Retrain Epoch: 6 [12800/34528 (37%)] [0.001]	Loss: 0.088311, iou: 0.856796
+(irregular) cross_entropy loss: 0.08831088244915009
+Retrain Epoch: 6 [13120/34528 (38%)] [0.001]	Loss: 0.108934, iou: 0.807435
+(irregular) cross_entropy loss: 0.10893362760543823
+Retrain Epoch: 6 [13440/34528 (39%)] [0.001]	Loss: 0.076216, iou: 0.873659
+(irregular) cross_entropy loss: 0.07621550559997559
+Retrain Epoch: 6 [13760/34528 (40%)] [0.001]	Loss: 0.083295, iou: 0.863752
+(irregular) cross_entropy loss: 0.08329455554485321
+Retrain Epoch: 6 [14080/34528 (41%)] [0.001]	Loss: 0.069931, iou: 0.892120
+(irregular) cross_entropy loss: 0.06993057578802109
+Retrain Epoch: 6 [14400/34528 (42%)] [0.001]	Loss: 0.081279, iou: 0.859638
+(irregular) cross_entropy loss: 0.08127884566783905
+Retrain Epoch: 6 [14720/34528 (43%)] [0.001]	Loss: 0.067036, iou: 0.898675
+(irregular) cross_entropy loss: 0.06703595072031021
+Retrain Epoch: 6 [15040/34528 (44%)] [0.001]	Loss: 0.073751, iou: 0.877501
+(irregular) cross_entropy loss: 0.07375071197748184
+Retrain Epoch: 6 [15360/34528 (44%)] [0.001]	Loss: 0.066502, iou: 0.895838
+(irregular) cross_entropy loss: 0.06650153547525406
+Retrain Epoch: 6 [15680/34528 (45%)] [0.001]	Loss: 0.065667, iou: 0.902224
+(irregular) cross_entropy loss: 0.06566722691059113
+Retrain Epoch: 6 [16000/34528 (46%)] [0.001]	Loss: 0.078002, iou: 0.878346
+(irregular) cross_entropy loss: 0.07800184935331345
+Retrain Epoch: 6 [16320/34528 (47%)] [0.001]	Loss: 0.112706, iou: 0.815873
+(irregular) cross_entropy loss: 0.11270608007907867
+Retrain Epoch: 6 [16640/34528 (48%)] [0.001]	Loss: 0.088761, iou: 0.863208
+(irregular) cross_entropy loss: 0.08876068145036697
+Retrain Epoch: 6 [16960/34528 (49%)] [0.001]	Loss: 0.090518, iou: 0.860232
+(irregular) cross_entropy loss: 0.09051789343357086
+Retrain Epoch: 6 [17280/34528 (50%)] [0.001]	Loss: 0.075555, iou: 0.883713
+(irregular) cross_entropy loss: 0.075554758310318
+Retrain Epoch: 6 [17600/34528 (51%)] [0.001]	Loss: 0.076386, iou: 0.879043
+(irregular) cross_entropy loss: 0.0763864517211914
+Retrain Epoch: 6 [17920/34528 (52%)] [0.001]	Loss: 0.107421, iou: 0.821033
+(irregular) cross_entropy loss: 0.10742060095071793
+Retrain Epoch: 6 [18240/34528 (53%)] [0.001]	Loss: 0.088757, iou: 0.851204
+(irregular) cross_entropy loss: 0.08875728398561478
+Retrain Epoch: 6 [18560/34528 (54%)] [0.001]	Loss: 0.113202, iou: 0.798210
+(irregular) cross_entropy loss: 0.11320173740386963
+Retrain Epoch: 6 [18880/34528 (55%)] [0.001]	Loss: 0.071141, iou: 0.886044
+(irregular) cross_entropy loss: 0.07114063948392868
+Retrain Epoch: 6 [19200/34528 (56%)] [0.001]	Loss: 0.096162, iou: 0.846008
+(irregular) cross_entropy loss: 0.09616212546825409
+Retrain Epoch: 6 [19520/34528 (57%)] [0.001]	Loss: 0.078686, iou: 0.875645
+(irregular) cross_entropy loss: 0.07868592441082001
+Retrain Epoch: 6 [19840/34528 (57%)] [0.001]	Loss: 0.067580, iou: 0.889001
+(irregular) cross_entropy loss: 0.06758016347885132
+Retrain Epoch: 6 [20160/34528 (58%)] [0.001]	Loss: 0.082708, iou: 0.866399
+(irregular) cross_entropy loss: 0.08270770311355591
+Retrain Epoch: 6 [20480/34528 (59%)] [0.001]	Loss: 0.114871, iou: 0.797020
+(irregular) cross_entropy loss: 0.11487139761447906
+Retrain Epoch: 6 [20800/34528 (60%)] [0.001]	Loss: 0.096898, iou: 0.835837
+(irregular) cross_entropy loss: 0.09689819812774658
+Retrain Epoch: 6 [21120/34528 (61%)] [0.001]	Loss: 0.073153, iou: 0.890628
+(irregular) cross_entropy loss: 0.07315332442522049
+Retrain Epoch: 6 [21440/34528 (62%)] [0.001]	Loss: 0.104637, iou: 0.823995
+(irregular) cross_entropy loss: 0.10463681817054749
+Retrain Epoch: 6 [21760/34528 (63%)] [0.001]	Loss: 0.091637, iou: 0.847451
+(irregular) cross_entropy loss: 0.09163691848516464
+Retrain Epoch: 6 [22080/34528 (64%)] [0.001]	Loss: 0.101708, iou: 0.824750
+(irregular) cross_entropy loss: 0.10170841217041016
+Retrain Epoch: 6 [22400/34528 (65%)] [0.001]	Loss: 0.070166, iou: 0.897113
+(irregular) cross_entropy loss: 0.07016626000404358
+Retrain Epoch: 6 [22720/34528 (66%)] [0.001]	Loss: 0.090394, iou: 0.842953
+(irregular) cross_entropy loss: 0.0903937891125679
+Retrain Epoch: 6 [23040/34528 (67%)] [0.001]	Loss: 0.074665, iou: 0.879577
+(irregular) cross_entropy loss: 0.0746646523475647
+Retrain Epoch: 6 [23360/34528 (68%)] [0.001]	Loss: 0.075726, iou: 0.882452
+(irregular) cross_entropy loss: 0.0757264643907547
+Retrain Epoch: 6 [23680/34528 (69%)] [0.001]	Loss: 0.089393, iou: 0.855207
+(irregular) cross_entropy loss: 0.08939296752214432
+Retrain Epoch: 6 [24000/34528 (70%)] [0.001]	Loss: 0.057910, iou: 0.908620
+(irregular) cross_entropy loss: 0.05791042000055313
+Retrain Epoch: 6 [24320/34528 (70%)] [0.001]	Loss: 0.079376, iou: 0.865645
+(irregular) cross_entropy loss: 0.07937580347061157
+Retrain Epoch: 6 [24640/34528 (71%)] [0.001]	Loss: 0.077154, iou: 0.873644
+(irregular) cross_entropy loss: 0.07715363800525665
+Retrain Epoch: 6 [24960/34528 (72%)] [0.001]	Loss: 0.082841, iou: 0.866355
+(irregular) cross_entropy loss: 0.08284123986959457
+Retrain Epoch: 6 [25280/34528 (73%)] [0.001]	Loss: 0.074633, iou: 0.888037
+(irregular) cross_entropy loss: 0.07463325560092926
+Retrain Epoch: 6 [25600/34528 (74%)] [0.001]	Loss: 0.071776, iou: 0.888867
+(irregular) cross_entropy loss: 0.07177560031414032
+Retrain Epoch: 6 [25920/34528 (75%)] [0.001]	Loss: 0.089417, iou: 0.856237
+(irregular) cross_entropy loss: 0.08941744267940521
+Retrain Epoch: 6 [26240/34528 (76%)] [0.001]	Loss: 0.088523, iou: 0.850504
+(irregular) cross_entropy loss: 0.08852322399616241
+Retrain Epoch: 6 [26560/34528 (77%)] [0.001]	Loss: 0.100666, iou: 0.831065
+(irregular) cross_entropy loss: 0.10066625475883484
+Retrain Epoch: 6 [26880/34528 (78%)] [0.001]	Loss: 0.070111, iou: 0.889082
+(irregular) cross_entropy loss: 0.07011053711175919
+Retrain Epoch: 6 [27200/34528 (79%)] [0.001]	Loss: 0.086661, iou: 0.859008
+(irregular) cross_entropy loss: 0.08666054159402847
+Retrain Epoch: 6 [27520/34528 (80%)] [0.001]	Loss: 0.114277, iou: 0.800116
+(irregular) cross_entropy loss: 0.11427664011716843
+Retrain Epoch: 6 [27840/34528 (81%)] [0.001]	Loss: 0.088461, iou: 0.864969
+(irregular) cross_entropy loss: 0.08846093714237213
+Retrain Epoch: 6 [28160/34528 (82%)] [0.001]	Loss: 0.099087, iou: 0.835803
+(irregular) cross_entropy loss: 0.09908726811408997
+Retrain Epoch: 6 [28480/34528 (82%)] [0.001]	Loss: 0.069826, iou: 0.891634
+(irregular) cross_entropy loss: 0.06982580572366714
+Retrain Epoch: 6 [28800/34528 (83%)] [0.001]	Loss: 0.083491, iou: 0.862756
+(irregular) cross_entropy loss: 0.08349068462848663
+Retrain Epoch: 6 [29120/34528 (84%)] [0.001]	Loss: 0.076640, iou: 0.886579
+(irregular) cross_entropy loss: 0.07663998007774353
+Retrain Epoch: 6 [29440/34528 (85%)] [0.001]	Loss: 0.085499, iou: 0.866530
+(irregular) cross_entropy loss: 0.08549891412258148
+Retrain Epoch: 6 [29760/34528 (86%)] [0.001]	Loss: 0.086665, iou: 0.861236
+(irregular) cross_entropy loss: 0.08666548132896423
+Retrain Epoch: 6 [30080/34528 (87%)] [0.001]	Loss: 0.098698, iou: 0.834851
+(irregular) cross_entropy loss: 0.09869761765003204
+Retrain Epoch: 6 [30400/34528 (88%)] [0.001]	Loss: 0.092111, iou: 0.846999
+(irregular) cross_entropy loss: 0.0921112596988678
+Retrain Epoch: 6 [30720/34528 (89%)] [0.001]	Loss: 0.088880, iou: 0.845196
+(irregular) cross_entropy loss: 0.08888029307126999
+Retrain Epoch: 6 [31040/34528 (90%)] [0.001]	Loss: 0.078134, iou: 0.874451
+(irregular) cross_entropy loss: 0.07813449203968048
+Retrain Epoch: 6 [31360/34528 (91%)] [0.001]	Loss: 0.083998, iou: 0.862465
+(irregular) cross_entropy loss: 0.08399763703346252
+Retrain Epoch: 6 [31680/34528 (92%)] [0.001]	Loss: 0.087711, iou: 0.852398
+(irregular) cross_entropy loss: 0.08771058917045593
+Retrain Epoch: 6 [32000/34528 (93%)] [0.001]	Loss: 0.073490, iou: 0.887677
+(irregular) cross_entropy loss: 0.0734904333949089
+Retrain Epoch: 6 [32320/34528 (94%)] [0.001]	Loss: 0.081656, iou: 0.875692
+(irregular) cross_entropy loss: 0.08165565133094788
+Retrain Epoch: 6 [32640/34528 (95%)] [0.001]	Loss: 0.096814, iou: 0.832276
+(irregular) cross_entropy loss: 0.09681418538093567
+Retrain Epoch: 6 [32960/34528 (95%)] [0.001]	Loss: 0.072071, iou: 0.886638
+(irregular) cross_entropy loss: 0.07207052409648895
+Retrain Epoch: 6 [33280/34528 (96%)] [0.001]	Loss: 0.090550, iou: 0.857686
+(irregular) cross_entropy loss: 0.09055019915103912
+Retrain Epoch: 6 [33600/34528 (97%)] [0.001]	Loss: 0.075074, iou: 0.880302
+(irregular) cross_entropy loss: 0.0750737190246582
+Retrain Epoch: 6 [33920/34528 (98%)] [0.001]	Loss: 0.090219, iou: 0.844486
+(irregular) cross_entropy loss: 0.0902194082736969
+Retrain Epoch: 6 [34240/34528 (99%)] [0.001]	Loss: 0.072348, iou: 0.879112
+(irregular) cross_entropy loss: 0.0723477229475975
+retrain: iou: 0.863994, bce: 0.031904, dice: 0.136006, loss: 0.083955
+Validation: [0/3836 (0%)]	Loss: 0.082580, iou: 0.865374
+Validation: [640/3836 (17%)]	Loss: 0.090768, iou: 0.845025
+Validation: [1280/3836 (33%)]	Loss: 0.079541, iou: 0.866395
+Validation: [1920/3836 (50%)]	Loss: 0.079151, iou: 0.870779
+Validation: [2560/3836 (67%)]	Loss: 0.079355, iou: 0.873809
+Validation: [3200/3836 (83%)]	Loss: 0.078432, iou: 0.875628
+val: iou: 0.867885, bce: 0.030644, dice: 0.132115, loss: 0.081379
+Get a new best test IOU:0.87
+Saving model...
+
+==============================> Accuracy after Masked Retrain of epoch 6: 
+Validation: [0/3836 (0%)]	Loss: 0.082580, iou: 0.865374
+Validation: [640/3836 (17%)]	Loss: 0.090768, iou: 0.845025
+Validation: [1280/3836 (33%)]	Loss: 0.079541, iou: 0.866395
+Validation: [1920/3836 (50%)]	Loss: 0.079151, iou: 0.870779
+Validation: [2560/3836 (67%)]	Loss: 0.079355, iou: 0.873809
+Validation: [3200/3836 (83%)]	Loss: 0.078432, iou: 0.875628
+val: iou: 0.867885, bce: 0.030644, dice: 0.132115, loss: 0.081379
+Current epoch: 7; current test iou: 0.8679; best test iou: 0.8679 at epoch 7
+
+
+epoch:  7
+Retrain Epoch: 7 [0/34528 (0%)] [0.001]	Loss: 0.099887, iou: 0.843307
+(irregular) cross_entropy loss: 0.09988686442375183
+Retrain Epoch: 7 [320/34528 (1%)] [0.001]	Loss: 0.075781, iou: 0.874485
+(irregular) cross_entropy loss: 0.07578098028898239
+Retrain Epoch: 7 [640/34528 (2%)] [0.001]	Loss: 0.086678, iou: 0.849228
+(irregular) cross_entropy loss: 0.08667770773172379
+Retrain Epoch: 7 [960/34528 (3%)] [0.001]	Loss: 0.076062, iou: 0.874406
+(irregular) cross_entropy loss: 0.07606155425310135
+Retrain Epoch: 7 [1280/34528 (4%)] [0.001]	Loss: 0.080781, iou: 0.864194
+(irregular) cross_entropy loss: 0.08078131079673767
+Retrain Epoch: 7 [1600/34528 (5%)] [0.001]	Loss: 0.057877, iou: 0.914039
+(irregular) cross_entropy loss: 0.057876721024513245
+Retrain Epoch: 7 [1920/34528 (6%)] [0.001]	Loss: 0.062412, iou: 0.905380
+(irregular) cross_entropy loss: 0.062411777675151825
+Retrain Epoch: 7 [2240/34528 (6%)] [0.001]	Loss: 0.091323, iou: 0.848161
+(irregular) cross_entropy loss: 0.09132347255945206
+Retrain Epoch: 7 [2560/34528 (7%)] [0.001]	Loss: 0.073068, iou: 0.881009
+(irregular) cross_entropy loss: 0.07306842505931854
+Retrain Epoch: 7 [2880/34528 (8%)] [0.001]	Loss: 0.093079, iou: 0.840674
+(irregular) cross_entropy loss: 0.09307875484228134
+Retrain Epoch: 7 [3200/34528 (9%)] [0.001]	Loss: 0.084887, iou: 0.864299
+(irregular) cross_entropy loss: 0.08488678932189941
+Retrain Epoch: 7 [3520/34528 (10%)] [0.001]	Loss: 0.071308, iou: 0.885393
+(irregular) cross_entropy loss: 0.07130776345729828
+Retrain Epoch: 7 [3840/34528 (11%)] [0.001]	Loss: 0.084848, iou: 0.876075
+(irregular) cross_entropy loss: 0.08484774082899094
+Retrain Epoch: 7 [4160/34528 (12%)] [0.001]	Loss: 0.095143, iou: 0.848499
+(irregular) cross_entropy loss: 0.09514272958040237
+Retrain Epoch: 7 [4480/34528 (13%)] [0.001]	Loss: 0.060121, iou: 0.917429
+(irregular) cross_entropy loss: 0.06012145057320595
+Retrain Epoch: 7 [4800/34528 (14%)] [0.001]	Loss: 0.080197, iou: 0.888064
+(irregular) cross_entropy loss: 0.0801965743303299
+Retrain Epoch: 7 [5120/34528 (15%)] [0.001]	Loss: 0.077253, iou: 0.880169
+(irregular) cross_entropy loss: 0.07725253701210022
+Retrain Epoch: 7 [5440/34528 (16%)] [0.001]	Loss: 0.078362, iou: 0.884925
+(irregular) cross_entropy loss: 0.07836189866065979
+Retrain Epoch: 7 [5760/34528 (17%)] [0.001]	Loss: 0.090477, iou: 0.847003
+(irregular) cross_entropy loss: 0.09047714620828629
+Retrain Epoch: 7 [6080/34528 (18%)] [0.001]	Loss: 0.086081, iou: 0.857938
+(irregular) cross_entropy loss: 0.08608144521713257
+Retrain Epoch: 7 [6400/34528 (19%)] [0.001]	Loss: 0.099438, iou: 0.833837
+(irregular) cross_entropy loss: 0.09943752735853195
+Retrain Epoch: 7 [6720/34528 (19%)] [0.001]	Loss: 0.067629, iou: 0.889835
+(irregular) cross_entropy loss: 0.067628875374794
+Retrain Epoch: 7 [7040/34528 (20%)] [0.001]	Loss: 0.080179, iou: 0.865351
+(irregular) cross_entropy loss: 0.08017874509096146
+Retrain Epoch: 7 [7360/34528 (21%)] [0.001]	Loss: 0.062052, iou: 0.902016
+(irregular) cross_entropy loss: 0.062051765620708466
+Retrain Epoch: 7 [7680/34528 (22%)] [0.001]	Loss: 0.107161, iou: 0.812623
+(irregular) cross_entropy loss: 0.1071612685918808
+Retrain Epoch: 7 [8000/34528 (23%)] [0.001]	Loss: 0.072030, iou: 0.898132
+(irregular) cross_entropy loss: 0.0720304474234581
+Retrain Epoch: 7 [8320/34528 (24%)] [0.001]	Loss: 0.083255, iou: 0.866219
+(irregular) cross_entropy loss: 0.0832546204328537
+Retrain Epoch: 7 [8640/34528 (25%)] [0.001]	Loss: 0.094148, iou: 0.837012
+(irregular) cross_entropy loss: 0.09414837509393692
+Retrain Epoch: 7 [8960/34528 (26%)] [0.001]	Loss: 0.084659, iou: 0.868896
+(irregular) cross_entropy loss: 0.08465923368930817
+Retrain Epoch: 7 [9280/34528 (27%)] [0.001]	Loss: 0.088871, iou: 0.851369
+(irregular) cross_entropy loss: 0.08887051045894623
+Retrain Epoch: 7 [9600/34528 (28%)] [0.001]	Loss: 0.073010, iou: 0.886554
+(irregular) cross_entropy loss: 0.07301018387079239
+Retrain Epoch: 7 [9920/34528 (29%)] [0.001]	Loss: 0.101376, iou: 0.841925
+(irregular) cross_entropy loss: 0.10137620568275452
+Retrain Epoch: 7 [10240/34528 (30%)] [0.001]	Loss: 0.081755, iou: 0.870435
+(irregular) cross_entropy loss: 0.08175531029701233
+Retrain Epoch: 7 [10560/34528 (31%)] [0.001]	Loss: 0.085632, iou: 0.850818
+(irregular) cross_entropy loss: 0.0856318399310112
+Retrain Epoch: 7 [10880/34528 (32%)] [0.001]	Loss: 0.086954, iou: 0.848204
+(irregular) cross_entropy loss: 0.08695429563522339
+Retrain Epoch: 7 [11200/34528 (32%)] [0.001]	Loss: 0.083480, iou: 0.866071
+(irregular) cross_entropy loss: 0.08348023891448975
+Retrain Epoch: 7 [11520/34528 (33%)] [0.001]	Loss: 0.083825, iou: 0.863882
+(irregular) cross_entropy loss: 0.08382521569728851
+Retrain Epoch: 7 [11840/34528 (34%)] [0.001]	Loss: 0.096767, iou: 0.824151
+(irregular) cross_entropy loss: 0.09676727652549744
+Retrain Epoch: 7 [12160/34528 (35%)] [0.001]	Loss: 0.084312, iou: 0.864644
+(irregular) cross_entropy loss: 0.08431152254343033
+Retrain Epoch: 7 [12480/34528 (36%)] [0.001]	Loss: 0.083017, iou: 0.865005
+(irregular) cross_entropy loss: 0.0830170065164566
+Retrain Epoch: 7 [12800/34528 (37%)] [0.001]	Loss: 0.092283, iou: 0.840422
+(irregular) cross_entropy loss: 0.0922832041978836
+Retrain Epoch: 7 [13120/34528 (38%)] [0.001]	Loss: 0.076432, iou: 0.870129
+(irregular) cross_entropy loss: 0.07643216848373413
+Retrain Epoch: 7 [13440/34528 (39%)] [0.001]	Loss: 0.087404, iou: 0.846225
+(irregular) cross_entropy loss: 0.0874042958021164
+Retrain Epoch: 7 [13760/34528 (40%)] [0.001]	Loss: 0.068737, iou: 0.895222
+(irregular) cross_entropy loss: 0.06873743236064911
+Retrain Epoch: 7 [14080/34528 (41%)] [0.001]	Loss: 0.058694, iou: 0.908767
+(irregular) cross_entropy loss: 0.0586942695081234
+Retrain Epoch: 7 [14400/34528 (42%)] [0.001]	Loss: 0.058228, iou: 0.915568
+(irregular) cross_entropy loss: 0.058227624744176865
+Retrain Epoch: 7 [14720/34528 (43%)] [0.001]	Loss: 0.100185, iou: 0.837015
+(irregular) cross_entropy loss: 0.10018535703420639
+Retrain Epoch: 7 [15040/34528 (44%)] [0.001]	Loss: 0.068514, iou: 0.883232
+(irregular) cross_entropy loss: 0.06851404905319214
+Retrain Epoch: 7 [15360/34528 (44%)] [0.001]	Loss: 0.092597, iou: 0.841320
+(irregular) cross_entropy loss: 0.09259738773107529
+Retrain Epoch: 7 [15680/34528 (45%)] [0.001]	Loss: 0.082878, iou: 0.862466
+(irregular) cross_entropy loss: 0.08287762850522995
+Retrain Epoch: 7 [16000/34528 (46%)] [0.001]	Loss: 0.084712, iou: 0.858553
+(irregular) cross_entropy loss: 0.08471188694238663
+Retrain Epoch: 7 [16320/34528 (47%)] [0.001]	Loss: 0.062631, iou: 0.895655
+(irregular) cross_entropy loss: 0.06263089925050735
+Retrain Epoch: 7 [16640/34528 (48%)] [0.001]	Loss: 0.094270, iou: 0.834839
+(irregular) cross_entropy loss: 0.09427041560411453
+Retrain Epoch: 7 [16960/34528 (49%)] [0.001]	Loss: 0.092673, iou: 0.841009
+(irregular) cross_entropy loss: 0.09267327934503555
+Retrain Epoch: 7 [17280/34528 (50%)] [0.001]	Loss: 0.086192, iou: 0.858592
+(irregular) cross_entropy loss: 0.08619197458028793
+Retrain Epoch: 7 [17600/34528 (51%)] [0.001]	Loss: 0.086969, iou: 0.854914
+(irregular) cross_entropy loss: 0.08696942031383514
+Retrain Epoch: 7 [17920/34528 (52%)] [0.001]	Loss: 0.076641, iou: 0.879018
+(irregular) cross_entropy loss: 0.07664097100496292
+Retrain Epoch: 7 [18240/34528 (53%)] [0.001]	Loss: 0.074559, iou: 0.880382
+(irregular) cross_entropy loss: 0.07455890625715256
+Retrain Epoch: 7 [18560/34528 (54%)] [0.001]	Loss: 0.078108, iou: 0.865165
+(irregular) cross_entropy loss: 0.078107550740242
+Retrain Epoch: 7 [18880/34528 (55%)] [0.001]	Loss: 0.098337, iou: 0.830222
+(irregular) cross_entropy loss: 0.09833651781082153
+Retrain Epoch: 7 [19200/34528 (56%)] [0.001]	Loss: 0.099983, iou: 0.835231
+(irregular) cross_entropy loss: 0.0999828577041626
+Retrain Epoch: 7 [19520/34528 (57%)] [0.001]	Loss: 0.072794, iou: 0.889355
+(irregular) cross_entropy loss: 0.0727936178445816
+Retrain Epoch: 7 [19840/34528 (57%)] [0.001]	Loss: 0.086550, iou: 0.867003
+(irregular) cross_entropy loss: 0.0865502655506134
+Retrain Epoch: 7 [20160/34528 (58%)] [0.001]	Loss: 0.086912, iou: 0.850251
+(irregular) cross_entropy loss: 0.08691182732582092
+Retrain Epoch: 7 [20480/34528 (59%)] [0.001]	Loss: 0.095614, iou: 0.837272
+(irregular) cross_entropy loss: 0.09561411291360855
+Retrain Epoch: 7 [20800/34528 (60%)] [0.001]	Loss: 0.073895, iou: 0.879914
+(irregular) cross_entropy loss: 0.07389487326145172
+Retrain Epoch: 7 [21120/34528 (61%)] [0.001]	Loss: 0.077690, iou: 0.873411
+(irregular) cross_entropy loss: 0.07768984138965607
+Retrain Epoch: 7 [21440/34528 (62%)] [0.001]	Loss: 0.067918, iou: 0.894934
+(irregular) cross_entropy loss: 0.06791825592517853
+Retrain Epoch: 7 [21760/34528 (63%)] [0.001]	Loss: 0.122583, iou: 0.783137
+(irregular) cross_entropy loss: 0.12258253991603851
+Retrain Epoch: 7 [22080/34528 (64%)] [0.001]	Loss: 0.086462, iou: 0.860640
+(irregular) cross_entropy loss: 0.08646164834499359
+Retrain Epoch: 7 [22400/34528 (65%)] [0.001]	Loss: 0.088699, iou: 0.850132
+(irregular) cross_entropy loss: 0.08869919180870056
+Retrain Epoch: 7 [22720/34528 (66%)] [0.001]	Loss: 0.076238, iou: 0.889313
+(irregular) cross_entropy loss: 0.076237753033638
+Retrain Epoch: 7 [23040/34528 (67%)] [0.001]	Loss: 0.110200, iou: 0.816204
+(irregular) cross_entropy loss: 0.11019964516162872
+Retrain Epoch: 7 [23360/34528 (68%)] [0.001]	Loss: 0.108934, iou: 0.810536
+(irregular) cross_entropy loss: 0.10893414914608002
+Retrain Epoch: 7 [23680/34528 (69%)] [0.001]	Loss: 0.097012, iou: 0.844671
+(irregular) cross_entropy loss: 0.09701163321733475
+Retrain Epoch: 7 [24000/34528 (70%)] [0.001]	Loss: 0.078774, iou: 0.873214
+(irregular) cross_entropy loss: 0.0787743479013443
+Retrain Epoch: 7 [24320/34528 (70%)] [0.001]	Loss: 0.106449, iou: 0.819828
+(irregular) cross_entropy loss: 0.1064489334821701
+Retrain Epoch: 7 [24640/34528 (71%)] [0.001]	Loss: 0.079611, iou: 0.899054
+(irregular) cross_entropy loss: 0.07961145043373108
+Retrain Epoch: 7 [24960/34528 (72%)] [0.001]	Loss: 0.095715, iou: 0.851972
+(irregular) cross_entropy loss: 0.0957147553563118
+Retrain Epoch: 7 [25280/34528 (73%)] [0.001]	Loss: 0.086864, iou: 0.875526
+(irregular) cross_entropy loss: 0.08686402440071106
+Retrain Epoch: 7 [25600/34528 (74%)] [0.001]	Loss: 0.098771, iou: 0.832672
+(irregular) cross_entropy loss: 0.09877092391252518
+Retrain Epoch: 7 [25920/34528 (75%)] [0.001]	Loss: 0.071840, iou: 0.881502
+(irregular) cross_entropy loss: 0.07184010744094849
+Retrain Epoch: 7 [26240/34528 (76%)] [0.001]	Loss: 0.087972, iou: 0.863581
+(irregular) cross_entropy loss: 0.08797194063663483
+Retrain Epoch: 7 [26560/34528 (77%)] [0.001]	Loss: 0.082635, iou: 0.866744
+(irregular) cross_entropy loss: 0.08263484388589859
+Retrain Epoch: 7 [26880/34528 (78%)] [0.001]	Loss: 0.069051, iou: 0.892485
+(irregular) cross_entropy loss: 0.06905129551887512
+Retrain Epoch: 7 [27200/34528 (79%)] [0.001]	Loss: 0.068487, iou: 0.889882
+(irregular) cross_entropy loss: 0.06848737597465515
+Retrain Epoch: 7 [27520/34528 (80%)] [0.001]	Loss: 0.071882, iou: 0.882928
+(irregular) cross_entropy loss: 0.07188234478235245
+Retrain Epoch: 7 [27840/34528 (81%)] [0.001]	Loss: 0.080448, iou: 0.867713
+(irregular) cross_entropy loss: 0.08044842630624771
+Retrain Epoch: 7 [28160/34528 (82%)] [0.001]	Loss: 0.092334, iou: 0.845905
+(irregular) cross_entropy loss: 0.09233412146568298
+Retrain Epoch: 7 [28480/34528 (82%)] [0.001]	Loss: 0.074632, iou: 0.885425
+(irregular) cross_entropy loss: 0.07463239878416061
+Retrain Epoch: 7 [28800/34528 (83%)] [0.001]	Loss: 0.079551, iou: 0.878572
+(irregular) cross_entropy loss: 0.07955122739076614
+Retrain Epoch: 7 [29120/34528 (84%)] [0.001]	Loss: 0.091714, iou: 0.855283
+(irregular) cross_entropy loss: 0.09171384572982788
+Retrain Epoch: 7 [29440/34528 (85%)] [0.001]	Loss: 0.081601, iou: 0.862549
+(irregular) cross_entropy loss: 0.08160054683685303
+Retrain Epoch: 7 [29760/34528 (86%)] [0.001]	Loss: 0.062944, iou: 0.905155
+(irregular) cross_entropy loss: 0.0629444420337677
+Retrain Epoch: 7 [30080/34528 (87%)] [0.001]	Loss: 0.078859, iou: 0.872998
+(irregular) cross_entropy loss: 0.07885945588350296
+Retrain Epoch: 7 [30400/34528 (88%)] [0.001]	Loss: 0.082842, iou: 0.873810
+(irregular) cross_entropy loss: 0.08284225314855576
+Retrain Epoch: 7 [30720/34528 (89%)] [0.001]	Loss: 0.089555, iou: 0.850210
+(irregular) cross_entropy loss: 0.08955493569374084
+Retrain Epoch: 7 [31040/34528 (90%)] [0.001]	Loss: 0.080801, iou: 0.868719
+(irregular) cross_entropy loss: 0.0808010995388031
+Retrain Epoch: 7 [31360/34528 (91%)] [0.001]	Loss: 0.086076, iou: 0.862006
+(irregular) cross_entropy loss: 0.08607615530490875
+Retrain Epoch: 7 [31680/34528 (92%)] [0.001]	Loss: 0.085682, iou: 0.854200
+(irregular) cross_entropy loss: 0.08568156510591507
+Retrain Epoch: 7 [32000/34528 (93%)] [0.001]	Loss: 0.080295, iou: 0.873290
+(irregular) cross_entropy loss: 0.0802951231598854
+Retrain Epoch: 7 [32320/34528 (94%)] [0.001]	Loss: 0.102836, iou: 0.841086
+(irregular) cross_entropy loss: 0.10283617675304413
+Retrain Epoch: 7 [32640/34528 (95%)] [0.001]	Loss: 0.081161, iou: 0.873006
+(irregular) cross_entropy loss: 0.08116110414266586
+Retrain Epoch: 7 [32960/34528 (95%)] [0.001]	Loss: 0.067406, iou: 0.903633
+(irregular) cross_entropy loss: 0.06740561127662659
+Retrain Epoch: 7 [33280/34528 (96%)] [0.001]	Loss: 0.086737, iou: 0.866843
+(irregular) cross_entropy loss: 0.08673673868179321
+Retrain Epoch: 7 [33600/34528 (97%)] [0.001]	Loss: 0.066002, iou: 0.902395
+(irregular) cross_entropy loss: 0.06600235402584076
+Retrain Epoch: 7 [33920/34528 (98%)] [0.001]	Loss: 0.080117, iou: 0.875927
+(irregular) cross_entropy loss: 0.08011694252490997
+Retrain Epoch: 7 [34240/34528 (99%)] [0.001]	Loss: 0.071684, iou: 0.879554
+(irregular) cross_entropy loss: 0.07168367505073547
+retrain: iou: 0.866531, bce: 0.031169, dice: 0.133469, loss: 0.082319
+Validation: [0/3836 (0%)]	Loss: 0.085145, iou: 0.862337
+Validation: [640/3836 (17%)]	Loss: 0.091229, iou: 0.844557
+Validation: [1280/3836 (33%)]	Loss: 0.081699, iou: 0.863846
+Validation: [1920/3836 (50%)]	Loss: 0.080889, iou: 0.866915
+Validation: [2560/3836 (67%)]	Loss: 0.079908, iou: 0.873728
+Validation: [3200/3836 (83%)]	Loss: 0.080276, iou: 0.872969
+val: iou: 0.866124, bce: 0.031357, dice: 0.133876, loss: 0.082616
+
+==============================> Accuracy after Masked Retrain of epoch 7: 
+Validation: [0/3836 (0%)]	Loss: 0.085145, iou: 0.862337
+Validation: [640/3836 (17%)]	Loss: 0.091229, iou: 0.844557
+Validation: [1280/3836 (33%)]	Loss: 0.081699, iou: 0.863846
+Validation: [1920/3836 (50%)]	Loss: 0.080889, iou: 0.866915
+Validation: [2560/3836 (67%)]	Loss: 0.079908, iou: 0.873728
+Validation: [3200/3836 (83%)]	Loss: 0.080276, iou: 0.872969
+val: iou: 0.866124, bce: 0.031357, dice: 0.133876, loss: 0.082616
+Current epoch: 8; current test iou: 0.8661; best test iou: 0.8679 at epoch 7
+
+
+epoch:  8
+Retrain Epoch: 8 [0/34528 (0%)] [0.001]	Loss: 0.076457, iou: 0.884612
+(irregular) cross_entropy loss: 0.07645659893751144
+Retrain Epoch: 8 [320/34528 (1%)] [0.001]	Loss: 0.077828, iou: 0.866806
+(irregular) cross_entropy loss: 0.07782753556966782
+Retrain Epoch: 8 [640/34528 (2%)] [0.001]	Loss: 0.065711, iou: 0.894375
+(irregular) cross_entropy loss: 0.06571131199598312
+Retrain Epoch: 8 [960/34528 (3%)] [0.001]	Loss: 0.066619, iou: 0.896272
+(irregular) cross_entropy loss: 0.06661918759346008
+Retrain Epoch: 8 [1280/34528 (4%)] [0.001]	Loss: 0.073532, iou: 0.879963
+(irregular) cross_entropy loss: 0.07353216409683228
+Retrain Epoch: 8 [1600/34528 (5%)] [0.001]	Loss: 0.094577, iou: 0.835860
+(irregular) cross_entropy loss: 0.09457744657993317
+Retrain Epoch: 8 [1920/34528 (6%)] [0.001]	Loss: 0.111292, iou: 0.822915
+(irregular) cross_entropy loss: 0.11129233241081238
+Retrain Epoch: 8 [2240/34528 (6%)] [0.001]	Loss: 0.084090, iou: 0.857342
+(irregular) cross_entropy loss: 0.08408965170383453
+Retrain Epoch: 8 [2560/34528 (7%)] [0.001]	Loss: 0.100387, iou: 0.850255
+(irregular) cross_entropy loss: 0.10038723796606064
+Retrain Epoch: 8 [2880/34528 (8%)] [0.001]	Loss: 0.103295, iou: 0.828569
+(irregular) cross_entropy loss: 0.10329487919807434
+Retrain Epoch: 8 [3200/34528 (9%)] [0.001]	Loss: 0.090616, iou: 0.868069
+(irregular) cross_entropy loss: 0.09061563014984131
+Retrain Epoch: 8 [3520/34528 (10%)] [0.001]	Loss: 0.112066, iou: 0.818803
+(irregular) cross_entropy loss: 0.11206550896167755
+Retrain Epoch: 8 [3840/34528 (11%)] [0.001]	Loss: 0.073848, iou: 0.887850
+(irregular) cross_entropy loss: 0.07384840399026871
+Retrain Epoch: 8 [4160/34528 (12%)] [0.001]	Loss: 0.077841, iou: 0.874555
+(irregular) cross_entropy loss: 0.07784104347229004
+Retrain Epoch: 8 [4480/34528 (13%)] [0.001]	Loss: 0.072667, iou: 0.900456
+(irregular) cross_entropy loss: 0.07266651839017868
+Retrain Epoch: 8 [4800/34528 (14%)] [0.001]	Loss: 0.080457, iou: 0.874778
+(irregular) cross_entropy loss: 0.08045722544193268
+Retrain Epoch: 8 [5120/34528 (15%)] [0.001]	Loss: 0.068531, iou: 0.897740
+(irregular) cross_entropy loss: 0.06853142380714417
+Retrain Epoch: 8 [5440/34528 (16%)] [0.001]	Loss: 0.069432, iou: 0.889250
+(irregular) cross_entropy loss: 0.06943155825138092
+Retrain Epoch: 8 [5760/34528 (17%)] [0.001]	Loss: 0.074711, iou: 0.882643
+(irregular) cross_entropy loss: 0.07471109926700592
+Retrain Epoch: 8 [6080/34528 (18%)] [0.001]	Loss: 0.084355, iou: 0.862960
+(irregular) cross_entropy loss: 0.08435462415218353
+Retrain Epoch: 8 [6400/34528 (19%)] [0.001]	Loss: 0.067706, iou: 0.905164
+(irregular) cross_entropy loss: 0.06770557165145874
+Retrain Epoch: 8 [6720/34528 (19%)] [0.001]	Loss: 0.064057, iou: 0.903469
+(irregular) cross_entropy loss: 0.06405666470527649
+Retrain Epoch: 8 [7040/34528 (20%)] [0.001]	Loss: 0.078439, iou: 0.870712
+(irregular) cross_entropy loss: 0.07843920588493347
+Retrain Epoch: 8 [7360/34528 (21%)] [0.001]	Loss: 0.109336, iou: 0.806868
+(irregular) cross_entropy loss: 0.10933604091405869
+Retrain Epoch: 8 [7680/34528 (22%)] [0.001]	Loss: 0.094357, iou: 0.840109
+(irregular) cross_entropy loss: 0.09435673803091049
+Retrain Epoch: 8 [8000/34528 (23%)] [0.001]	Loss: 0.081412, iou: 0.865116
+(irregular) cross_entropy loss: 0.0814124122262001
+Retrain Epoch: 8 [8320/34528 (24%)] [0.001]	Loss: 0.072452, iou: 0.880725
+(irregular) cross_entropy loss: 0.07245178520679474
+Retrain Epoch: 8 [8640/34528 (25%)] [0.001]	Loss: 0.075542, iou: 0.878606
+(irregular) cross_entropy loss: 0.07554154098033905
+Retrain Epoch: 8 [8960/34528 (26%)] [0.001]	Loss: 0.101872, iou: 0.833731
+(irregular) cross_entropy loss: 0.10187163949012756
+Retrain Epoch: 8 [9280/34528 (27%)] [0.001]	Loss: 0.102259, iou: 0.823977
+(irregular) cross_entropy loss: 0.10225947946310043
+Retrain Epoch: 8 [9600/34528 (28%)] [0.001]	Loss: 0.085498, iou: 0.859245
+(irregular) cross_entropy loss: 0.08549820631742477
+Retrain Epoch: 8 [9920/34528 (29%)] [0.001]	Loss: 0.084636, iou: 0.855967
+(irregular) cross_entropy loss: 0.08463636040687561
+Retrain Epoch: 8 [10240/34528 (30%)] [0.001]	Loss: 0.068318, iou: 0.893478
+(irregular) cross_entropy loss: 0.06831760704517365
+Retrain Epoch: 8 [10560/34528 (31%)] [0.001]	Loss: 0.090224, iou: 0.849702
+(irregular) cross_entropy loss: 0.09022362530231476
+Retrain Epoch: 8 [10880/34528 (32%)] [0.001]	Loss: 0.078059, iou: 0.882603
+(irregular) cross_entropy loss: 0.0780588835477829
+Retrain Epoch: 8 [11200/34528 (32%)] [0.001]	Loss: 0.088579, iou: 0.856867
+(irregular) cross_entropy loss: 0.08857923746109009
+Retrain Epoch: 8 [11520/34528 (33%)] [0.001]	Loss: 0.092357, iou: 0.852951
+(irregular) cross_entropy loss: 0.09235679358243942
+Retrain Epoch: 8 [11840/34528 (34%)] [0.001]	Loss: 0.086887, iou: 0.857639
+(irregular) cross_entropy loss: 0.08688744902610779
+Retrain Epoch: 8 [12160/34528 (35%)] [0.001]	Loss: 0.078083, iou: 0.862644
+(irregular) cross_entropy loss: 0.0780825987458229
+Retrain Epoch: 8 [12480/34528 (36%)] [0.001]	Loss: 0.065232, iou: 0.899023
+(irregular) cross_entropy loss: 0.06523242592811584
+Retrain Epoch: 8 [12800/34528 (37%)] [0.001]	Loss: 0.071516, iou: 0.884052
+(irregular) cross_entropy loss: 0.0715160220861435
+Retrain Epoch: 8 [13120/34528 (38%)] [0.001]	Loss: 0.083016, iou: 0.860007
+(irregular) cross_entropy loss: 0.08301647007465363
+Retrain Epoch: 8 [13440/34528 (39%)] [0.001]	Loss: 0.069404, iou: 0.887470
+(irregular) cross_entropy loss: 0.06940414011478424
+Retrain Epoch: 8 [13760/34528 (40%)] [0.001]	Loss: 0.080101, iou: 0.873927
+(irregular) cross_entropy loss: 0.08010092377662659
+Retrain Epoch: 8 [14080/34528 (41%)] [0.001]	Loss: 0.098207, iou: 0.849504
+(irregular) cross_entropy loss: 0.09820734709501266
+Retrain Epoch: 8 [14400/34528 (42%)] [0.001]	Loss: 0.068577, iou: 0.887735
+(irregular) cross_entropy loss: 0.06857719272375107
+Retrain Epoch: 8 [14720/34528 (43%)] [0.001]	Loss: 0.081859, iou: 0.872504
+(irregular) cross_entropy loss: 0.08185946941375732
+Retrain Epoch: 8 [15040/34528 (44%)] [0.001]	Loss: 0.099826, iou: 0.838568
+(irregular) cross_entropy loss: 0.0998261421918869
+Retrain Epoch: 8 [15360/34528 (44%)] [0.001]	Loss: 0.091734, iou: 0.843455
+(irregular) cross_entropy loss: 0.09173361212015152
+Retrain Epoch: 8 [15680/34528 (45%)] [0.001]	Loss: 0.089777, iou: 0.844720
+(irregular) cross_entropy loss: 0.08977697044610977
+Retrain Epoch: 8 [16000/34528 (46%)] [0.001]	Loss: 0.078274, iou: 0.884614
+(irregular) cross_entropy loss: 0.07827431708574295
+Retrain Epoch: 8 [16320/34528 (47%)] [0.001]	Loss: 0.081459, iou: 0.867607
+(irregular) cross_entropy loss: 0.0814589411020279
+Retrain Epoch: 8 [16640/34528 (48%)] [0.001]	Loss: 0.081168, iou: 0.864085
+(irregular) cross_entropy loss: 0.08116813004016876
+Retrain Epoch: 8 [16960/34528 (49%)] [0.001]	Loss: 0.078680, iou: 0.871759
+(irregular) cross_entropy loss: 0.07867969572544098
+Retrain Epoch: 8 [17280/34528 (50%)] [0.001]	Loss: 0.091186, iou: 0.852744
+(irregular) cross_entropy loss: 0.09118568152189255
+Retrain Epoch: 8 [17600/34528 (51%)] [0.001]	Loss: 0.074223, iou: 0.880644
+(irregular) cross_entropy loss: 0.07422300428152084
+Retrain Epoch: 8 [17920/34528 (52%)] [0.001]	Loss: 0.076940, iou: 0.883666
+(irregular) cross_entropy loss: 0.07694046944379807
+Retrain Epoch: 8 [18240/34528 (53%)] [0.001]	Loss: 0.081304, iou: 0.860029
+(irregular) cross_entropy loss: 0.08130352199077606
+Retrain Epoch: 8 [18560/34528 (54%)] [0.001]	Loss: 0.085328, iou: 0.862612
+(irregular) cross_entropy loss: 0.08532798290252686
+Retrain Epoch: 8 [18880/34528 (55%)] [0.001]	Loss: 0.096170, iou: 0.838409
+(irregular) cross_entropy loss: 0.09616996347904205
+Retrain Epoch: 8 [19200/34528 (56%)] [0.001]	Loss: 0.076501, iou: 0.881525
+(irregular) cross_entropy loss: 0.07650101184844971
+Retrain Epoch: 8 [19520/34528 (57%)] [0.001]	Loss: 0.087515, iou: 0.851230
+(irregular) cross_entropy loss: 0.08751457184553146
+Retrain Epoch: 8 [19840/34528 (57%)] [0.001]	Loss: 0.088206, iou: 0.839669
+(irregular) cross_entropy loss: 0.08820649981498718
+Retrain Epoch: 8 [20160/34528 (58%)] [0.001]	Loss: 0.077953, iou: 0.872764
+(irregular) cross_entropy loss: 0.07795260101556778
+Retrain Epoch: 8 [20480/34528 (59%)] [0.001]	Loss: 0.109346, iou: 0.832710
+(irregular) cross_entropy loss: 0.10934621095657349
+Retrain Epoch: 8 [20800/34528 (60%)] [0.001]	Loss: 0.064753, iou: 0.902030
+(irregular) cross_entropy loss: 0.0647532194852829
+Retrain Epoch: 8 [21120/34528 (61%)] [0.001]	Loss: 0.077832, iou: 0.866751
+(irregular) cross_entropy loss: 0.0778324231505394
+Retrain Epoch: 8 [21440/34528 (62%)] [0.001]	Loss: 0.077070, iou: 0.878204
+(irregular) cross_entropy loss: 0.07707013934850693
+Retrain Epoch: 8 [21760/34528 (63%)] [0.001]	Loss: 0.097237, iou: 0.834331
+(irregular) cross_entropy loss: 0.09723691642284393
+Retrain Epoch: 8 [22080/34528 (64%)] [0.001]	Loss: 0.096259, iou: 0.829675
+(irregular) cross_entropy loss: 0.09625930339097977
+Retrain Epoch: 8 [22400/34528 (65%)] [0.001]	Loss: 0.083205, iou: 0.858178
+(irregular) cross_entropy loss: 0.08320508897304535
+Retrain Epoch: 8 [22720/34528 (66%)] [0.001]	Loss: 0.077462, iou: 0.882132
+(irregular) cross_entropy loss: 0.0774618610739708
+Retrain Epoch: 8 [23040/34528 (67%)] [0.001]	Loss: 0.108247, iou: 0.823582
+(irregular) cross_entropy loss: 0.10824689269065857
+Retrain Epoch: 8 [23360/34528 (68%)] [0.001]	Loss: 0.093114, iou: 0.841558
+(irregular) cross_entropy loss: 0.09311413019895554
+Retrain Epoch: 8 [23680/34528 (69%)] [0.001]	Loss: 0.076708, iou: 0.872288
+(irregular) cross_entropy loss: 0.07670819759368896
+Retrain Epoch: 8 [24000/34528 (70%)] [0.001]	Loss: 0.082600, iou: 0.862841
+(irregular) cross_entropy loss: 0.08259950578212738
+Retrain Epoch: 8 [24320/34528 (70%)] [0.001]	Loss: 0.077982, iou: 0.888325
+(irregular) cross_entropy loss: 0.07798218727111816
+Retrain Epoch: 8 [24640/34528 (71%)] [0.001]	Loss: 0.088658, iou: 0.847486
+(irregular) cross_entropy loss: 0.08865827322006226
+Retrain Epoch: 8 [24960/34528 (72%)] [0.001]	Loss: 0.065960, iou: 0.891005
+(irregular) cross_entropy loss: 0.06596029549837112
+Retrain Epoch: 8 [25280/34528 (73%)] [0.001]	Loss: 0.071241, iou: 0.885392
+(irregular) cross_entropy loss: 0.07124108076095581
+Retrain Epoch: 8 [25600/34528 (74%)] [0.001]	Loss: 0.071079, iou: 0.882440
+(irregular) cross_entropy loss: 0.07107942551374435
+Retrain Epoch: 8 [25920/34528 (75%)] [0.001]	Loss: 0.065328, iou: 0.895811
+(irregular) cross_entropy loss: 0.06532789021730423
+Retrain Epoch: 8 [26240/34528 (76%)] [0.001]	Loss: 0.081468, iou: 0.860805
+(irregular) cross_entropy loss: 0.08146809041500092
+Retrain Epoch: 8 [26560/34528 (77%)] [0.001]	Loss: 0.065522, iou: 0.898446
+(irregular) cross_entropy loss: 0.06552232801914215
+Retrain Epoch: 8 [26880/34528 (78%)] [0.001]	Loss: 0.066692, iou: 0.889796
+(irregular) cross_entropy loss: 0.06669208407402039
+Retrain Epoch: 8 [27200/34528 (79%)] [0.001]	Loss: 0.094295, iou: 0.841737
+(irregular) cross_entropy loss: 0.0942954272031784
+Retrain Epoch: 8 [27520/34528 (80%)] [0.001]	Loss: 0.082132, iou: 0.863910
+(irregular) cross_entropy loss: 0.08213169127702713
+Retrain Epoch: 8 [27840/34528 (81%)] [0.001]	Loss: 0.085450, iou: 0.853952
+(irregular) cross_entropy loss: 0.08544978499412537
+Retrain Epoch: 8 [28160/34528 (82%)] [0.001]	Loss: 0.113654, iou: 0.805591
+(irregular) cross_entropy loss: 0.11365370452404022
+Retrain Epoch: 8 [28480/34528 (82%)] [0.001]	Loss: 0.065701, iou: 0.906868
+(irregular) cross_entropy loss: 0.06570087373256683
+Retrain Epoch: 8 [28800/34528 (83%)] [0.001]	Loss: 0.079210, iou: 0.870915
+(irregular) cross_entropy loss: 0.07921011745929718
+Retrain Epoch: 8 [29120/34528 (84%)] [0.001]	Loss: 0.086264, iou: 0.855478
+(irregular) cross_entropy loss: 0.08626358211040497
+Retrain Epoch: 8 [29440/34528 (85%)] [0.001]	Loss: 0.077868, iou: 0.871985
+(irregular) cross_entropy loss: 0.07786838710308075
+Retrain Epoch: 8 [29760/34528 (86%)] [0.001]	Loss: 0.066768, iou: 0.893455
+(irregular) cross_entropy loss: 0.06676772981882095
+Retrain Epoch: 8 [30080/34528 (87%)] [0.001]	Loss: 0.120200, iou: 0.793964
+(irregular) cross_entropy loss: 0.12020028382539749
+Retrain Epoch: 8 [30400/34528 (88%)] [0.001]	Loss: 0.088650, iou: 0.856968
+(irregular) cross_entropy loss: 0.08865043520927429
+Retrain Epoch: 8 [30720/34528 (89%)] [0.001]	Loss: 0.072995, iou: 0.881926
+(irregular) cross_entropy loss: 0.07299527525901794
+Retrain Epoch: 8 [31040/34528 (90%)] [0.001]	Loss: 0.085924, iou: 0.858775
+(irregular) cross_entropy loss: 0.08592361211776733
+Retrain Epoch: 8 [31360/34528 (91%)] [0.001]	Loss: 0.078679, iou: 0.870648
+(irregular) cross_entropy loss: 0.07867903262376785
+Retrain Epoch: 8 [31680/34528 (92%)] [0.001]	Loss: 0.089772, iou: 0.846513
+(irregular) cross_entropy loss: 0.08977155387401581
+Retrain Epoch: 8 [32000/34528 (93%)] [0.001]	Loss: 0.091232, iou: 0.848715
+(irregular) cross_entropy loss: 0.0912320464849472
+Retrain Epoch: 8 [32320/34528 (94%)] [0.001]	Loss: 0.091849, iou: 0.851502
+(irregular) cross_entropy loss: 0.09184949100017548
+Retrain Epoch: 8 [32640/34528 (95%)] [0.001]	Loss: 0.090764, iou: 0.839159
+(irregular) cross_entropy loss: 0.09076382219791412
+Retrain Epoch: 8 [32960/34528 (95%)] [0.001]	Loss: 0.082426, iou: 0.860845
+(irregular) cross_entropy loss: 0.08242624998092651
+Retrain Epoch: 8 [33280/34528 (96%)] [0.001]	Loss: 0.088567, iou: 0.861534
+(irregular) cross_entropy loss: 0.08856691420078278
+Retrain Epoch: 8 [33600/34528 (97%)] [0.001]	Loss: 0.081263, iou: 0.863258
+(irregular) cross_entropy loss: 0.08126311004161835
+Retrain Epoch: 8 [33920/34528 (98%)] [0.001]	Loss: 0.084348, iou: 0.860422
+(irregular) cross_entropy loss: 0.08434802293777466
+Retrain Epoch: 8 [34240/34528 (99%)] [0.001]	Loss: 0.073325, iou: 0.883489
+(irregular) cross_entropy loss: 0.07332465052604675
+retrain: iou: 0.865481, bce: 0.031383, dice: 0.134519, loss: 0.082951
+Validation: [0/3836 (0%)]	Loss: 0.082887, iou: 0.865836
+Validation: [640/3836 (17%)]	Loss: 0.091087, iou: 0.845033
+Validation: [1280/3836 (33%)]	Loss: 0.081700, iou: 0.862961
+Validation: [1920/3836 (50%)]	Loss: 0.082097, iou: 0.865045
+Validation: [2560/3836 (67%)]	Loss: 0.079680, iou: 0.874459
+Validation: [3200/3836 (83%)]	Loss: 0.080834, iou: 0.871888
+val: iou: 0.865256, bce: 0.031508, dice: 0.134744, loss: 0.083126
+
+==============================> Accuracy after Masked Retrain of epoch 8: 
+Validation: [0/3836 (0%)]	Loss: 0.082887, iou: 0.865836
+Validation: [640/3836 (17%)]	Loss: 0.091087, iou: 0.845033
+Validation: [1280/3836 (33%)]	Loss: 0.081700, iou: 0.862961
+Validation: [1920/3836 (50%)]	Loss: 0.082097, iou: 0.865045
+Validation: [2560/3836 (67%)]	Loss: 0.079680, iou: 0.874459
+Validation: [3200/3836 (83%)]	Loss: 0.080834, iou: 0.871888
+val: iou: 0.865256, bce: 0.031508, dice: 0.134744, loss: 0.083126
+Current epoch: 9; current test iou: 0.8653; best test iou: 0.8679 at epoch 7
+
+
+epoch:  9
+Retrain Epoch: 9 [0/34528 (0%)] [0.001]	Loss: 0.070683, iou: 0.893394
+(irregular) cross_entropy loss: 0.07068251818418503
+Retrain Epoch: 9 [320/34528 (1%)] [0.001]	Loss: 0.085034, iou: 0.852596
+(irregular) cross_entropy loss: 0.08503375202417374
+Retrain Epoch: 9 [640/34528 (2%)] [0.001]	Loss: 0.083854, iou: 0.861182
+(irregular) cross_entropy loss: 0.08385400474071503
+Retrain Epoch: 9 [960/34528 (3%)] [0.001]	Loss: 0.074572, iou: 0.878193
+(irregular) cross_entropy loss: 0.07457229495048523
+Retrain Epoch: 9 [1280/34528 (4%)] [0.001]	Loss: 0.069853, iou: 0.893345
+(irregular) cross_entropy loss: 0.06985333561897278
+Retrain Epoch: 9 [1600/34528 (5%)] [0.001]	Loss: 0.072281, iou: 0.888207
+(irregular) cross_entropy loss: 0.07228075712919235
+Retrain Epoch: 9 [1920/34528 (6%)] [0.001]	Loss: 0.101576, iou: 0.819375
+(irregular) cross_entropy loss: 0.10157598555088043
+Retrain Epoch: 9 [2240/34528 (6%)] [0.001]	Loss: 0.080295, iou: 0.869621
+(irregular) cross_entropy loss: 0.08029522001743317
+Retrain Epoch: 9 [2560/34528 (7%)] [0.001]	Loss: 0.110980, iou: 0.798126
+(irregular) cross_entropy loss: 0.11098049581050873
+Retrain Epoch: 9 [2880/34528 (8%)] [0.001]	Loss: 0.067975, iou: 0.897211
+(irregular) cross_entropy loss: 0.067974753677845
+Retrain Epoch: 9 [3200/34528 (9%)] [0.001]	Loss: 0.082082, iou: 0.865528
+(irregular) cross_entropy loss: 0.08208240568637848
+Retrain Epoch: 9 [3520/34528 (10%)] [0.001]	Loss: 0.089589, iou: 0.849538
+(irregular) cross_entropy loss: 0.08958916366100311
+Retrain Epoch: 9 [3840/34528 (11%)] [0.001]	Loss: 0.088788, iou: 0.869314
+(irregular) cross_entropy loss: 0.08878803253173828
+Retrain Epoch: 9 [4160/34528 (12%)] [0.001]	Loss: 0.085907, iou: 0.852840
+(irregular) cross_entropy loss: 0.08590720593929291
+Retrain Epoch: 9 [4480/34528 (13%)] [0.001]	Loss: 0.091071, iou: 0.845833
+(irregular) cross_entropy loss: 0.09107101708650589
+Retrain Epoch: 9 [4800/34528 (14%)] [0.001]	Loss: 0.064518, iou: 0.903316
+(irregular) cross_entropy loss: 0.06451791524887085
+Retrain Epoch: 9 [5120/34528 (15%)] [0.001]	Loss: 0.097849, iou: 0.830436
+(irregular) cross_entropy loss: 0.09784884005784988
+Retrain Epoch: 9 [5440/34528 (16%)] [0.001]	Loss: 0.065298, iou: 0.892061
+(irregular) cross_entropy loss: 0.06529785692691803
+Retrain Epoch: 9 [5760/34528 (17%)] [0.001]	Loss: 0.063749, iou: 0.905235
+(irregular) cross_entropy loss: 0.0637492835521698
+Retrain Epoch: 9 [6080/34528 (18%)] [0.001]	Loss: 0.087982, iou: 0.850217
+(irregular) cross_entropy loss: 0.08798164129257202
+Retrain Epoch: 9 [6400/34528 (19%)] [0.001]	Loss: 0.079052, iou: 0.865732
+(irregular) cross_entropy loss: 0.07905212044715881
+Retrain Epoch: 9 [6720/34528 (19%)] [0.001]	Loss: 0.096223, iou: 0.836021
+(irregular) cross_entropy loss: 0.09622271358966827
+Retrain Epoch: 9 [7040/34528 (20%)] [0.001]	Loss: 0.065089, iou: 0.898475
+(irregular) cross_entropy loss: 0.06508931517601013
+Retrain Epoch: 9 [7360/34528 (21%)] [0.001]	Loss: 0.058973, iou: 0.912014
+(irregular) cross_entropy loss: 0.05897347629070282
+Retrain Epoch: 9 [7680/34528 (22%)] [0.001]	Loss: 0.077040, iou: 0.877801
+(irregular) cross_entropy loss: 0.07703974843025208
+Retrain Epoch: 9 [8000/34528 (23%)] [0.001]	Loss: 0.093872, iou: 0.840112
+(irregular) cross_entropy loss: 0.09387180954217911
+Retrain Epoch: 9 [8320/34528 (24%)] [0.001]	Loss: 0.066911, iou: 0.886981
+(irregular) cross_entropy loss: 0.06691116094589233
+Retrain Epoch: 9 [8640/34528 (25%)] [0.001]	Loss: 0.076213, iou: 0.874674
+(irregular) cross_entropy loss: 0.07621286809444427
+Retrain Epoch: 9 [8960/34528 (26%)] [0.001]	Loss: 0.074172, iou: 0.890363
+(irregular) cross_entropy loss: 0.07417212426662445
+Retrain Epoch: 9 [9280/34528 (27%)] [0.001]	Loss: 0.094314, iou: 0.831529
+(irregular) cross_entropy loss: 0.0943135917186737
+Retrain Epoch: 9 [9600/34528 (28%)] [0.001]	Loss: 0.102090, iou: 0.823041
+(irregular) cross_entropy loss: 0.1020902544260025
+Retrain Epoch: 9 [9920/34528 (29%)] [0.001]	Loss: 0.077026, iou: 0.880319
+(irregular) cross_entropy loss: 0.07702607661485672
+Retrain Epoch: 9 [10240/34528 (30%)] [0.001]	Loss: 0.072787, iou: 0.877947
+(irregular) cross_entropy loss: 0.07278682291507721
+Retrain Epoch: 9 [10560/34528 (31%)] [0.001]	Loss: 0.107043, iou: 0.814161
+(irregular) cross_entropy loss: 0.1070430651307106
+Retrain Epoch: 9 [10880/34528 (32%)] [0.001]	Loss: 0.069189, iou: 0.886409
+(irregular) cross_entropy loss: 0.06918898224830627
+Retrain Epoch: 9 [11200/34528 (32%)] [0.001]	Loss: 0.066043, iou: 0.896550
+(irregular) cross_entropy loss: 0.06604346632957458
+Retrain Epoch: 9 [11520/34528 (33%)] [0.001]	Loss: 0.080922, iou: 0.869479
+(irregular) cross_entropy loss: 0.08092169463634491
+Retrain Epoch: 9 [11840/34528 (34%)] [0.001]	Loss: 0.077564, iou: 0.872581
+(irregular) cross_entropy loss: 0.07756435871124268
+Retrain Epoch: 9 [12160/34528 (35%)] [0.001]	Loss: 0.068493, iou: 0.893822
+(irregular) cross_entropy loss: 0.06849317252635956
+Retrain Epoch: 9 [12480/34528 (36%)] [0.001]	Loss: 0.077159, iou: 0.872390
+(irregular) cross_entropy loss: 0.07715898752212524
+Retrain Epoch: 9 [12800/34528 (37%)] [0.001]	Loss: 0.080509, iou: 0.866295
+(irregular) cross_entropy loss: 0.08050908893346786
+Retrain Epoch: 9 [13120/34528 (38%)] [0.001]	Loss: 0.078001, iou: 0.885860
+(irregular) cross_entropy loss: 0.07800125330686569
+Retrain Epoch: 9 [13440/34528 (39%)] [0.001]	Loss: 0.068405, iou: 0.899806
+(irregular) cross_entropy loss: 0.06840473413467407
+Retrain Epoch: 9 [13760/34528 (40%)] [0.001]	Loss: 0.072652, iou: 0.887124
+(irregular) cross_entropy loss: 0.07265163213014603
+Retrain Epoch: 9 [14080/34528 (41%)] [0.001]	Loss: 0.096304, iou: 0.835424
+(irregular) cross_entropy loss: 0.09630385041236877
+Retrain Epoch: 9 [14400/34528 (42%)] [0.001]	Loss: 0.080841, iou: 0.859425
+(irregular) cross_entropy loss: 0.08084133267402649
+Retrain Epoch: 9 [14720/34528 (43%)] [0.001]	Loss: 0.067363, iou: 0.893452
+(irregular) cross_entropy loss: 0.06736313551664352
+Retrain Epoch: 9 [15040/34528 (44%)] [0.001]	Loss: 0.067791, iou: 0.903863
+(irregular) cross_entropy loss: 0.06779129803180695
+Retrain Epoch: 9 [15360/34528 (44%)] [0.001]	Loss: 0.097597, iou: 0.830428
+(irregular) cross_entropy loss: 0.09759658575057983
+Retrain Epoch: 9 [15680/34528 (45%)] [0.001]	Loss: 0.068662, iou: 0.885951
+(irregular) cross_entropy loss: 0.06866179406642914
+Retrain Epoch: 9 [16000/34528 (46%)] [0.001]	Loss: 0.059325, iou: 0.909446
+(irregular) cross_entropy loss: 0.059324875473976135
+Retrain Epoch: 9 [16320/34528 (47%)] [0.001]	Loss: 0.090896, iou: 0.842667
+(irregular) cross_entropy loss: 0.09089649468660355
+Retrain Epoch: 9 [16640/34528 (48%)] [0.001]	Loss: 0.068072, iou: 0.896676
+(irregular) cross_entropy loss: 0.0680721178650856
+Retrain Epoch: 9 [16960/34528 (49%)] [0.001]	Loss: 0.067882, iou: 0.891923
+(irregular) cross_entropy loss: 0.0678815245628357
+Retrain Epoch: 9 [17280/34528 (50%)] [0.001]	Loss: 0.073317, iou: 0.877785
+(irregular) cross_entropy loss: 0.07331663370132446
+Retrain Epoch: 9 [17600/34528 (51%)] [0.001]	Loss: 0.088117, iou: 0.849178
+(irregular) cross_entropy loss: 0.08811691403388977
+Retrain Epoch: 9 [17920/34528 (52%)] [0.001]	Loss: 0.110018, iou: 0.816896
+(irregular) cross_entropy loss: 0.1100180447101593
+Retrain Epoch: 9 [18240/34528 (53%)] [0.001]	Loss: 0.079532, iou: 0.871007
+(irregular) cross_entropy loss: 0.07953198254108429
+Retrain Epoch: 9 [18560/34528 (54%)] [0.001]	Loss: 0.086581, iou: 0.861390
+(irregular) cross_entropy loss: 0.0865805596113205
+Retrain Epoch: 9 [18880/34528 (55%)] [0.001]	Loss: 0.072250, iou: 0.892494
+(irregular) cross_entropy loss: 0.07224959880113602
+Retrain Epoch: 9 [19200/34528 (56%)] [0.001]	Loss: 0.077668, iou: 0.870700
+(irregular) cross_entropy loss: 0.07766769826412201
+Retrain Epoch: 9 [19520/34528 (57%)] [0.001]	Loss: 0.078623, iou: 0.866183
+(irregular) cross_entropy loss: 0.07862257212400436
+Retrain Epoch: 9 [19840/34528 (57%)] [0.001]	Loss: 0.080785, iou: 0.866225
+(irregular) cross_entropy loss: 0.0807848870754242
+Retrain Epoch: 9 [20160/34528 (58%)] [0.001]	Loss: 0.097981, iou: 0.832811
+(irregular) cross_entropy loss: 0.09798097610473633
+Retrain Epoch: 9 [20480/34528 (59%)] [0.001]	Loss: 0.132554, iou: 0.780077
+(irregular) cross_entropy loss: 0.13255351781845093
+Retrain Epoch: 9 [20800/34528 (60%)] [0.001]	Loss: 0.094106, iou: 0.841899
+(irregular) cross_entropy loss: 0.0941058024764061
+Retrain Epoch: 9 [21120/34528 (61%)] [0.001]	Loss: 0.088647, iou: 0.850336
+(irregular) cross_entropy loss: 0.08864691108465195
+Retrain Epoch: 9 [21440/34528 (62%)] [0.001]	Loss: 0.086705, iou: 0.857567
+(irregular) cross_entropy loss: 0.08670467883348465
+Retrain Epoch: 9 [21760/34528 (63%)] [0.001]	Loss: 0.087432, iou: 0.861005
+(irregular) cross_entropy loss: 0.08743201196193695
+Retrain Epoch: 9 [22080/34528 (64%)] [0.001]	Loss: 0.087904, iou: 0.859867
+(irregular) cross_entropy loss: 0.08790449798107147
+Retrain Epoch: 9 [22400/34528 (65%)] [0.001]	Loss: 0.059399, iou: 0.908631
+(irregular) cross_entropy loss: 0.05939904600381851
+Retrain Epoch: 9 [22720/34528 (66%)] [0.001]	Loss: 0.096947, iou: 0.835825
+(irregular) cross_entropy loss: 0.09694727510213852
+Retrain Epoch: 9 [23040/34528 (67%)] [0.001]	Loss: 0.088946, iou: 0.851501
+(irregular) cross_entropy loss: 0.088945671916008
+Retrain Epoch: 9 [23360/34528 (68%)] [0.001]	Loss: 0.067028, iou: 0.899797
+(irregular) cross_entropy loss: 0.06702760607004166
+Retrain Epoch: 9 [23680/34528 (69%)] [0.001]	Loss: 0.071054, iou: 0.892251
+(irregular) cross_entropy loss: 0.07105434685945511
+Retrain Epoch: 9 [24000/34528 (70%)] [0.001]	Loss: 0.070737, iou: 0.881427
+(irregular) cross_entropy loss: 0.07073652744293213
+Retrain Epoch: 9 [24320/34528 (70%)] [0.001]	Loss: 0.086557, iou: 0.848295
+(irregular) cross_entropy loss: 0.08655719459056854
+Retrain Epoch: 9 [24640/34528 (71%)] [0.001]	Loss: 0.065893, iou: 0.894569
+(irregular) cross_entropy loss: 0.06589328497648239
+Retrain Epoch: 9 [24960/34528 (72%)] [0.001]	Loss: 0.069607, iou: 0.884626
+(irregular) cross_entropy loss: 0.06960722804069519
+Retrain Epoch: 9 [25280/34528 (73%)] [0.001]	Loss: 0.071106, iou: 0.885162
+(irregular) cross_entropy loss: 0.07110556960105896
+Retrain Epoch: 9 [25600/34528 (74%)] [0.001]	Loss: 0.061487, iou: 0.905825
+(irregular) cross_entropy loss: 0.061486512422561646
+Retrain Epoch: 9 [25920/34528 (75%)] [0.001]	Loss: 0.088081, iou: 0.855332
+(irregular) cross_entropy loss: 0.08808079361915588
+Retrain Epoch: 9 [26240/34528 (76%)] [0.001]	Loss: 0.088162, iou: 0.852840
+(irregular) cross_entropy loss: 0.08816218376159668
+Retrain Epoch: 9 [26560/34528 (77%)] [0.001]	Loss: 0.080601, iou: 0.863790
+(irregular) cross_entropy loss: 0.08060115575790405
+Retrain Epoch: 9 [26880/34528 (78%)] [0.001]	Loss: 0.085894, iou: 0.859056
+(irregular) cross_entropy loss: 0.0858941525220871
+Retrain Epoch: 9 [27200/34528 (79%)] [0.001]	Loss: 0.080688, iou: 0.864478
+(irregular) cross_entropy loss: 0.08068770170211792
+Retrain Epoch: 9 [27520/34528 (80%)] [0.001]	Loss: 0.079714, iou: 0.874488
+(irregular) cross_entropy loss: 0.07971420139074326
+Retrain Epoch: 9 [27840/34528 (81%)] [0.001]	Loss: 0.071923, iou: 0.879631
+(irregular) cross_entropy loss: 0.07192309200763702
+Retrain Epoch: 9 [28160/34528 (82%)] [0.001]	Loss: 0.097845, iou: 0.857172
+(irregular) cross_entropy loss: 0.09784499555826187
+Retrain Epoch: 9 [28480/34528 (82%)] [0.001]	Loss: 0.068607, iou: 0.890818
+(irregular) cross_entropy loss: 0.06860676407814026
+Retrain Epoch: 9 [28800/34528 (83%)] [0.001]	Loss: 0.081484, iou: 0.872270
+(irregular) cross_entropy loss: 0.08148401230573654
+Retrain Epoch: 9 [29120/34528 (84%)] [0.001]	Loss: 0.064189, iou: 0.904712
+(irregular) cross_entropy loss: 0.06418901681900024
+Retrain Epoch: 9 [29440/34528 (85%)] [0.001]	Loss: 0.080747, iou: 0.866628
+(irregular) cross_entropy loss: 0.08074682950973511
+Retrain Epoch: 9 [29760/34528 (86%)] [0.001]	Loss: 0.080350, iou: 0.867855
+(irregular) cross_entropy loss: 0.08035049587488174
+Retrain Epoch: 9 [30080/34528 (87%)] [0.001]	Loss: 0.073395, iou: 0.889641
+(irregular) cross_entropy loss: 0.0733945295214653
+Retrain Epoch: 9 [30400/34528 (88%)] [0.001]	Loss: 0.087871, iou: 0.850507
+(irregular) cross_entropy loss: 0.08787088841199875
+Retrain Epoch: 9 [30720/34528 (89%)] [0.001]	Loss: 0.085993, iou: 0.855278
+(irregular) cross_entropy loss: 0.08599288016557693
+Retrain Epoch: 9 [31040/34528 (90%)] [0.001]	Loss: 0.073071, iou: 0.878541
+(irregular) cross_entropy loss: 0.07307083159685135
+Retrain Epoch: 9 [31360/34528 (91%)] [0.001]	Loss: 0.099694, iou: 0.825239
+(irregular) cross_entropy loss: 0.09969376772642136
+Retrain Epoch: 9 [31680/34528 (92%)] [0.001]	Loss: 0.101429, iou: 0.825544
+(irregular) cross_entropy loss: 0.10142850130796432
+Retrain Epoch: 9 [32000/34528 (93%)] [0.001]	Loss: 0.068080, iou: 0.898654
+(irregular) cross_entropy loss: 0.06807996332645416
+Retrain Epoch: 9 [32320/34528 (94%)] [0.001]	Loss: 0.100379, iou: 0.836944
+(irregular) cross_entropy loss: 0.10037852823734283
+Retrain Epoch: 9 [32640/34528 (95%)] [0.001]	Loss: 0.071379, iou: 0.888959
+(irregular) cross_entropy loss: 0.07137949764728546
+Retrain Epoch: 9 [32960/34528 (95%)] [0.001]	Loss: 0.108840, iou: 0.835874
+(irregular) cross_entropy loss: 0.10883983969688416
+Retrain Epoch: 9 [33280/34528 (96%)] [0.001]	Loss: 0.104137, iou: 0.822492
+(irregular) cross_entropy loss: 0.10413692891597748
+Retrain Epoch: 9 [33600/34528 (97%)] [0.001]	Loss: 0.074783, iou: 0.885535
+(irregular) cross_entropy loss: 0.07478275150060654
+Retrain Epoch: 9 [33920/34528 (98%)] [0.001]	Loss: 0.075075, iou: 0.887664
+(irregular) cross_entropy loss: 0.07507538795471191
+Retrain Epoch: 9 [34240/34528 (99%)] [0.001]	Loss: 0.077790, iou: 0.874110
+(irregular) cross_entropy loss: 0.07779005914926529
+retrain: iou: 0.869150, bce: 0.030393, dice: 0.130850, loss: 0.080621
+Validation: [0/3836 (0%)]	Loss: 0.086529, iou: 0.859637
+Validation: [640/3836 (17%)]	Loss: 0.091809, iou: 0.843009
+Validation: [1280/3836 (33%)]	Loss: 0.084774, iou: 0.857697
+Validation: [1920/3836 (50%)]	Loss: 0.084165, iou: 0.859452
+Validation: [2560/3836 (67%)]	Loss: 0.081929, iou: 0.869788
+Validation: [3200/3836 (83%)]	Loss: 0.083261, iou: 0.866866
+val: iou: 0.861811, bce: 0.031313, dice: 0.138189, loss: 0.084751
+
+==============================> Accuracy after Masked Retrain of epoch 9: 
+Validation: [0/3836 (0%)]	Loss: 0.086529, iou: 0.859637
+Validation: [640/3836 (17%)]	Loss: 0.091809, iou: 0.843009
+Validation: [1280/3836 (33%)]	Loss: 0.084774, iou: 0.857697
+Validation: [1920/3836 (50%)]	Loss: 0.084165, iou: 0.859452
+Validation: [2560/3836 (67%)]	Loss: 0.081929, iou: 0.869788
+Validation: [3200/3836 (83%)]	Loss: 0.083261, iou: 0.866866
+val: iou: 0.861811, bce: 0.031313, dice: 0.138189, loss: 0.084751
+Current epoch: 10; current test iou: 0.8618; best test iou: 0.8679 at epoch 7
+
+
+epoch:  10
+Retrain Epoch: 10 [0/34528 (0%)] [0.001]	Loss: 0.081317, iou: 0.875524
+(irregular) cross_entropy loss: 0.08131711184978485
+Retrain Epoch: 10 [320/34528 (1%)] [0.001]	Loss: 0.081774, iou: 0.868374
+(irregular) cross_entropy loss: 0.08177421987056732
+Retrain Epoch: 10 [640/34528 (2%)] [0.001]	Loss: 0.080768, iou: 0.871979
+(irregular) cross_entropy loss: 0.08076770603656769
+Retrain Epoch: 10 [960/34528 (3%)] [0.001]	Loss: 0.104251, iou: 0.813037
+(irregular) cross_entropy loss: 0.10425075888633728
+Retrain Epoch: 10 [1280/34528 (4%)] [0.001]	Loss: 0.076060, iou: 0.878621
+(irregular) cross_entropy loss: 0.07606036961078644
+Retrain Epoch: 10 [1600/34528 (5%)] [0.001]	Loss: 0.076989, iou: 0.870544
+(irregular) cross_entropy loss: 0.07698900252580643
+Retrain Epoch: 10 [1920/34528 (6%)] [0.001]	Loss: 0.081094, iou: 0.873793
+(irregular) cross_entropy loss: 0.08109370619058609
+Retrain Epoch: 10 [2240/34528 (6%)] [0.001]	Loss: 0.082187, iou: 0.867584
+(irregular) cross_entropy loss: 0.0821869745850563
+Retrain Epoch: 10 [2560/34528 (7%)] [0.001]	Loss: 0.092541, iou: 0.854807
+(irregular) cross_entropy loss: 0.09254074096679688
+Retrain Epoch: 10 [2880/34528 (8%)] [0.001]	Loss: 0.068818, iou: 0.886741
+(irregular) cross_entropy loss: 0.06881760060787201
+Retrain Epoch: 10 [3200/34528 (9%)] [0.001]	Loss: 0.078339, iou: 0.878480
+(irregular) cross_entropy loss: 0.07833942770957947
+Retrain Epoch: 10 [3520/34528 (10%)] [0.001]	Loss: 0.085830, iou: 0.863931
+(irregular) cross_entropy loss: 0.08582994341850281
+Retrain Epoch: 10 [3840/34528 (11%)] [0.001]	Loss: 0.085763, iou: 0.870375
+(irregular) cross_entropy loss: 0.08576300740242004
+Retrain Epoch: 10 [4160/34528 (12%)] [0.001]	Loss: 0.082419, iou: 0.864717
+(irregular) cross_entropy loss: 0.08241911232471466
+Retrain Epoch: 10 [4480/34528 (13%)] [0.001]	Loss: 0.079629, iou: 0.882738
+(irregular) cross_entropy loss: 0.07962862402200699
+Retrain Epoch: 10 [4800/34528 (14%)] [0.001]	Loss: 0.105456, iou: 0.819437
+(irregular) cross_entropy loss: 0.10545624047517776
+Retrain Epoch: 10 [5120/34528 (15%)] [0.001]	Loss: 0.072306, iou: 0.887695
+(irregular) cross_entropy loss: 0.07230591773986816
+Retrain Epoch: 10 [5440/34528 (16%)] [0.001]	Loss: 0.070801, iou: 0.891240
+(irregular) cross_entropy loss: 0.0708014965057373
+Retrain Epoch: 10 [5760/34528 (17%)] [0.001]	Loss: 0.081093, iou: 0.867711
+(irregular) cross_entropy loss: 0.08109255880117416
+Retrain Epoch: 10 [6080/34528 (18%)] [0.001]	Loss: 0.101838, iou: 0.827462
+(irregular) cross_entropy loss: 0.10183768719434738
+Retrain Epoch: 10 [6400/34528 (19%)] [0.001]	Loss: 0.081045, iou: 0.863414
+(irregular) cross_entropy loss: 0.0810454934835434
+Retrain Epoch: 10 [6720/34528 (19%)] [0.001]	Loss: 0.078459, iou: 0.871137
+(irregular) cross_entropy loss: 0.07845865190029144
+Retrain Epoch: 10 [7040/34528 (20%)] [0.001]	Loss: 0.082992, iou: 0.860823
+(irregular) cross_entropy loss: 0.08299192786216736
+Retrain Epoch: 10 [7360/34528 (21%)] [0.001]	Loss: 0.063350, iou: 0.905298
+(irregular) cross_entropy loss: 0.06334973126649857
+Retrain Epoch: 10 [7680/34528 (22%)] [0.001]	Loss: 0.089950, iou: 0.842744
+(irregular) cross_entropy loss: 0.0899495854973793
+Retrain Epoch: 10 [8000/34528 (23%)] [0.001]	Loss: 0.066310, iou: 0.906534
+(irregular) cross_entropy loss: 0.06630990654230118
+Retrain Epoch: 10 [8320/34528 (24%)] [0.001]	Loss: 0.086963, iou: 0.851700
+(irregular) cross_entropy loss: 0.0869629830121994
+Retrain Epoch: 10 [8640/34528 (25%)] [0.001]	Loss: 0.080787, iou: 0.873558
+(irregular) cross_entropy loss: 0.08078735321760178
+Retrain Epoch: 10 [8960/34528 (26%)] [0.001]	Loss: 0.068144, iou: 0.907317
+(irregular) cross_entropy loss: 0.06814415007829666
+Retrain Epoch: 10 [9280/34528 (27%)] [0.001]	Loss: 0.100764, iou: 0.854610
+(irregular) cross_entropy loss: 0.10076402872800827
+Retrain Epoch: 10 [9600/34528 (28%)] [0.001]	Loss: 0.072383, iou: 0.889444
+(irregular) cross_entropy loss: 0.07238326221704483
+Retrain Epoch: 10 [9920/34528 (29%)] [0.001]	Loss: 0.086787, iou: 0.852467
+(irregular) cross_entropy loss: 0.08678659796714783
+Retrain Epoch: 10 [10240/34528 (30%)] [0.001]	Loss: 0.072835, iou: 0.879229
+(irregular) cross_entropy loss: 0.07283470034599304
+Retrain Epoch: 10 [10560/34528 (31%)] [0.001]	Loss: 0.072191, iou: 0.881461
+(irregular) cross_entropy loss: 0.07219106703996658
+Retrain Epoch: 10 [10880/34528 (32%)] [0.001]	Loss: 0.067795, iou: 0.907072
+(irregular) cross_entropy loss: 0.06779518723487854
+Retrain Epoch: 10 [11200/34528 (32%)] [0.001]	Loss: 0.070209, iou: 0.898412
+(irregular) cross_entropy loss: 0.07020853459835052
+Retrain Epoch: 10 [11520/34528 (33%)] [0.001]	Loss: 0.079045, iou: 0.867725
+(irregular) cross_entropy loss: 0.07904475927352905
+Retrain Epoch: 10 [11840/34528 (34%)] [0.001]	Loss: 0.089737, iou: 0.849115
+(irregular) cross_entropy loss: 0.08973714709281921
+Retrain Epoch: 10 [12160/34528 (35%)] [0.001]	Loss: 0.074104, iou: 0.885829
+(irregular) cross_entropy loss: 0.07410408556461334
+Retrain Epoch: 10 [12480/34528 (36%)] [0.001]	Loss: 0.077623, iou: 0.878049
+(irregular) cross_entropy loss: 0.07762330025434494
+Retrain Epoch: 10 [12800/34528 (37%)] [0.001]	Loss: 0.085905, iou: 0.855958
+(irregular) cross_entropy loss: 0.0859045535326004
+Retrain Epoch: 10 [13120/34528 (38%)] [0.001]	Loss: 0.084049, iou: 0.859670
+(irregular) cross_entropy loss: 0.08404947817325592
+Retrain Epoch: 10 [13440/34528 (39%)] [0.001]	Loss: 0.086207, iou: 0.882222
+(irregular) cross_entropy loss: 0.08620692789554596
+Retrain Epoch: 10 [13760/34528 (40%)] [0.001]	Loss: 0.089345, iou: 0.850612
+(irregular) cross_entropy loss: 0.08934518694877625
+Retrain Epoch: 10 [14080/34528 (41%)] [0.001]	Loss: 0.073950, iou: 0.887867
+(irregular) cross_entropy loss: 0.07394976168870926
+Retrain Epoch: 10 [14400/34528 (42%)] [0.001]	Loss: 0.063745, iou: 0.900978
+(irregular) cross_entropy loss: 0.06374463438987732
+Retrain Epoch: 10 [14720/34528 (43%)] [0.001]	Loss: 0.081319, iou: 0.867965
+(irregular) cross_entropy loss: 0.08131924271583557
+Retrain Epoch: 10 [15040/34528 (44%)] [0.001]	Loss: 0.077459, iou: 0.874563
+(irregular) cross_entropy loss: 0.07745946943759918
+Retrain Epoch: 10 [15360/34528 (44%)] [0.001]	Loss: 0.062920, iou: 0.905701
+(irregular) cross_entropy loss: 0.0629202201962471
+Retrain Epoch: 10 [15680/34528 (45%)] [0.001]	Loss: 0.086332, iou: 0.855418
+(irregular) cross_entropy loss: 0.08633202314376831
+Retrain Epoch: 10 [16000/34528 (46%)] [0.001]	Loss: 0.076651, iou: 0.884460
+(irregular) cross_entropy loss: 0.07665146887302399
+Retrain Epoch: 10 [16320/34528 (47%)] [0.001]	Loss: 0.067510, iou: 0.895070
+(irregular) cross_entropy loss: 0.06750956177711487
+Retrain Epoch: 10 [16640/34528 (48%)] [0.001]	Loss: 0.077851, iou: 0.883306
+(irregular) cross_entropy loss: 0.07785148918628693
+Retrain Epoch: 10 [16960/34528 (49%)] [0.001]	Loss: 0.077444, iou: 0.874358
+(irregular) cross_entropy loss: 0.07744397968053818
+Retrain Epoch: 10 [17280/34528 (50%)] [0.001]	Loss: 0.083231, iou: 0.868926
+(irregular) cross_entropy loss: 0.08323115855455399
+Retrain Epoch: 10 [17600/34528 (51%)] [0.001]	Loss: 0.091697, iou: 0.840764
+(irregular) cross_entropy loss: 0.09169650077819824
+Retrain Epoch: 10 [17920/34528 (52%)] [0.001]	Loss: 0.079135, iou: 0.883387
+(irregular) cross_entropy loss: 0.07913467288017273
+Retrain Epoch: 10 [18240/34528 (53%)] [0.001]	Loss: 0.070836, iou: 0.889192
+(irregular) cross_entropy loss: 0.07083559036254883
+Retrain Epoch: 10 [18560/34528 (54%)] [0.001]	Loss: 0.063936, iou: 0.896589
+(irregular) cross_entropy loss: 0.06393612176179886
+Retrain Epoch: 10 [18880/34528 (55%)] [0.001]	Loss: 0.078062, iou: 0.872553
+(irregular) cross_entropy loss: 0.07806239277124405
+Retrain Epoch: 10 [19200/34528 (56%)] [0.001]	Loss: 0.099108, iou: 0.824402
+(irregular) cross_entropy loss: 0.09910784661769867
+Retrain Epoch: 10 [19520/34528 (57%)] [0.001]	Loss: 0.078674, iou: 0.883953
+(irregular) cross_entropy loss: 0.07867422699928284
+Retrain Epoch: 10 [19840/34528 (57%)] [0.001]	Loss: 0.073751, iou: 0.875698
+(irregular) cross_entropy loss: 0.07375100255012512
+Retrain Epoch: 10 [20160/34528 (58%)] [0.001]	Loss: 0.074120, iou: 0.882076
+(irregular) cross_entropy loss: 0.07412034273147583
+Retrain Epoch: 10 [20480/34528 (59%)] [0.001]	Loss: 0.111265, iou: 0.819104
+(irregular) cross_entropy loss: 0.1112653836607933
+Retrain Epoch: 10 [20800/34528 (60%)] [0.001]	Loss: 0.072502, iou: 0.899069
+(irregular) cross_entropy loss: 0.07250214368104935
+Retrain Epoch: 10 [21120/34528 (61%)] [0.001]	Loss: 0.094393, iou: 0.842305
+(irregular) cross_entropy loss: 0.09439349919557571
+Retrain Epoch: 10 [21440/34528 (62%)] [0.001]	Loss: 0.089971, iou: 0.850941
+(irregular) cross_entropy loss: 0.08997073769569397
+Retrain Epoch: 10 [21760/34528 (63%)] [0.001]	Loss: 0.091117, iou: 0.853314
+(irregular) cross_entropy loss: 0.09111672639846802
+Retrain Epoch: 10 [22080/34528 (64%)] [0.001]	Loss: 0.091090, iou: 0.850737
+(irregular) cross_entropy loss: 0.09108950197696686
+Retrain Epoch: 10 [22400/34528 (65%)] [0.001]	Loss: 0.077118, iou: 0.872153
+(irregular) cross_entropy loss: 0.07711771130561829
+Retrain Epoch: 10 [22720/34528 (66%)] [0.001]	Loss: 0.066054, iou: 0.895082
+(irregular) cross_entropy loss: 0.0660540983080864
+Retrain Epoch: 10 [23040/34528 (67%)] [0.001]	Loss: 0.088801, iou: 0.856211
+(irregular) cross_entropy loss: 0.08880147337913513
+Retrain Epoch: 10 [23360/34528 (68%)] [0.001]	Loss: 0.098005, iou: 0.837401
+(irregular) cross_entropy loss: 0.09800520539283752
+Retrain Epoch: 10 [23680/34528 (69%)] [0.001]	Loss: 0.070514, iou: 0.892863
+(irregular) cross_entropy loss: 0.07051367312669754
+Retrain Epoch: 10 [24000/34528 (70%)] [0.001]	Loss: 0.066055, iou: 0.896117
+(irregular) cross_entropy loss: 0.06605471670627594
+Retrain Epoch: 10 [24320/34528 (70%)] [0.001]	Loss: 0.093184, iou: 0.844600
+(irregular) cross_entropy loss: 0.09318368881940842
+Retrain Epoch: 10 [24640/34528 (71%)] [0.001]	Loss: 0.077822, iou: 0.867030
+(irregular) cross_entropy loss: 0.07782190293073654
+Retrain Epoch: 10 [24960/34528 (72%)] [0.001]	Loss: 0.105400, iou: 0.832078
+(irregular) cross_entropy loss: 0.10540004819631577
+Retrain Epoch: 10 [25280/34528 (73%)] [0.001]	Loss: 0.096983, iou: 0.851165
+(irregular) cross_entropy loss: 0.096982941031456
+Retrain Epoch: 10 [25600/34528 (74%)] [0.001]	Loss: 0.094766, iou: 0.834332
+(irregular) cross_entropy loss: 0.09476621448993683
+Retrain Epoch: 10 [25920/34528 (75%)] [0.001]	Loss: 0.086559, iou: 0.868964
+(irregular) cross_entropy loss: 0.08655919879674911
+Retrain Epoch: 10 [26240/34528 (76%)] [0.001]	Loss: 0.079082, iou: 0.871080
+(irregular) cross_entropy loss: 0.07908178120851517
+Retrain Epoch: 10 [26560/34528 (77%)] [0.001]	Loss: 0.079746, iou: 0.862685
+(irregular) cross_entropy loss: 0.07974597811698914
+Retrain Epoch: 10 [26880/34528 (78%)] [0.001]	Loss: 0.100273, iou: 0.821082
+(irregular) cross_entropy loss: 0.10027334839105606
+Retrain Epoch: 10 [27200/34528 (79%)] [0.001]	Loss: 0.093229, iou: 0.844008
+(irregular) cross_entropy loss: 0.09322884678840637
+Retrain Epoch: 10 [27520/34528 (80%)] [0.001]	Loss: 0.070907, iou: 0.892201
+(irregular) cross_entropy loss: 0.0709073394536972
+Retrain Epoch: 10 [27840/34528 (81%)] [0.001]	Loss: 0.072076, iou: 0.883742
+(irregular) cross_entropy loss: 0.07207596302032471
+Retrain Epoch: 10 [28160/34528 (82%)] [0.001]	Loss: 0.085184, iou: 0.866020
+(irregular) cross_entropy loss: 0.0851835161447525
+Retrain Epoch: 10 [28480/34528 (82%)] [0.001]	Loss: 0.083894, iou: 0.867167
+(irregular) cross_entropy loss: 0.08389359712600708
+Retrain Epoch: 10 [28800/34528 (83%)] [0.001]	Loss: 0.056658, iou: 0.918604
+(irregular) cross_entropy loss: 0.05665849894285202
+Retrain Epoch: 10 [29120/34528 (84%)] [0.001]	Loss: 0.088382, iou: 0.853508
+(irregular) cross_entropy loss: 0.08838234096765518
+Retrain Epoch: 10 [29440/34528 (85%)] [0.001]	Loss: 0.088533, iou: 0.854434
+(irregular) cross_entropy loss: 0.08853299170732498
+Retrain Epoch: 10 [29760/34528 (86%)] [0.001]	Loss: 0.099246, iou: 0.830386
+(irregular) cross_entropy loss: 0.09924586117267609
+Retrain Epoch: 10 [30080/34528 (87%)] [0.001]	Loss: 0.088412, iou: 0.849758
+(irregular) cross_entropy loss: 0.0884118601679802
+Retrain Epoch: 10 [30400/34528 (88%)] [0.001]	Loss: 0.080972, iou: 0.864813
+(irregular) cross_entropy loss: 0.08097175508737564
+Retrain Epoch: 10 [30720/34528 (89%)] [0.001]	Loss: 0.073412, iou: 0.895694
+(irregular) cross_entropy loss: 0.07341175526380539
+Retrain Epoch: 10 [31040/34528 (90%)] [0.001]	Loss: 0.092713, iou: 0.858831
+(irregular) cross_entropy loss: 0.09271258115768433
+Retrain Epoch: 10 [31360/34528 (91%)] [0.001]	Loss: 0.082696, iou: 0.862256
+(irregular) cross_entropy loss: 0.08269554376602173
+Retrain Epoch: 10 [31680/34528 (92%)] [0.001]	Loss: 0.076956, iou: 0.873747
+(irregular) cross_entropy loss: 0.07695560157299042
+Retrain Epoch: 10 [32000/34528 (93%)] [0.001]	Loss: 0.073611, iou: 0.879667
+(irregular) cross_entropy loss: 0.07361098378896713
+Retrain Epoch: 10 [32320/34528 (94%)] [0.001]	Loss: 0.109186, iou: 0.816915
+(irregular) cross_entropy loss: 0.10918623954057693
+Retrain Epoch: 10 [32640/34528 (95%)] [0.001]	Loss: 0.105063, iou: 0.814871
+(irregular) cross_entropy loss: 0.10506290197372437
+Retrain Epoch: 10 [32960/34528 (95%)] [0.001]	Loss: 0.082718, iou: 0.872015
+(irregular) cross_entropy loss: 0.08271756768226624
+Retrain Epoch: 10 [33280/34528 (96%)] [0.001]	Loss: 0.071435, iou: 0.880829
+(irregular) cross_entropy loss: 0.07143464684486389
+Retrain Epoch: 10 [33600/34528 (97%)] [0.001]	Loss: 0.094120, iou: 0.838569
+(irregular) cross_entropy loss: 0.09411973506212234
+Retrain Epoch: 10 [33920/34528 (98%)] [0.001]	Loss: 0.069225, iou: 0.891784
+(irregular) cross_entropy loss: 0.06922460347414017
+Retrain Epoch: 10 [34240/34528 (99%)] [0.001]	Loss: 0.090489, iou: 0.844701
+(irregular) cross_entropy loss: 0.0904887318611145
+retrain: iou: 0.866988, bce: 0.031195, dice: 0.133012, loss: 0.082103
+Validation: [0/3836 (0%)]	Loss: 0.089893, iou: 0.854366
+Validation: [640/3836 (17%)]	Loss: 0.095181, iou: 0.837509
+Validation: [1280/3836 (33%)]	Loss: 0.085050, iou: 0.857702
+Validation: [1920/3836 (50%)]	Loss: 0.084925, iou: 0.859053
+Validation: [2560/3836 (67%)]	Loss: 0.084321, iou: 0.868494
+Validation: [3200/3836 (83%)]	Loss: 0.084934, iou: 0.864914
+val: iou: 0.860739, bce: 0.033071, dice: 0.139261, loss: 0.086166
+
+==============================> Accuracy after Masked Retrain of epoch 10: 
+Validation: [0/3836 (0%)]	Loss: 0.089893, iou: 0.854366
+Validation: [640/3836 (17%)]	Loss: 0.095181, iou: 0.837509
+Validation: [1280/3836 (33%)]	Loss: 0.085050, iou: 0.857702
+Validation: [1920/3836 (50%)]	Loss: 0.084925, iou: 0.859053
+Validation: [2560/3836 (67%)]	Loss: 0.084321, iou: 0.868494
+Validation: [3200/3836 (83%)]	Loss: 0.084934, iou: 0.864914
+val: iou: 0.860739, bce: 0.033071, dice: 0.139261, loss: 0.086166
+Current epoch: 11; current test iou: 0.8607; best test iou: 0.8679 at epoch 7
+
+
+>_>_>_>_>_>_>_>_>_>_>_>_>_ Accuracy after Retrain:
+Validation: [0/3836 (0%)]	Loss: 0.089893, iou: 0.854366
+Validation: [640/3836 (17%)]	Loss: 0.095181, iou: 0.837509
+Validation: [1280/3836 (33%)]	Loss: 0.085050, iou: 0.857702
+Validation: [1920/3836 (50%)]	Loss: 0.084925, iou: 0.859053
+Validation: [2560/3836 (67%)]	Loss: 0.084321, iou: 0.868494
+Validation: [3200/3836 (83%)]	Loss: 0.084934, iou: 0.864914
+val: iou: 0.860739, bce: 0.033071, dice: 0.139261, loss: 0.086166
+
+>>>> Sparsity after Masked Retrain >>>> 
+
+sparsity at layer base_model.conv1.weight is 0.0
+sparsity at layer base_model.bn1.weight is 0.0
+sparsity at layer base_model.layer1.0.conv1.weight is 0.0
+sparsity at layer base_model.layer1.0.bn1.weight is 0.0
+sparsity at layer base_model.layer1.0.conv2.weight is 0.0
+sparsity at layer base_model.layer1.0.bn2.weight is 0.0
+sparsity at layer base_model.layer1.1.conv1.weight is 0.0
+sparsity at layer base_model.layer1.1.bn1.weight is 0.0
+sparsity at layer base_model.layer1.1.conv2.weight is 0.0
+sparsity at layer base_model.layer1.1.bn2.weight is 0.0
+sparsity at layer base_model.layer2.0.conv1.weight is 0.0
+sparsity at layer base_model.layer2.0.bn1.weight is 0.0
+sparsity at layer base_model.layer2.0.conv2.weight is 0.0
+sparsity at layer base_model.layer2.0.bn2.weight is 0.0
+sparsity at layer base_model.layer2.0.downsample.0.weight is 0.0
+sparsity at layer base_model.layer2.0.downsample.1.weight is 0.0
+sparsity at layer base_model.layer2.1.conv1.weight is 0.0
+sparsity at layer base_model.layer2.1.bn1.weight is 0.0
+sparsity at layer base_model.layer2.1.conv2.weight is 0.0
+sparsity at layer base_model.layer2.1.bn2.weight is 0.0
+sparsity at layer base_model.layer3.0.conv1.weight is 0.0
+sparsity at layer base_model.layer3.0.bn1.weight is 0.0
+sparsity at layer base_model.layer3.0.conv2.weight is 0.0
+sparsity at layer base_model.layer3.0.bn2.weight is 0.0
+sparsity at layer base_model.layer3.0.downsample.0.weight is 0.0
+sparsity at layer base_model.layer3.0.downsample.1.weight is 0.0
+sparsity at layer base_model.layer3.1.conv1.weight is 0.0
+sparsity at layer base_model.layer3.1.bn1.weight is 0.0
+sparsity at layer base_model.layer3.1.conv2.weight is 0.0
+sparsity at layer base_model.layer3.1.bn2.weight is 0.0
+sparsity at layer base_model.layer4.0.conv1.weight is 0.0
+sparsity at layer base_model.layer4.0.bn1.weight is 0.0
+sparsity at layer base_model.layer4.0.conv2.weight is 0.0
+sparsity at layer base_model.layer4.0.bn2.weight is 0.0
+sparsity at layer base_model.layer4.0.downsample.0.weight is 0.0
+sparsity at layer base_model.layer4.0.downsample.1.weight is 0.0
+sparsity at layer base_model.layer4.1.conv1.weight is 0.0
+sparsity at layer base_model.layer4.1.bn1.weight is 0.0
+sparsity at layer base_model.layer4.1.conv2.weight is 0.0
+sparsity at layer base_model.layer4.1.bn2.weight is 0.0
+sparsity at layer base_model.fc.weight is 0.0
+sparsity at layer layer0_1x1.0.weight is 0.0
+sparsity at layer layer1_1x1.0.weight is 0.0
+sparsity at layer layer2_1x1.0.weight is 0.0
+sparsity at layer layer3_1x1.0.weight is 0.0
+sparsity at layer layer4_1x1.0.weight is 0.0
+sparsity at layer conv_up3.0.weight is 0.0
+sparsity at layer conv_up2.0.weight is 0.0
+sparsity at layer conv_up1.0.weight is 0.0
+sparsity at layer conv_up0.0.weight is 0.0
+sparsity at layer conv_original_size0.0.weight is 0.0
+sparsity at layer conv_original_size1.0.weight is 0.0
+sparsity at layer conv_original_size2.0.weight is 0.0
+sparsity at layer conv_last.weight is 0.0
+overal compression rate is 1.0
+

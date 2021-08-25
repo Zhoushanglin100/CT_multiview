@@ -340,8 +340,8 @@ def main(args):
     tmp_path = './tmp'
 
     shutil.rmtree(tmp_path, ignore_errors=True)
-    persistent_cache = pathlib.Path(tmp_path, "persistent_cache")
-    persistent_cache.mkdir(parents=True, exist_ok=True)
+    # persistent_cache = pathlib.Path(tmp_path, "persistent_cache")
+    # persistent_cache.mkdir(parents=True, exist_ok=True)
     set_determinism(seed=0)
 
     ###################################
@@ -363,8 +363,11 @@ def main(args):
     train_files, val_files = data_dicts[:-val_idx], data_dicts[-val_idx:]
     train_trans, val_trans = get_transforms(args)
 
-    train_ds = PersistentDataset(data=train_files, transform=train_trans, cache_dir=persistent_cache)
-    val_ds = PersistentDataset(data=val_files, transform=val_trans, cache_dir=persistent_cache)
+    # train_ds = PersistentDataset(data=train_files, transform=train_trans, cache_dir=persistent_cache)
+    # val_ds = PersistentDataset(data=val_files, transform=val_trans, cache_dir=persistent_cache)
+
+    train_ds = PersistentDataset(data=train_files, transform=train_trans, cache_dir=None)
+    val_ds = PersistentDataset(data=val_files, transform=val_trans, cache_dir=None)
 
     train_loader = DataLoader(train_ds, batch_size=args.batch_size, shuffle=True, num_workers=16, pin_memory=torch.cuda.is_available())
     val_loader = DataLoader(val_ds, batch_size=args.test_batch_size, num_workers=16)#, pin_memory=torch.cuda.is_available())
@@ -450,6 +453,7 @@ def main(args):
             #                                                     eta_min=4e-08)
 
             best_iou = 0
+            best_metric_epoch = 1
             for epoch in range(1, args.admm_train_epochs + 1):
                 print("\nepoch: ", epoch)
 
@@ -459,11 +463,11 @@ def main(args):
                 train(args, ADMM, model, device, train_loader, optimizer, epoch, writer)
                 epoch_loss, epoch_iou = validation(args, model, device, val_loader)
                 
-                is_best = epoch_iou > best_iou
-                if epoch_iou > best_iou:
+                if (epoch_iou > best_iou) and (epoch != 1):
+                    is_best = epoch_iou > best_iou
                     print("\nGet a new best test iou:{:.2f}".format(epoch_iou))
                     best_iou = epoch_iou
-                    best_metric_epoch = epoch + 1
+                    best_metric_epoch = epoch
                     best_admm_model = model
 
                     model_name = "{}_admmtrain_{}_{}{}.pt".format(args.data_view, args.prun_config_file, args.sparsity_type, args.ext)
@@ -475,9 +479,9 @@ def main(args):
                                   'optimizer': optimizer.state_dict()
                                   }
                     save_ckp(args, checkpoint, is_best, 
-                                checkpoint_dir, 
-                                best_model_dir, 
-                                model_name)
+                             checkpoint_dir, 
+                             best_model_dir, 
+                             model_name)
 
                     # torch.save(best_model_wts, 
                     #             "ckpt_pruned/admmtrain/{}_admmtrain_{}_{}{}.pt".format(args.data_view, args.prun_config_file, args.sparsity_type, args.ext))
@@ -489,8 +493,8 @@ def main(args):
                 print("Condition 2")
                 print(ADMM.condition2)
             
-            print("Current epoch: {}; current test iou: {:.4f}; best test iou: {:.4f} at epoch {}\n".format(
-                    epoch+1, epoch_iou, best_iou, best_metric_epoch))
+                print("Current epoch: {}; current test iou: {:.4f}; best test iou: {:.4f} at epoch {}\n".format(
+                        epoch, epoch_iou, best_iou, best_metric_epoch))
             
             print("\n>>>> Sparsity after admm >>>> \n")
             admm.test_sparsity(args, ADMM, best_admm_model)

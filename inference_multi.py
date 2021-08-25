@@ -300,8 +300,11 @@ def main(args):
         
     # count_parameters(model)
     # # --------------------------------
-
-    model_name = "ckpt_pruned/retrain/{}_retrain_{}_{}{}.pt".format(args.data_view, args.prun_config_file, args.sparsity_type, args.ext)
+    
+    ### Pruned Model
+    # model_name = "ckpt_pruned_v1/retrain/{}_retrain_{}_{}{}.pt".format(args.data_view, args.prun_config_file, args.sparsity_type, args.ext)
+    ### Original Model
+    model_name = "ckpt/best_1/{}_ResNetUNet_best.pt".format(args.data_view)
     print(model_name)
     model.load_state_dict(torch.load(model_name))
     
@@ -316,16 +319,16 @@ def main(args):
     s2 = time.time()
     print("================= Total "+str(len(val_loader))+" imgs process: %f ms" % ((s2-s1)*1000))
 
-    # print("+++++++++++++++++++++++++++++")
-    # from ptflops import get_model_complexity_info
-    # ### modified flops_counter.py for zero weight [conv_flops_counter_hook() & linear_flops_counter_hook()]
-    # ### https://stackoverflow.com/questions/64551002/how-can-i-calculate-flops-and-params-without-0-weights-neurons-affected
-    # with torch.cuda.device(0):
-    #     macs, params = get_model_complexity_info(model, (3, 256, 256), as_strings=True,
-    #                                        print_per_layer_stat=False, verbose=False)
-    #     print('{:<30}  {:<8}'.format('Computational complexity: ', macs))
-    #     print('{:<30}  {:<8}'.format('Number of parameters: ', params))
-    # print("+++++++++++++++++++++++++++++")
+    print("+++++++++++++++++++++++++++++")
+    from ptflops import get_model_complexity_info
+    ### modified flops_counter.py for zero weight [conv_flops_counter_hook() & linear_flops_counter_hook()]
+    ### https://stackoverflow.com/questions/64551002/how-can-i-calculate-flops-and-params-without-0-weights-neurons-affected
+    with torch.cuda.device(0):
+        macs, params = get_model_complexity_info(model, (3, 256, 256), as_strings=True,
+                                           print_per_layer_stat=False, verbose=False)
+        print('{:<30}  {:<8}'.format('Computational complexity: ', macs))
+        print('{:<30}  {:<8}'.format('Number of parameters: ', params))
+    print("+++++++++++++++++++++++++++++")
 
 
 

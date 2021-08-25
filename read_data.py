@@ -53,7 +53,10 @@ import nibabel as nib
 
 
 ##############################################################
-
+# to run this part:
+# python3 read_data.py arg1
+#   @arg1: prune rate, [0.5, 0.9, 0.99]
+##############################################################
 
 nii_imgs = ["/data/medical/ImageCHD_dataset/ct_1178_image.nii.gz"]
 nii_masks = ["/data/medical/ImageCHD_dataset/ct_1178_label.nii.gz"]
@@ -61,9 +64,11 @@ nii_masks = ["/data/medical/ImageCHD_dataset/ct_1178_label.nii.gz"]
 img = nib.load(nii_imgs[0]).get_fdata()
 msk = nib.load(nii_masks[0]).get_fdata()
 
-# ## convert to 2 classes (blood pool vs background)
-# msk[np.where(msk == 5)] = 0
-# msk[np.where(msk != 0)] = 1
+## convert to 2 classes (blood pool vs background)
+msk[np.where(msk == 5)] = 0
+msk[np.where(msk != 0)] = 1
+
+np.savez("inf_plot/a_npz_full/msk_ResNetUNet.npz", msk)
 
 # ### Save back to nii for same affine
 # img_full_nii = nib.Nifti1Image(img, np.eye(4)) 
@@ -99,6 +104,7 @@ for view in file_name:
         pred_app_2 = np.zeros([pred_shp[0], pred_shp[1], img_shp[2]-pred_last-1])
         pred_full = np.concatenate((pred_app_1, pred_bk, pred_app_2), axis=-1)
         pred_ud = pred_full
+        print("updown shaoe:", pred_ud.shape)
 
     elif view == "leftright":
         pred_bk = pred_bk.transpose(0,1,2)
@@ -107,6 +113,7 @@ for view in file_name:
         pred_app_2 = np.zeros([img_shp[0]-pred_last-1, pred_shp[1], pred_shp[2]])
         pred_full = np.concatenate((pred_app_1, pred_bk, pred_app_2), axis=0)
         pred_lf = pred_full
+        print("leftright shape:", pred_lf.shape)
 
     elif view == "frontback":
         pred_bk = pred_bk.transpose(1,0,2)
@@ -115,10 +122,14 @@ for view in file_name:
         pred_app_2 = np.zeros([pred_shp[0], img_shp[1]-pred_last-1, pred_shp[2]])
         pred_full = np.concatenate((pred_app_1, pred_bk, pred_app_2), axis=1)
         pred_fb = pred_full
+        print("frontback shape:", pred_fb.shape)
 
-    print(view, float(sys.argv[1]), " save to nii!")
-    pred_full_nii = nib.Nifti1Image(pred_full, np.eye(4)) 
-    nib.save(pred_full_nii, "inf_plot/a_nii/"+view+"_config_ResNetUNet_"+sys.argv[1]+"_pred_full.nii.gz")
+    print(view, float(sys.argv[1]), " save to npz!")
+    np.savez("inf_plot/a_npz_full/"+view+"_ResNetUNet_"+sys.argv[1]+"_pred_full.npz", pred_full)
+
+    # print(view, float(sys.argv[1]), " save to nii!")
+    # pred_full_nii = nib.Nifti1Image(pred_full, np.eye(4)) 
+    # nib.save(pred_full_nii, "inf_plot/a_nii/"+view+"_config_ResNetUNet_"+sys.argv[1]+"_pred_full.nii.gz")
 
 pred_all = np.round((pred_ud+pred_lf+pred_fb)/3)
 # pred_max = np.maximum.reduce([pred_ud,pred_lf,pred_fb])
@@ -128,8 +139,11 @@ print(pred_all.shape)
 # print(pred_max.shape)
 # print(pred_min.shape)
 
-pred_all_nii = nib.Nifti1Image(pred_all, np.eye(4))
-nib.save(pred_all_nii, "inf_plot/a_nii/"+sys.argv[1]+"_pred_all.nii.gz")
+np.savez("inf_plot/a_npz_full/pred_mj_"+sys.argv[1]+".npz", pred_all)
+
+
+# pred_all_nii = nib.Nifti1Image(pred_all, np.eye(4))
+# nib.save(pred_all_nii, "inf_plot/a_nii/"+sys.argv[1]+"_pred_all.nii.gz")
 
 # pred_max_nii = nib.Nifti1Image(pred_max, np.eye(4))
 # nib.save(pred_max_nii, "inf_plot/a_nii_1/pred_max.nii.gz")
