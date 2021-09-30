@@ -5,7 +5,7 @@
 import os
 import torch
 
-ROOTDIR = "ckpt_pruned/retrain"
+ROOTDIR = "ckpt/best_1"
 
 for subdir, dirs, files in os.walk(ROOTDIR):
     for file in files:
@@ -13,7 +13,7 @@ for subdir, dirs, files in os.walk(ROOTDIR):
 
         if filepath.endswith(".pt"):
             print (filepath)
-            model = torch.load(filepath)
+            model = torch.load(filepath, map_location ='cpu')
             torch.save(model, 
-                        "ckpt_pruned/cvt_model/"+file, 
+                        "ckpt/cvt_model/"+file, 
                         _use_new_zipfile_serialization=False)

@@ -11,3 +11,4 @@ wandb/
 tmp/
 ckpt/
 ckpt_pruned/
+ckpt_pruned_v1/

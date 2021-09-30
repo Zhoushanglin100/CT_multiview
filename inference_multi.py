@@ -107,6 +107,7 @@ def validation(args, model, device, val_loader, val_trans_bk):
         val_tru_d, val_tru_lst = {}, []
 
         for batch_idx, val_data in enumerate(val_loader):
+            print(batch_idx)
 
             s_val_load1 = time.time()
             val_images_name = val_data["img_meta_dict"]['filename_or_obj'][0].split("/")[-1].split(".")[0]
@@ -123,8 +124,8 @@ def validation(args, model, device, val_loader, val_trans_bk):
             s1_val = time.time()
             val_outputs = model(val_images)
             s2_val = time.time()
-            # print("================= process img %i: %f ms" % (batch_idx+1, (s2_val-s1_val)*1000))
-            # print(">>>>>>> Total %i: %f ms <<<<<<" % (batch_idx+1, (s2_val-s_val_load1)*1000))
+            print("================= process img %i: %f ms" % (batch_idx+1, (s2_val-s1_val)*1000))
+            print(">>>>>>> Total %i: %f ms <<<<<<" % (batch_idx+1, (s2_val-s_val_load1)*1000))
             one_time.append((s2_val-s1_val)*1000)
 
 
@@ -194,6 +195,7 @@ def validation(args, model, device, val_loader, val_trans_bk):
 
         val_msk_d["data"] = val_msk_mat_bk
         val_tru_d["data"] = val_tru_mat_bk
+        np.save("inf_plot/a_npz/"+args.data_view+"_pred_mat_d.npy", val_msk_d) 
         # np.save("inf_plot/a_npz/"+args.data_view+"_"+args.prun_config_file+"_pred_mat_d.npy", val_msk_d) 
         # np.save("inf_plot/a_npz/"+args.data_view+"_true_mat_d.npy", val_tru_d) 
 
@@ -201,9 +203,9 @@ def validation(args, model, device, val_loader, val_trans_bk):
         # print(val_msk_mat_bk.shape)
         # print(val_tru_mat_bk.shape)
 
-        # np.savez("inf_plot/a_npz/"+args.data_view+"_img_mat.npz", val_img_mat)
-        # np.savez("inf_plot/a_npz/"+args.data_view+"_pred_mat.npz", val_msk_mat)
-        # np.savez("inf_plot/a_npz/"+args.data_view+"_true_mat.npz", val_tru_mat)
+        # np.savez("inf_plot/a_npz_full/"+args.data_view+"_img_mat.npz", val_img_mat)
+        # np.savez("inf_plot/a_npz_full/"+args.data_view+"_pred_mat.npz", val_msk_mat)
+        # np.savez("inf_plot/a_npz_full/"+args.data_view+"_true_mat.npz", val_tru_mat)
 
         # val_img_mat = nib.Nifti1Image(val_img_mat, np.eye(4))
         # val_msk_mat = nib.Nifti1Image(val_msk_mat, np.eye(4)) 
@@ -273,6 +275,7 @@ def main(args):
     ###################################
     import torch
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+    print("|||||||", device)
 
     if args.model == 'ResNetUNet':
         model = ResNetUNet(n_class=args.num_classes)
@@ -304,7 +307,7 @@ def main(args):
     ### Pruned Model
     # model_name = "ckpt_pruned_v1/retrain/{}_retrain_{}_{}{}.pt".format(args.data_view, args.prun_config_file, args.sparsity_type, args.ext)
     ### Original Model
-    model_name = "ckpt/best_1/{}_ResNetUNet_best.pt".format(args.data_view)
+    model_name = "ckpt/cvt_model/{}_ResNetUNet_best.pt".format(args.data_view)
     print(model_name)
     model.load_state_dict(torch.load(model_name))
     
@@ -319,16 +322,16 @@ def main(args):
     s2 = time.time()
     print("================= Total "+str(len(val_loader))+" imgs process: %f ms" % ((s2-s1)*1000))
 
-    print("+++++++++++++++++++++++++++++")
-    from ptflops import get_model_complexity_info
-    ### modified flops_counter.py for zero weight [conv_flops_counter_hook() & linear_flops_counter_hook()]
-    ### https://stackoverflow.com/questions/64551002/how-can-i-calculate-flops-and-params-without-0-weights-neurons-affected
-    with torch.cuda.device(0):
-        macs, params = get_model_complexity_info(model, (3, 256, 256), as_strings=True,
-                                           print_per_layer_stat=False, verbose=False)
-        print('{:<30}  {:<8}'.format('Computational complexity: ', macs))
-        print('{:<30}  {:<8}'.format('Number of parameters: ', params))
-    print("+++++++++++++++++++++++++++++")
+    # print("+++++++++++++++++++++++++++++")
+    # from ptflops import get_model_complexity_info
+    # ### modified flops_counter.py for zero weight [conv_flops_counter_hook() & linear_flops_counter_hook()]
+    # ### https://stackoverflow.com/questions/64551002/how-can-i-calculate-flops-and-params-without-0-weights-neurons-affected
+    # with torch.cuda.device(0):
+    #     macs, params = get_model_complexity_info(model, (3, 256, 256), as_strings=True,
+    #                                        print_per_layer_stat=False, verbose=False)
+    #     print('{:<30}  {:<8}'.format('Computational complexity: ', macs))
+    #     print('{:<30}  {:<8}'.format('Number of parameters: ', params))
+    # print("+++++++++++++++++++++++++++++")
 
 
 

@@ -68,7 +68,7 @@ msk = nib.load(nii_masks[0]).get_fdata()
 msk[np.where(msk == 5)] = 0
 msk[np.where(msk != 0)] = 1
 
-np.savez("inf_plot/a_npz_full/msk_ResNetUNet.npz", msk)
+# np.savez("inf_plot/a_npz_full/msk_ResNetUNet.npz", msk)
 
 # ### Save back to nii for same affine
 # img_full_nii = nib.Nifti1Image(img, np.eye(4)) 
@@ -83,7 +83,10 @@ file_name = ['updown', 'leftright', 'frontback']
 
 for view in file_name:
 
-    pred_name = "inf_plot/a_npz/"+view+"_config_ResNetUNet_"+sys.argv[1]+"_pred_mat_d.npy"
+    print("------>", view)
+
+    # pred_name = "inf_plot/a_npz/"+view+"_config_ResNetUNet_"+sys.argv[1]+"_pred_mat_d.npy"
+    pred_name = "inf_plot/a_npz/"+view+"_pred_mat_d.npy"
     # true_name = "inf_plot/a_npz/"+view+"_true_mat_d.npy"
 
     read_pred = np.load(pred_name, allow_pickle='TRUE').item()
@@ -104,7 +107,7 @@ for view in file_name:
         pred_app_2 = np.zeros([pred_shp[0], pred_shp[1], img_shp[2]-pred_last-1])
         pred_full = np.concatenate((pred_app_1, pred_bk, pred_app_2), axis=-1)
         pred_ud = pred_full
-        print("updown shaoe:", pred_ud.shape)
+        print("updown shape:", pred_ud.shape)
 
     elif view == "leftright":
         pred_bk = pred_bk.transpose(0,1,2)
